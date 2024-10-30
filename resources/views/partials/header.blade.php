@@ -3,14 +3,15 @@
         opacity: 1;
         visibility: visible;
         margin-top: -25px;
-        width: 155px;
+        width: 109px;
         height: auto;
     }
 
     .logo-dark {
         opacity: 1;
         visibility: visible;
-        height: 65px;
+        margin-top: -25px;
+        width: 109px;
         height: auto;
     }
 
@@ -40,20 +41,15 @@
         <div class="container">
             <div class="nk-header-wrap">
                 <div class="nk-header-logo">
-                    <a aria-label="Page d'accueil BRAIN Gentech" href="{{url('/')}}" class="logo-link">
+                    <a aria-label="Page d'accueil BRAIN Gentech" href="{{ url('/') }}" class="logo-link">
                         <div class="logo-wrap">
 
 
-                            <img  class="logo-img logo-light" style="
+                            <img class="logo-img logo-light logo-dark" style="
                   top: -31px;
               "
-                                src="{{ asset('images/Brain_light.png') }}"
-                                srcset="{{ asset('images/Brain_light.png 4x') }}" alt="" /><img
-                                style="
-    top: -31px;
-" class="logo-img logo-dark"
-                                src="{{ asset('images/Brain_dark.png') }}"
-                                srcset="{{ asset('images/Brain_dark.png 4x') }}" alt="" />
+                                src="{{ asset('images/a4.png') }}" srcset="{{ asset('images/a4.png 2x') }}"
+                                alt="" />
                         </div>
                     </a>
                 </div>
@@ -89,14 +85,23 @@
                                                 Communication et marketing digital</a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a class="nk-menu-link"  href="{{ url('/service/promotion-immobiliere-conciergerie') }}">
-                                              Promotion Immobilière et
+                                            <a class="nk-menu-link"
+                                                href="{{ url('/service/promotion-immobiliere-conciergerie') }}">
+                                                Promotion Immobilière et
                                                 Conciergerie </a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a class="nk-menu-link" href="{{ url('/service/agroalimentaire-tracabilite') }}">Agroalimentaire et
+                                            <a class="nk-menu-link"
+                                                href="{{ url('/service/agroalimentaire-tracabilite') }}">Agroalimentaire
+                                                et
                                                 Traçabilité
 
+                                            </a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a class="nk-menu-link"
+                                                href="{{ url('/service/agroalimentaire-tracabilite') }}">Autre
+                                            
                                             </a>
                                         </li>
                                     </ul>
@@ -110,7 +115,8 @@
                         </li>
 
                         <li class="nk-menu-item">
-                            <a href="{{url('/contact')}}" class="nk-menu-link"><span class="nk-menu-text">Contact</span></a>
+                            <a href="{{ url('/contact') }}" class="nk-menu-link"><span
+                                    class="nk-menu-text">Contact</span></a>
                         </li>
                     </ul>
                     <div class="mx-2 d-none d-lg-block">
@@ -119,7 +125,7 @@
                         </button>
                     </div>
                     <ul class="nk-menu-buttons flex-lg-row-reverse">
-                        <li><a href="{{url('/contact')}}" class="btn btn-primary">Demandez un devis</a></li>
+                        <li><a href="{{ url('/contact') }}" class="btn btn-primary">Demandez un devis</a></li>
 
                     </ul>
                 </nav>
@@ -133,18 +139,20 @@
                     <div class="nk-hero-content py-5 py-lg-6">
 
                         <h1 class="title mb-3 mb-lg-4 display-6">
-                        Débloquez le potentiel de votre entreprise avec des solutions
+                            Débloquez le potentiel de votre entreprise avec des solutions
                             <div class="text-gradient-primary">
                                 <span class="type-init" data-strings='" IA ","et Automatisation  "'></span>
                             </div>
                         </h1>
                         <p class="lead px-md-8 px-lg-6 mb-4 mb-lg-5">
-                            Nous facilitons l'accès aux solutions  <span style="color: #3a6ad6">d'IA </span> et  <span style="color: #3a6ad6">d'automatisation </span> intelligentes pour les
+                            Nous facilitons l'accès aux solutions <span style="color: #3a6ad6">d'IA </span> et <span
+                                style="color: #3a6ad6">d'automatisation </span> intelligentes pour les
                             entreprises.
                         </p>
                         <ul class="btn-list btn-list-inline">
                             <li>
-                                <a href="{{url('/contact')}}" class="btn btn-secondary btn-lg"><span>Regoindre Brain</span></a>
+                                <a href="{{ url('/contact') }}" class="btn btn-secondary btn-lg"><span>Regoindre
+                                        Brain</span></a>
                             </li>
                         </ul>
                     </div>

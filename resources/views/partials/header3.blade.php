@@ -94,6 +94,13 @@
 
                                             </a>
                                         </li>
+                                        <li class="nk-menu-item">
+                                            <a class="nk-menu-link"
+                                                href="{{ url('/service/agroalimentaire-tracabilite') }}">Autre
+                                             
+
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

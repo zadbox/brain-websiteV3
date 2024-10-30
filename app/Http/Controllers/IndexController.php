@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessage as MailContactMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail\ContactMessage;
 
 class IndexController extends Controller
 {
@@ -29,5 +32,29 @@ class IndexController extends Controller
     }
     public function awa(){
         return view("awa");
+    }
+    public function store(Request $request)
+    {
+        // Valider les données reçues
+        $validated = $request->validate([
+            'user-name' => 'required|string',
+            'user-email' => 'required|email',
+            'user-subject' => 'required|string',
+            'user-message' => 'required|string',
+        ]);
+
+        // Préparer les données pour l'email
+        $data = [
+            'user-name' => $validated['user-name'],
+            'user-email' => $validated['user-email'],
+            'user-subject' => $validated['user-subject'],
+            'user-message' => $validated['user-message'],
+        ];
+ 
+        // Envoyer l'email
+        Mail::to("bakkouadnane.rs88@gmail.com")->send(new MailContactMessage($data));
+
+        // Rediriger avec un message de succès
+        return redirect()->back()->with('success', 'Votre message a été envoyé avec succès!');
     }
 }
