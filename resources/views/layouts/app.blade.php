@@ -14,10 +14,13 @@
   />
 
   <style>
-    h1 , h2 ,h3{
+    h1 {
       font-family: "Lexend Tera", sans-serif !important;
+      font-size: 40px!important;
 
     }
+   
+   
   </style>
     <title>
     Brain Technology &amp; AI Automatisation & Blockchain Solutions.

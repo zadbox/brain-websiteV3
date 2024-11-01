@@ -360,7 +360,7 @@
             <div class="section-head">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-9 col-xl-8 col-xxl-6">
-                        <h1 class="overline-title text-primary">Nos partenaires Technologiques</h1>
+                        <h6 class="overline-title text-primary">Nos partenaires Technologiques</h6>
                     </div>
                 </div>
             </div>
