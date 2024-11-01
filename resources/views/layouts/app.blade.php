@@ -5,10 +5,20 @@
     <meta name="author" content="Softnio" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/brainv.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
   />
+
+  <style>
+    h1 , h2 ,h3{
+      font-family: "Lexend Tera", sans-serif !important;
+
+    }
+  </style>
     <title>
     Brain Technology &amp; AI Automatisation & Blockchain Solutions.
     </title>
