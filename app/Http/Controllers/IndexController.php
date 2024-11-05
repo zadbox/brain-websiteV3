@@ -52,7 +52,7 @@ class IndexController extends Controller
         ];
  
         // Envoyer l'email
-        Mail::to("bakkouadnane.rs88@gmail.com")->send(new MailContactMessage($data));
+        Mail::to("contact@braingentech.com")->send(new MailContactMessage($data));
 
         // Rediriger avec un message de succès
         return redirect()->back()->with('success', 'Votre message a été envoyé avec succès!');

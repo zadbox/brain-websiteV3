@@ -7,18 +7,12 @@
     <link rel="shortcut icon" href="images/brainv.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
   />
 
-  <style>
-    h1 {
-      font-family: "Lexend Tera", sans-serif !important;
-      font-size: 40px!important;
-
-    }
+  
    
    
   </style>

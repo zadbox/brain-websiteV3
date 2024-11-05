@@ -22,7 +22,7 @@ class EmailController extends Controller
             'user-message' => $validated['user-message'],
         ];
 
-        Mail::to("bakkouadnane.rs88@gmail.com")->send(new ContactMessage($data));
+        Mail::to("e")->send(new ContactMessage($data));
 
         return redirect()->back()->with('success', 'Votre message a été envoyé avec succès!');
     }

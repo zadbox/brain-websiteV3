@@ -35,7 +35,7 @@ Route::post('/message', function (Request $request) {
     ];
 
     // Envoyer l'email
-    Mail::to("bakkouadnane.rs88@gmail.com")->send(new ContactMessage($data));
+    Mail::to("contact@braingentech.com")->send(new ContactMessage($data));
 
     // Rediriger avec un message de succès
     return redirect()->back()->with('success', 'Votre message a été envoyé avec succès!');
