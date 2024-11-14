@@ -38,7 +38,7 @@
 
                             <img class="logo-img logo-dark" style="
                             top: -11px;
-                            height: 39px;
+                            height: 43px;
                         "
                                 src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
                                 alt="" />
