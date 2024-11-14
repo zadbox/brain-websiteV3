@@ -1,18 +1,9 @@
 <style>
-    .is-dark .logo-light {
-        opacity: 1;
-        visibility: visible;
-        margin-top: -25px;
-        width: 155px;
-        height: auto;
-    }
+      .logo-dark {
+    margin-top: -11px;
+    margin-left: -29px;
 
-    .logo-dark {
-        opacity: 1;
-        visibility: visible;
-        height: 65px;
-        height: auto;
-    }
+  }
 
     @media (min-width: 992px) {
         [data-menu-collapse="lg"] .nk-menu-list {
@@ -45,14 +36,18 @@
                         <div class="logo-wrap">
 
 
-                            <img class="logo-img logo-light" style="
-                  top: -31px;
-              "
-                                src="{{asset('images/Brain_light.png')}}" srcset="{{asset('images/Brain_light.png 4x')}}" alt="" /><img
-                                style="
-    top: -31px;
-" class="logo-img logo-dark" src="{{asset('images/Brain_dark.png')}}"
-                                srcset="{{asset('images/Brain_dark.png 4x')}}" alt="" />
+                            <img class="logo-img logo-dark" style="
+                            top: -11px;
+                            height: 39px;
+                        "
+                                src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
+                                alt="" />
+                            <img class="logo-img logo-light " style="
+                            top: -11px;
+                            height: 39px;
+                        "
+                                src="{{ asset('assets/LogoBrainBlanc.png') }}" srcset="{{ asset('assets/LogoBrainBlanc.png 2x') }}"
+                                alt="" />
                         </div>
                     </a>
                 </div>

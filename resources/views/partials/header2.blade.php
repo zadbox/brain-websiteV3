@@ -1,19 +1,9 @@
 <style>
-    .is-dark .logo-light {
-        opacity: 1;
-        visibility: visible;
-        margin-top: -25px;
-        width: 155px;
-        height: auto;
-    }
-
     .logo-dark {
-        opacity: 1;
-        visibility: visible;
-        height: 65px;
-        height: auto;
-    }
+    margin-top: -11px;
+    margin-left: -29px;
 
+  }
     @media (min-width: 992px) {
         [data-menu-collapse="lg"] .nk-menu-list {
             width: auto;
@@ -101,24 +91,18 @@
         <div class="nk-header-logo">
           <a href="{{url('/')}}" class="logo-link"
             ><div class="logo-wrap">
-              <img
-              class="logo-img logo-light"
-              style="
-              top: -31px;
+              <img class="logo-img logo-dark" style="
+              top: -11px;
+              height: 39px;
           "
-            src="images/Brain_light.png"
-            srcset="images/Brain_light.png 4x"
-              alt=""
-            /><img
-            style="
-top: -31px;
-"
-              class="logo-img logo-dark"
-                src="images/Brain_dark.png"
-            srcset="images/Brain_dark.png 4x"
-              
-              alt=""
-            /></div
+                  src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
+                  alt="" />
+              <img class="logo-img logo-light " style="
+              top: -11px;
+              height: 39px;
+          "
+                  src="{{ asset('assets/LogoBrainBlanc.png') }}" srcset="{{ asset('assets/LogoBrainBlanc.png 2x') }}"
+                  alt="" /></div
           ></a>
         </div>
         <div class="nk-header-toggle">
