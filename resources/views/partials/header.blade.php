@@ -1,9 +1,19 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&family=Nunito:wght@600&display=swap" rel="stylesheet">
+
 <style>
   
     .logo-dark {
      margin-top: -11px;
      margin-left: -29px;
  
+   }
+
+   span {
+    font-family: "Lexend Tera", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
    }
  
      @media (min-width: 992px) {
