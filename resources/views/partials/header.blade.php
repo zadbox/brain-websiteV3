@@ -10,10 +10,25 @@
  
    }
 
-   span {
-    font-family: "Lexend Tera", sans-serif;
+   body {
+    font-family: "Lexend Tera", sans-serif !important;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 400 !important;
+   }
+    h2{
+    font-family: "Lexend Tera", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400 !important;
+   }
+    h6{
+    font-family: "Lexend Tera", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400 !important;
+   }
+    h1{
+    font-family: "Lexend Tera", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400 !important;
    }
  
      @media (min-width: 992px) {
