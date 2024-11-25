@@ -6,7 +6,17 @@
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+  body{
+    font-family: "Lexend Tera", sans-serif !important;
 
+  }
+  h1 {
+    font-family: "Lexend Tera", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 400 !important;
+}
+</style>
 <style>
        .block-gfx img {
     transition: transform 0.5s ease;

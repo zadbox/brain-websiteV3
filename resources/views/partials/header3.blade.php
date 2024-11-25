@@ -19,6 +19,11 @@
     body.dark-mode .logo-light {
         display: none;
     }
+    body {
+    font-family: "Lexend Tera", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400 !important;
+   }
 
     body.dark-mode .logo-dark {
         display: block;
@@ -37,7 +42,7 @@
 
                             <img class="logo-img logo-dark" style="
                             top: -11px;
-                            height: 39px;
+                            height: 43px;
                         "
                                 src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
                                 alt="" />

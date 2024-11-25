@@ -17,6 +17,17 @@
             /* Augmente la taille de 10% au survol */
         }
     </style>
+    <style>
+        body{
+          font-family: "Lexend Tera", sans-serif !important;
+      
+        }
+        h1 {
+          font-family: "Lexend Tera", sans-serif !important;
+          font-optical-sizing: auto;
+          font-weight: 400 !important;
+      }
+      </style>
     <section style="padding-bottom: 100px; padding-top:80px;" class="section section-sm section-0">
         <div class="container">
             <div class="section-head">

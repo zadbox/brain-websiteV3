@@ -14,6 +14,12 @@
 
     }
 
+    body {
+    font-family: "Lexend Tera", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400 !important;
+   }
+
 @media (min-width: 992px) {
     [data-menu-collapse="lg"] .nk-menu {
         width: 100%;
@@ -92,17 +98,17 @@
           <a href="{{url('/')}}" class="logo-link"
             ><div class="logo-wrap">
               <img class="logo-img logo-dark" style="
-              top: -11px;
-              height: 39px;
-          "
-                  src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
-                  alt="" />
-              <img class="logo-img logo-light " style="
-              top: -11px;
-              height: 39px;
-          "
-                  src="{{ asset('assets/LogoBrainBlanc.png') }}" srcset="{{ asset('assets/LogoBrainBlanc.png 2x') }}"
-                  alt="" /></div
+                             top: -11px;
+                             height: 43px;
+                         "
+                                 src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
+                                 alt="" />
+                             <img class="logo-img logo-light " style="
+                             top: -11px;
+                             height: 39px;
+                         "
+                                 src="{{ asset('assets/LogoBrainBlanc.png') }}" srcset="{{ asset('assets/LogoBrainBlanc.png 2x') }}"
+                                 alt="" /></div
           ></a>
         </div>
         <div class="nk-header-toggle">

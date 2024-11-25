@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&family=Nunito:wght@600&display=swap" rel="stylesheet">
+<style>
+  body{
+    font-family: "Lexend Tera", sans-serif !important;
+
+  }
+</style>
     <meta charset="UTF-8" />
     <meta name="author" content="Softnio" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

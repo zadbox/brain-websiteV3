@@ -15,7 +15,11 @@
 
     }
 
-
+    body {
+    font-family: "Lexend Tera", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400 !important;
+   }
     /* Lorsque le mode sombre est activé */
     body.dark-mode .logo-light {
         display: none;
@@ -37,17 +41,17 @@
 
 
                             <img class="logo-img logo-dark" style="
-                            top: -11px;
-                            height: 39px;
-                        "
-                                src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
-                                alt="" />
-                            <img class="logo-img logo-light " style="
-                            top: -11px;
-                            height: 39px;
-                        "
-                                src="{{ asset('assets/LogoBrainBlanc.png') }}" srcset="{{ asset('assets/LogoBrainBlanc.png 2x') }}"
-                                alt="" />
+                             top: -11px;
+                             height: 43px;
+                         "
+                                 src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
+                                 alt="" />
+                             <img class="logo-img logo-light " style="
+                             top: -11px;
+                             height: 39px;
+                         "
+                                 src="{{ asset('assets/LogoBrainBlanc.png') }}" srcset="{{ asset('assets/LogoBrainBlanc.png 2x') }}"
+                                 alt="" />
                         </div>
                     </a>
                 </div>
