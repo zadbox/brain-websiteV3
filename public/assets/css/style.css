@@ -25466,6 +25466,7 @@ fieldset:disabled .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    font-family: "Lexend Tera", sans-serif !important;
 }
 .btn img {
     height: 1rem;
@@ -31175,7 +31176,8 @@ iframe.wait-autoplay {
     padding: 0 0.75rem;
 }
 .nk-menu-buttons > li .btn {
-    font-size: 0.8125rem;
+    font-size: 0.9px;
+    font-family: "Lexend Tera", sans-serif !important;
 }
 .on-dark .nk-menu-item:hover > .nk-menu-link,
 .is-dark .nk-menu-item:hover > .nk-menu-link {

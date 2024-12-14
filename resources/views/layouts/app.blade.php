@@ -15,6 +15,10 @@
   
    
    
+ <style>
+btn {
+  font-family: "Lexend Tera", sans-serif !important;
+}
   </style>
     <title>
     Brain Technology &amp; AI Automatisation & Blockchain Solutions.
