@@ -18,7 +18,7 @@
     <meta charset="UTF-8" />
     <meta name="author" content="Softnio" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="images/brainv.png" />
+    <link rel="shortcut icon" href="/assets/favicon.png" />
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
