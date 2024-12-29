@@ -1,4 +1,4 @@
-<footer class="nk-footer">
+<footer id="ftr" class="nk-footer">
     <div class="section">
       <div class="container">
         <div class="row g-5">
@@ -46,8 +46,9 @@
             <div class="block-text">
               
               <h4 class="title">BRAIN TECHNOLOGY.</h4>
-              <p style="text-align: justify">
-                Chez BRAIN TECHNOLOGY, nous vous aidons à libérer vos équipes des tâches répétitives et à faible valeur ajoutée, en automatisant ce qui peut l’être, pour leur permettre de se concentrer sur des missions stratégiques et créatives
+              <p id="animated-text" style="text-align: justify">
+                Chez BRAIN TECHNOLOGY, nous vous aidons à libérer vos équipes des tâches répétitives et à faible valeur ajoutée,
+                en automatisant ce qui peut l’être, pour leur permettre de se concentrer sur des missions stratégiques et créatives.
               </p>
               <p class="text-heading mt-4">
                 &copy; 2024  tous droits réservés - BRAIN TECHNOLOGY
@@ -57,4 +58,66 @@
         </div>
       </div>
     </div>
+
+    <style>
+#animated-text {
+  opacity: 1; /* Le conteneur du texte est toujours visible */
+  white-space: pre-wrap; /* Préserve les retours à la ligne */
+  line-height: 1.5em; /* Ajustez l'espacement des lignes */
+  overflow: hidden;
+}
+
+.line {
+  opacity: 0; /* Initialement, les lignes sont invisibles */
+  transform: translateY(20px); /* Décalage initial */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.line.visible {
+  opacity: 1; /* Les lignes deviennent visibles */
+  transform: translateY(0); /* Elles se déplacent à leur position normale */
+}
+
+
+    </style>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const textElement = document.getElementById("animated-text");
+  const originalText = textElement.textContent.trim();
+  const lines = originalText.split(/,\s|\.\s|\n/); // Découpe le texte en phrases ou lignes
+
+  // Supprime le contenu initial et crée des lignes
+  textElement.innerHTML = "";
+  lines.forEach((line, index) => {
+    const span = document.createElement("span");
+    span.classList.add("line");
+    span.style.display = "block";
+    span.style.transitionDelay = `${index * 0.3}s`; // Ajoute un délai progressif
+    span.textContent = line.trim();
+    textElement.appendChild(span);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Ajoute la classe visible aux lignes
+          const lineElements = textElement.querySelectorAll(".line");
+          lineElements.forEach((line) => line.classList.add("visible"));
+        } else {
+          // Réinitialise l'animation si nécessaire
+          const lineElements = textElement.querySelectorAll(".line");
+          lineElements.forEach((line) => line.classList.remove("visible"));
+        }
+      });
+    },
+    { threshold: 0.5 } // Déclenche lorsque 50% de la section est visible
+  );
+
+  observer.observe(document.getElementById("ftr"));
+});
+
+
+    </script>
   </footer>

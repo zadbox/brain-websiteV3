@@ -14,6 +14,51 @@
     transform: scale(1.1); /* Augmente la taille de 10% au survol */
 }
   </style>
+
+
+
+<style>
+  .animate-item {
+  opacity: 0;
+  transform: translateY(20px); /* Décalage initial vers le bas */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-item.visible {
+  opacity: 1;
+  transform: translateY(0); /* Retour à la position normale */
+}
+
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".animate-item");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Ajouter un délai progressif pour chaque élément
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add("visible");
+            }, index * 300); // Délai de 300ms entre chaque élément
+          });
+        } else {
+          // Réinitialiser l'animation si la section sort de la vue
+          items.forEach((item) => {
+            item.classList.remove("visible");
+          });
+        }
+      });
+    },
+    { threshold: 0.5 } // L'animation se déclenche quand 50% de la section est visible
+  );
+
+  observer.observe(document.querySelector(".block-text"));
+});
+
+</script>
     <section class="section section-bottom-0 has-shape">
       <div
         class="nk-shape bg-shape-blur-a mt-8 start-50 top-0 translate-middle-x"
@@ -30,54 +75,39 @@
               </div>
               <div class="col-lg-6">
                 <div class="block-text pe-xxl-7">
-                  <h2 class="title">
-                  Libérez vos équipes des tâches répétitives grâce à l'automatisation avec AI
-                  </h2>
-                  <p style="text-align: justify;" class="lead">
-                    Chez BRAIN Technology, nous optimisons vos processus avec l’IA et la blockchain, pour que vos équipes se concentrent sur ce qui compte vraiment.                  <ul class="list gy-3 pe-xxl-7">
-                    <li>
-                      <em
-                        class="icon text-success fs-5 ni ni-check-circle-fill"
-                      ></em
-                      ><span
-                        >Automatisez la génération de contenu média </span
-                      >
+                  <h2 class="title animate-item">Libérez vos équipes des tâches répétitives grâce à l'automatisation avec AI</h2>
+                  <p style="text-align: justify;" class="lead animate-item">
+                    Chez BRAIN Technology, nous optimisons vos processus avec l’IA et la blockchain, pour que vos équipes se concentrent sur ce qui compte vraiment.
+                  </p>
+                  <ul class="list gy-3 pe-xxl-7">
+                    <li class="animate-item">
+                      <em class="icon text-success fs-5 ni ni-check-circle-fill"></em
+                      ><span>Automatisez la génération de contenu média</span>
                     </li>
-                    <li>
-                      <em
-                        class="icon text-success fs-5 ni ni-check-circle-fill"
-                      ></em
-                      ><span
-                        >Optimisez votre service après-vente </span
-                      >
+                    <li class="animate-item">
+                      <em class="icon text-success fs-5 ni ni-check-circle-fill"></em
+                      ><span>Optimisez votre service après-vente</span>
                     </li>
-                    <li>
-                      <em
-                        class="icon text-success fs-5 ni ni-check-circle-fill"
-                      ></em
-                      ><span
-                        >Automatisez vos campagnes de marketing </span
-                      >
+                    <li class="animate-item">
+                      <em class="icon text-success fs-5 ni ni-check-circle-fill"></em
+                      ><span>Automatisez vos campagnes de marketing</span>
                     </li>
-                    <li>
-                      <em
-                        class="icon text-success fs-5 ni ni-check-circle-fill"
-                      ></em
-                      ><span
-                        >Utilisez la blockchain pour assurer la traçabilité </span
-                      >
+                    <li class="animate-item">
+                      <em class="icon text-success fs-5 ni ni-check-circle-fill"></em
+                      ><span>Utilisez la blockchain pour assurer la traçabilité</span>
                     </li>
                   </ul>
                   <ul class="btn-list btn-list-inline gy-0">
                     <li>
-                      <a href="{{url('/a-propos')}}" class="btn btn-lg btn-primary"
-                        ><span>Voir plus</span
-                        ><em class="icon ni ni-arrow-long-right"></em
-                      ></a>
+                      <a href="{{url('/a-propos')}}" class="btn btn-lg btn-primary">
+                        <span>Voir plus</span>
+                        <em class="icon ni ni-arrow-long-right"></em>
+                      </a>
                     </li>
                   </ul>
                 </div>
               </div>
+              
             </div>
           </div>
           <div class="section-content">
