@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainGen Chatbot - Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/chatbot-widget.css">
+    <style>
+        /* Styles pour la page de démonstration */
+        body {
+            margin: 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            font-family: 'Space Grotesk', sans-serif;
+            color: #f1f5f9;
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .demo-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .demo-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-btn {
+            padding: 0.75rem 1.5rem;
+            background: #22d3ee;
+            color: #0f172a;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .demo-btn:hover {
+            background: #06b6d4;
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            text-align: left;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        
+        .features h3 {
+            color: #22d3ee;
+            margin-bottom: 1rem;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .features i {
+            color: #22d3ee;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">BrainGen Chatbot</h1>
+        <p class="demo-subtitle">
+            Widget de chat moderne avec effet typing et design Huly.io
+        </p>
+        
+        <div class="demo-buttons">
+            <button class="demo-btn" onclick="ChatbotAPI.open()">
+                <i class="fas fa-comments"></i> Ouvrir le Chat
+            </button>
+            <button class="demo-btn" onclick="ChatbotAPI.sendMessage('Bonjour ! Comment allez-vous ?')">
+                <i class="fas fa-robot"></i> Message Bot
+            </button>
+            <button class="demo-btn" onclick="ChatbotAPI.showNotification()">
+                <i class="fas fa-bell"></i> Notification
+            </button>
+            <button class="demo-btn" onclick="ChatbotAPI.clearChat()">
+                <i class="fas fa-trash"></i> Vider le Chat
+            </button>
+        </div>
+        
+        <div class="features">
+            <h3>🚀 Fonctionnalités</h3>
+            <ul>
+                <li><i class="fas fa-keyboard"></i> Effet typing réaliste caractère par caractère</li>
+                <li><i class="fas fa-mobile-alt"></i> Design responsive mobile-first</li>
+                <li><i class="fas fa-microphone"></i> Reconnaissance vocale intégrée</li>
+                <li><i class="fas fa-palette"></i> Charte graphique Huly.io/BrainGen</li>
+                <li><i class="fas fa-magic"></i> Animations fluides et modernes</li>
+                <li><i class="fas fa-cog"></i> API publique pour l'intégration</li>
+            </ul>
+        </div>
+        
+        <div class="features">
+            <h3>🎨 Couleurs utilisées</h3>
+            <ul>
+                <li><i class="fas fa-circle" style="color: #0f172a;"></i> Fond principal: #0f172a</li>
+                <li><i class="fas fa-circle" style="color: #1e293b;"></i> Fond secondaire: #1e293b</li>
+                <li><i class="fas fa-circle" style="color: #22d3ee;"></i> Accent: #22d3ee</li>
+                <li><i class="fas fa-circle" style="color: #f1f5f9;"></i> Texte: #f1f5f9</li>
+            </ul>
+        </div>
+        
+        <p style="margin-top: 2rem; opacity: 0.6;">
+            Cliquez sur le bouton chat en bas à droite pour commencer !
+        </p>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbot-widget">
+        <!-- Widget Header -->
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <img src="assets/LogoBrainBlanc.png" alt="BrainGen AI" class="avatar-img">
+            </div>
+            <div class="chatbot-title">
+                <h3>BrainGen AI Assistant</h3>
+                <span class="status-indicator">
+                    <i class="fas fa-circle"></i>
+                    En ligne
+                </span>
+            </div>
+            <button class="chatbot-close" id="chatbot-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Chat Messages Container -->
+        <div class="chatbot-messages" id="chatbot-messages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chatbot-input-container">
+            <div class="chatbot-input">
+                <button class="voice-btn" id="voice-btn" title="Enregistrement vocal">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <input type="text" 
+                       placeholder="Tapez votre message..." 
+                       id="message-input" 
+                       class="message-input"
+                       maxlength="500">
+                <button class="send-btn" id="send-btn" title="Envoyer">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="input-footer">
+                <span class="powered-by">
+                    <i class="fas fa-robot"></i>
+                    Powered by BrainGen AI
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" id="chatbot-toggle">
+        <i class="fas fa-comments"></i>
+        <span class="notification-badge">1</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="assets/js/chatbot-widget.js"></script>
+    
+    <script>
+        // Demo script pour tester les fonctionnalités
+        document.addEventListener('DOMContentLoaded', function() {
+            // Afficher une notification après 3 secondes
+            setTimeout(() => {
+                ChatbotAPI.showNotification();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

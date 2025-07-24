@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainGen Chatbot Widget</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/chatbot-widget.css">
+</head>
+<body>
+    <!-- Chatbot Widget Container -->
+    <div class="chatbot-widget" id="chatbot-widget">
+        <!-- Widget Header -->
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <img src="assets/LogoBrainBlanc.png" alt="BrainGen AI" class="avatar-img">
+            </div>
+            <div class="chatbot-title">
+                <h3>BrainGen AI Assistant</h3>
+                <span class="status-indicator">
+                    <i class="fas fa-circle"></i>
+                    En ligne
+                </span>
+            </div>
+            <button class="chatbot-close" id="chatbot-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Chat Messages Container -->
+        <div class="chatbot-messages" id="chatbot-messages">
+            <!-- Welcome Message -->
+            <div class="message bot-message" data-message="Bonjour ! Je suis votre assistant IA BrainGen. Comment puis-je vous aider aujourd'hui ?">
+                <div class="message-avatar">
+                    <img src="assets/LogoBrainBlanc.png" alt="AI" class="avatar-img">
+                </div>
+                <div class="message-content">
+                    <div class="message-bubble">
+                        <div class="typing-text" id="typing-text-0"></div>
+                        <div class="typing-indicator" id="typing-indicator-0">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="message-time">Il y a quelques secondes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chatbot-input-container">
+            <div class="chatbot-input">
+                <button class="voice-btn" id="voice-btn" title="Enregistrement vocal">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <input type="text" 
+                       placeholder="Tapez votre message..." 
+                       id="message-input" 
+                       class="message-input"
+                       maxlength="500">
+                <button class="send-btn" id="send-btn" title="Envoyer">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="input-footer">
+                <span class="powered-by">
+                    <i class="fas fa-robot"></i>
+                    Powered by BrainGen AI
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" id="chatbot-toggle">
+        <i class="fas fa-comments"></i>
+        <span class="notification-badge">1</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="assets/js/chatbot-widget.js"></script>
+</body>
+</html>

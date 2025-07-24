@@ -1,191 +1,206 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&family=Nunito:wght@600&display=swap" rel="stylesheet">
+<header class="sticky top-0 z-40 bg-neutral-900/90 backdrop-blur-md border-b border-neutral-700/50" role="banner">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+        <div class="flex items-center justify-between h-16">
+            
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="{{ url('/') }}" class="flex items-center space-x-3 group">
+                    <img src="{{ asset('assets/LogoBrainBlanc.png') }}" 
+                         alt="BRAIN Technology Logo" 
+                         class="h-8 w-auto transition-transform duration-300 group-hover:scale-105">
+                    <span class="font-display font-bold text-xl text-white hidden sm:block">
+                        BRAIN
+                    </span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex lg:items-center lg:space-x-8">
+                
+                <!-- Solutions Dropdown -->
+                <div class="relative group">
+                    <button class="flex items-center space-x-1 text-neutral-300 hover:text-white transition-colors duration-200 py-2"
+                            aria-expanded="false" aria-haspopup="true">
+                        <span>Solutions</span>
+                        <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="absolute top-full left-0 w-80 bg-neutral-800 border border-neutral-700 rounded-card shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-1">
+                        <div class="p-6">
+                            <div class="space-y-4">
+                                <a href="{{ url('/solutions/brain-invest') }}" class="block p-3 rounded-button hover:bg-neutral-700 transition-colors duration-200">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-8 h-8 bg-primary-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-4 h-4 text-primary-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-white">Brain Invest</h4>
+                                            <p class="text-sm text-neutral-400">AI-powered investment analysis and portfolio optimization</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                
+                                <a href="{{ url('/solutions/brain-rh') }}" class="block p-3 rounded-button hover:bg-neutral-700 transition-colors duration-200">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-8 h-8 bg-accent-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-4 h-4 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-white">Brain RH+</h4>
+                                            <p class="text-sm text-neutral-400">Intelligent HR management and talent optimization</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                
+                                <a href="{{ url('/solutions/brain-assistant') }}" class="block p-3 rounded-button hover:bg-neutral-700 transition-colors duration-200">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-8 h-8 bg-warning/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-4 h-4 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-white">Brain Assistant</h4>
+                                            <p class="text-sm text-neutral-400">Conversational AI for business automation</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technology -->
+                <a href="{{ url('/technology') }}" 
+                   class="text-neutral-300 hover:text-white transition-colors duration-200 py-2">
+                    Technology
+                </a>
+                
+                <!-- Industries -->
+                <a href="{{ url('/industries') }}" 
+                   class="text-neutral-300 hover:text-white transition-colors duration-200 py-2">
+                    Industries
+                </a>
+                
+                <!-- About -->
+                <a href="{{ url('/about') }}" 
+                   class="text-neutral-300 hover:text-white transition-colors duration-200 py-2">
+                    About
+                </a>
+                
+                <!-- Resources -->
+                <a href="{{ url('/resources') }}" 
+                   class="text-neutral-300 hover:text-white transition-colors duration-200 py-2">
+                    Resources
+                </a>
+                
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="hidden lg:flex lg:items-center lg:space-x-4">
+                <a href="{{ url('/demo') }}" 
+                   class="btn-secondary text-sm">
+                    Request Demo
+                </a>
+                <a href="{{ url('/contact') }}" 
+                   class="btn-primary text-sm">
+                    Talk to Brain Assistant
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button type="button" 
+                    class="lg:hidden p-2 rounded-button text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors duration-200"
+                    aria-controls="mobile-menu" 
+                    aria-expanded="false"
+                    id="mobile-menu-button">
+                <span class="sr-only">Open main menu</span>
+                <!-- Hamburger Icon -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-neutral-800 rounded-card mt-2">
+                
+                <!-- Solutions -->
+                <div class="px-3 py-2">
+                    <div class="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-2">Solutions</div>
+                    <div class="space-y-1">
+                        <a href="{{ url('/solutions/brain-invest') }}" class="block px-3 py-2 text-sm text-neutral-300 hover:text-white hover:bg-neutral-700 rounded-button transition-colors">
+                            Brain Invest
+                        </a>
+                        <a href="{{ url('/solutions/brain-rh') }}" class="block px-3 py-2 text-sm text-neutral-300 hover:text-white hover:bg-neutral-700 rounded-button transition-colors">
+                            Brain RH+
+                        </a>
+                        <a href="{{ url('/solutions/brain-assistant') }}" class="block px-3 py-2 text-sm text-neutral-300 hover:text-white hover:bg-neutral-700 rounded-button transition-colors">
+                            Brain Assistant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Other Links -->
+                <a href="{{ url('/technology') }}" class="block px-3 py-2 text-base text-neutral-300 hover:text-white hover:bg-neutral-700 rounded-button transition-colors">
+                    Technology
+                </a>
+                <a href="{{ url('/industries') }}" class="block px-3 py-2 text-base text-neutral-300 hover:text-white hover:bg-neutral-700 rounded-button transition-colors">
+                    Industries
+                </a>
+                <a href="{{ url('/about') }}" class="block px-3 py-2 text-base text-neutral-300 hover:text-white hover:bg-neutral-700 rounded-button transition-colors">
+                    About
+                </a>
+                <a href="{{ url('/resources') }}" class="block px-3 py-2 text-base text-neutral-300 hover:text-white hover:bg-neutral-700 rounded-button transition-colors">
+                    Resources
+                </a>
+                
+                <!-- Mobile CTAs -->
+                <div class="px-3 py-4 space-y-2 border-t border-neutral-700">
+                    <a href="{{ url('/demo') }}" class="block w-full btn-secondary text-center">
+                        Request Demo
+                    </a>
+                    <a href="{{ url('/contact') }}" class="block w-full btn-primary text-center">
+                        Talk to Brain Assistant
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        
+    </nav>
+</header>
 
-<style>
-  
-    .logo-dark {
-     margin-top: -11px;
-     margin-left: -29px;
- 
-   }
-
-   body {
-    font-family: "Lexend Tera", sans-serif !important;
-  font-optical-sizing: auto;
-  font-weight: 400 !important;
-   }
-    h2{
-    font-family: "Lexend Tera", sans-serif !important;
-  font-optical-sizing: auto;
-  font-weight: 400 !important;
-   }
-    h6{
-    font-family: "Lexend Tera", sans-serif !important;
-  font-optical-sizing: auto;
-  font-weight: 400 !important;
-   }
-    h1{
-    font-family: "Lexend Tera", sans-serif !important;
-  font-optical-sizing: auto;
-  font-weight: 400 !important;
-   }
- 
-     @media (min-width: 992px) {
-         [data-menu-collapse="lg"] .nk-menu-list {
-             width: auto;
-             flex-direction: row;
-             padding: 22px 1rem;
-             overflow: visible;
-         }
- 
-     }
- 
-     /* Lorsque le mode sombre est activé */
-     body.dark-mode .logo-light {
-         display: none;
-     }
- 
-     body.dark-mode .logo-dark {
-         display: block;
-     }
- </style>
- <header class="nk-header has-mask">
-     <div class="nk-mask bg-gradient-a"></div>
-     <div class="nk-mask bg-pattern-dot bg-blend-top"></div>
-     <div class="nk-header-main nk-menu-main will-shrink is-transparent ignore-mask">
-         <div class="container">
-             <div class="nk-header-wrap">
-                 <div class="nk-header-logo">
-                     <a aria-label="Page d'accueil BRAIN Gentech" href="{{ url('/') }}" class="logo-link">
-                         <div class="logo-wrap">
- 
- 
-                             <img class="logo-img logo-dark" style="
-                             top: -11px;
-                             height: 43px;
-                         "
-                                 src="{{ asset('assets/LogoBrainNoir.png') }}" srcset="{{ asset('assets/LogoBrainNoir.png 2x') }}"
-                                 alt="" />
-                             <img class="logo-img logo-light " style="
-                             top: -11px;
-                             height: 39px;
-                         "
-                                 src="{{ asset('assets/LogoBrainBlanc.png') }}" srcset="{{ asset('assets/LogoBrainBlanc.png 2x') }}"
-                                 alt="" />
-                         </div>
-                     </a>
-                 </div>
-                 <div class="nk-header-toggle">
-                     <button class="dark-mode-toggle" aria-label="Activer/désactiver le mode sombre">
-                         <em class="off icon ni ni-sun-fill"></em><em
-                             class="on icon ni ni-moon-fill"></em></button><button
-                         class="btn btn-light btn-icon header-menu-toggle">
-                         <em class="icon ni ni-menu"></em>
-                     </button>
-                 </div>
-                 <nav class="nk-header-menu nk-menu">
-                     <ul class="nk-menu-list mx-auto">
- 
-                         <li class="nk-menu-item">
-                             <a href="{{ url('/') }}" class="nk-menu-link"><span
-                                     class="nk-menu-text">Accueil</span></a>
- 
-                         </li>
-                         <li class="nk-menu-item">
-                             <a href="{{ url('/a-propos') }}" class="nk-menu-link"><span class="nk-menu-text">A
-                                     propos</span></a>
-                         </li>
-                         <li class="nk-menu-item has-dropdown">
-                             <a href="#" class="nk-menu-link nk-menu-toggle"><span
-                                     class="nk-menu-text">Services</span></a>
-                             <div class="nk-menu-dropdown nk-menu-mega">
-                                 <div class="nk-menu-mega-wrap">
-                                     <ul class="nk-menu-sub">
-                                         <li class="nk-menu-item">
-                                             <a class="nk-menu-link"
-                                                 href="{{ url('/service/communication-et-marketing-digital') }}">
-                                                 Communication et marketing digital</a>
-                                         </li>
-                                         <li class="nk-menu-item">
-                                             <a class="nk-menu-link"
-                                                 href="{{ url('/service/promotion-immobiliere-conciergerie') }}">
-                                                 Promotion Immobilière et
-                                                 Conciergerie </a>
-                                         </li>
-                                         <li class="nk-menu-item">
-                                             <a class="nk-menu-link"
-                                                 href="{{ url('/service/agroalimentaire-tracabilite') }}">Agroalimentaire
-                                                 et
-                                                 Traçabilité
- 
-                                             </a>
-                                         </li>
-                                         <li class="nk-menu-item">
-                                             <a class="nk-menu-link"
-                                                 href="{{ url('/service/agroalimentaire-tracabilite') }}">Autre
-                                             
-                                             </a>
-                                         </li>
-                                     </ul>
-                                 </div>
-                             </div>
-                         </li>
-                         <li class="nk-menu-item">
-                             <a href="{{ url('/notre-demarche') }}" class="nk-menu-link">
-                                 <span class="nk-menu-text">Notre démarche</span>
-                             </a>
-                         </li>
- 
-                         <li class="nk-menu-item">
-                             <a href="{{ url('/contact') }}" class="nk-menu-link"><span
-                                     class="nk-menu-text">Contact</span></a>
-                         </li>
-                     </ul>
-                     <div class="mx-2 d-none d-lg-block">
-                         <button class="dark-mode-toggle" aria-label="Activer/désactiver le mode sombre">
-                             <em class="off icon ni ni-sun-fill"></em><em class="on icon ni ni-moon-fill"></em>
-                         </button>
-                     </div>
-                     <ul class="nk-menu-buttons flex-lg-row-reverse">
-                         <li><a href="{{ url('/contact') }}" class="btn btn-primary">Demandez un devis</a></li>
- 
-                     </ul>
-                 </nav>
-             </div>
-         </div>
-     </div>
-     <div class="nk-hero pt-xl-5">
-         <div class="container">
-             <div class="row justify-content-center text-center">
-                 <div class="col-lg-11 col-xl-9 col-xxl-8">
-                     <div class="nk-hero-content py-5 py-lg-6">
- 
-                         <h1 class="title mb-3 mb-lg-4 display-6">
-                             Débloquez le potentiel de votre entreprise avec des solutions
-                             <div class="text-gradient-primary">
-                                 <span class="type-init" data-strings='" IA ","et Automatisation  "'></span>
-                             </div>
-                         </h1>
-                         <p class="lead px-md-8 px-lg-6 mb-4 mb-lg-5">
-                             Nous facilitons l'accès aux solutions <span style="color: #3a6ad6">d'IA </span> et <span
-                                 style="color: #3a6ad6">d'automatisation </span> intelligentes pour les
-                             entreprises.
-                         </p>
-                         <ul class="btn-list btn-list-inline">
-                             <li>
-                                 <a href="{{ url('/contact') }}" class="btn btn-secondary btn-lg"><span>Regoindre
-                                         Brain</span></a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="nk-hero-gfx">
-                         <img class="w-100 rounded-top-4" src="{{ asset('images/auto.webp') }}" alt="" />
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- 
- 
- </header>
+<script>
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            // Change icon
+            const icon = mobileMenuButton.querySelector('svg');
+            if (!isExpanded) {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            } else {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            }
+        });
+    }
+});
+</script>

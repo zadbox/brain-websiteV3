@@ -147,7 +147,7 @@
                         </p>
                         <ul class="btn-list btn-list-inline">
                             <li>
-                                <a href="#" class="btn btn-secondary btn-lg"><span>Regoindre Brain</span></a>
+                                <a href="#" class="btn btn-secondary btn-lg"><span>Rejoindre Brain</span></a>
                             </li>
                         </ul> -->
                     </div>
