@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Inter Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* CSS Custom Properties for Design Tokens */
+:root {
+  --color-bg-primary: #0c0f17;
+  --color-bg-alt: #121826;
+  --color-surface: #1c2534;
+  --color-accent: #6366f1;
+  --color-accent-alt: #34d399;
+  --color-text-primary: #f5f7fa;
+  --color-text-secondary: #a5b1c2;
+  --color-border: #243042;
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  
+  --border-radius-card: 1rem;
+  --border-radius-button: 0.75rem;
+  
+  --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-neutral-900 text-neutral-100 font-sans;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold;
+  }
+  
+  h1 {
+    @apply text-hero md:text-6xl;
+  }
+  
+  h2 {
+    @apply text-4xl md:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+  }
+}
+
+/* Component Layer */
+@layer components {
+  /* Button Components */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-button font-medium text-sm transition-all duration-300;
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-4 focus:ring-primary-500/25;
+    @apply border border-primary-500 hover:border-primary-600;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-button font-medium text-sm transition-all duration-300;
+    @apply bg-transparent text-primary-400 hover:text-primary-300 focus:ring-4 focus:ring-primary-500/25;
+    @apply border border-primary-500 hover:border-primary-400;
+  }
+  
+  .btn-glow {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-glow::before {
+    @apply absolute inset-0 -z-10 rounded-button opacity-0 transition-opacity duration-300;
+    content: '';
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-alt));
+    filter: blur(8px);
+  }
+  
+  .btn-glow:hover::before {
+    @apply opacity-20;
+  }
+  
+  /* Card Components */
+  .card {
+    @apply bg-surface border border-neutral-700 rounded-card p-6;
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    border-radius: var(--border-radius-card);
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10;
+    @apply hover:border-primary-500/50 hover:-translate-y-1;
+  }
+  
+  /* Text Gradient */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent;
+  }
+  
+  /* Neural Network Background */
+  .neural-background {
+    @apply fixed inset-0 -z-10 opacity-60 pointer-events-none;
+    background: var(--color-bg-primary);
+    background-image: var(--neural-pattern);
+  }
+  
+  /* Container */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Section Spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  /* Hero Components */
+  .hero-badge {
+    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-medium;
+    @apply bg-primary-500/10 text-primary-400 border border-primary-500/20;
+  }
+  
+  /* Feature Grid */
+  .feature-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+  
+  .feature-card {
+    @apply card card-hover text-center;
+  }
+  
+  .feature-icon {
+    @apply w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full;
+    @apply bg-primary-500/10 text-primary-400;
+  }
+  
+  /* Industries Grid */
+  .industries-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6;
+  }
+  
+  .industry-card {
+    @apply p-6 rounded-card border border-neutral-700 text-center transition-all duration-300;
+    @apply hover:border-primary-500/50 hover:bg-primary-500/5 hover:-translate-y-1;
+  }
+  
+  /* Testimonial Components */
+  .testimonial-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+  
+  .testimonial-card {
+    @apply card card-hover;
+  }
+  
+  /* Chat Widget */
+  .chat-widget {
+    @apply fixed bottom-6 right-6 z-50;
+  }
+  
+  .chat-button {
+    @apply w-16 h-16 bg-primary-500 hover:bg-primary-600 rounded-2xl shadow-lg;
+    @apply flex items-center justify-center text-white transition-all duration-300;
+    @apply hover:shadow-xl hover:shadow-primary-500/25 hover:scale-110;
+  }
+  
+  /* Animation Classes */
+  .animate-item {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .animate-item.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+/* Utility Layer */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Neural Network Background Styles */
+.neural-network-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .neural-network-canvas,
+  .chat-widget {
+    display: none !important;
+  }
+}
