@@ -13,58 +13,113 @@
     <!-- Gradient Background Overlay -->
     <div class="gradient-overlay"></div>
     
-    <!-- Hero Section -->
-    <section class="hero-huly">
-        <!-- Huly-style Background Animation -->
-        <div class="hero-background">
-            <!-- Option 1: CSS-only animation (current) -->
-            <div class="spatial-light-beam"></div>
-            <div class="smoke-effect"></div>
-            <div class="particle-field"></div>
-            
-            <!-- Option 2: Video background (uncomment to use) -->
-            <!-- <video class="hero-video" autoplay muted loop playsinline>
-                <source src="{{asset('assets/videos/hero-background.mp4')}}" type="video/mp4">
-                <source src="{{asset('assets/videos/hero-background.webm')}}" type="video/webm">
-            </video> -->
+    <!-- Hero Section Ultra -->
+    <section class="hero-section-ultra">
+        <div class="hero-background-ultra">
+            <canvas id="neural-canvas" class="neural-layer" width="569" height="1953"></canvas>
+            <div class="neural-network-grid"></div>
         </div>
-        
-        <div class="container">
-            <div class="hero-content-huly">
-                <div class="hero-badge animate-item">
-                    <span class="badge-text">🚀 Welcome to the Future</span>
-                </div>
-                
-                <h1 class="hero-title-huly animate-item">
-                    <span class="gradient-text-huly">Accelerate your performance</span>
-                    <br>
-                    <span class="gradient-text-huly">with AI and Automation</span>
-                </h1>
-                
-                <p class="hero-subtitle-huly animate-item">
-                    Transform your business with cutting-edge artificial intelligence 
-                    and automation solutions designed for the modern enterprise.
-                </p>
-                
-                <div class="hero-actions-huly animate-item">
-                    <a href="{{url('/contact')}}" class="btn-huly primary glow-effect">
-                        <span>Try it free</span>
-                        <div class="btn-glow"></div>
-                    </a>
-                </div>
-                
-                <div class="hero-stats-huly animate-item">
-                    <div class="stat-item-huly">
-                        <div class="stat-number-huly">200+</div>
-                        <div class="stat-label-huly">Projects Delivered</div>
+        <div class="hero-content-ultra">
+            <div class="container">
+                <div class="hero-grid">
+                    <!-- Main Content -->
+                    <div class="hero-main">
+                        <div class="innovation-badge">
+                            <div class="badge-glow"></div>
+                            <div class="badge-content">
+                                <svg class="badge-icon" width="20" height="20" viewBox="0 0 24 24">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                </svg>
+                                <span class="badge-text">BRAIN TECHNOLOGY</span>
+                                <div class="badge-pulse"></div>
+                            </div>
+                        </div>
+                        <h1 class="hero-title-ultra">
+                            <span class="title-line">
+                                <span class="text-reveal">POWER</span>
+                            </span>
+                            <span class="title-line highlight">
+                                <span class="text-reveal">YOUR FUTURE</span>
+                                <div class="highlight-glow"></div>
+                            </span>
+                            <span class="title-line">
+                                <span class="text-reveal">WITH AI</span>
+                            </span>
+                        </h1>
+                        <p class="hero-subtitle-ultra">
+                            Transform your business with cutting-edge 
+                            <span class="highlight-text">AI</span> and 
+                            <span class="highlight-text">automation</span> 
+                            solutions designed for the modern enterprise.
+                        </p>
+                        <div class="hero-stats-ultra">
+                            <div class="stat-card" data-stat="200">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="200">200</span>
+                                    <span class="stat-label">Projects Delivered</span>
+                                </div>
+                                <div class="stat-glow"></div>
+                            </div>
+                            <div class="stat-card" data-stat="50">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="50">50</span>
+                                    <span class="stat-label">Happy Clients</span>
+                                </div>
+                                <div class="stat-glow"></div>
+                            </div>
+                            <div class="stat-card" data-stat="99">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="99">99</span>
+                                    <span class="stat-label">% Success Rate</span>
+                                </div>
+                                <div class="stat-glow"></div>
+                            </div>
+                        </div>
+                        <div class="hero-cta-ultra">
+                            <a href="{{url('/contact')}}" class="btn-primary-ultra">
+                                <span class="btn-text">Try it free</span>
+                                <div class="btn-glow"></div>
+                                <div class="btn-particles"></div>
+                                <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                            <a href="#services" class="btn-secondary-ultra">
+                                <span class="btn-text">Explore our services</span>
+                                <div class="btn-outline"></div>
+                                <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24">
+                                    <path d="M9 18l6-6-6-6"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="stat-item-huly">
-                        <div class="stat-number-huly">50+</div>
-                        <div class="stat-label-huly">Happy Clients</div>
-                    </div>
-                    <div class="stat-item-huly">
-                        <div class="stat-number-huly">99%</div>
-                        <div class="stat-label-huly">Success Rate</div>
+                    <div class="hero-visual">
+                        <div class="visual-container">
+                            <div class="main-image">
+                                <img src="{{asset('images/auto.webp')}}" alt="AI Automation" class="hero-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

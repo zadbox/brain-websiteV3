@@ -1,155 +1,138 @@
-<footer class="bg-neutral-800 border-t border-neutral-700" role="contentinfo">
-    <div class="container section-padding">
-        
-        <!-- Main Footer Content -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            
-            <!-- Brand Column -->
-            <div class="lg:col-span-1">
-                <div class="flex items-center space-x-3 mb-6">
-                    <img src="{{ asset('assets/LogoBrainBlanc.png') }}" 
-                         alt="BRAIN Technology Logo" 
-                         class="h-8 w-auto">
-                    <span class="font-display font-bold text-xl text-white">BRAIN</span>
-                </div>
-                <p class="text-neutral-400 mb-6 leading-relaxed">
-                    Advanced AI, Automation & Blockchain solutions that transform how modern enterprises operate and compete in the digital economy.
-                </p>
-                
-                <!-- Social Links -->
-                <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 bg-neutral-700 hover:bg-primary-500 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="LinkedIn">
-                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-neutral-700 hover:bg-primary-500 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Twitter">
-                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-neutral-700 hover:bg-primary-500 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="GitHub">
-                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Solutions Column -->
-            <div>
-                <h3 class="font-display font-semibold text-white mb-6">Solutions</h3>
-                <ul class="space-y-4">
-                    <li>
-                        <a href="{{ url('/solutions/brain-invest') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Brain Invest
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/solutions/brain-rh') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Brain RH+
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/solutions/brain-assistant') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Brain Assistant
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/solutions') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            All Solutions
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Company Column -->
-            <div>
-                <h3 class="font-display font-semibold text-white mb-6">Company</h3>
-                <ul class="space-y-4">
-                    <li>
-                        <a href="{{ url('/about') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/technology') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Technology
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/industries') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Industries
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/resources') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Resources
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/contact') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Support Column -->
-            <div>
-                <h3 class="font-display font-semibold text-white mb-6">Support</h3>
-                <ul class="space-y-4">
-                    <li>
-                        <a href="{{ url('/faq') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            FAQ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/demo') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Request Demo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/support') }}" class="text-neutral-400 hover:text-white transition-colors duration-200">
-                            Documentation
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" onclick="toggleChatWidget()">
-                            Talk to Brain Assistant
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
+<footer class="modern-footer">
+  <div class="footer-background">
+    <div class="footer-particles"></div>
+    <div class="footer-grid"></div>
+  </div>
+  
+  <div class="container">
+    <div class="footer-content">
+      <!-- Main Footer Section -->
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <img src="{{ asset('assets/LogoBrainBlanc.png') }}" alt="BRAIN Technology Logo" class="h-10 w-auto">
+            <span class="brand-text">BRAIN TECHNOLOGY</span>
+          </div>
+          <p class="brand-description">
+            Transform your business with next-generation artificial intelligence. 
+            We help you free your teams from repetitive and low-value tasks by automating what can be automated, 
+            allowing them to focus on strategic and creative missions.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+              </svg>
+            </a>
+          </div>
         </div>
         
-        <!-- Bottom Section -->
-        <div class="mt-12 pt-8 border-t border-neutral-700">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                
-                <!-- Copyright -->
-                <div class="text-neutral-400 text-sm mb-4 md:mb-0">
-                    © {{ date('Y') }} BRAIN Technology. All rights reserved.
-                </div>
-                
-                <!-- Legal Links -->
-                <div class="flex flex-wrap gap-6">
-                    <a href="{{ url('/privacy') }}" class="text-neutral-400 hover:text-white text-sm transition-colors duration-200">
-                        Privacy Policy
-                    </a>
-                    <a href="{{ url('/terms') }}" class="text-neutral-400 hover:text-white text-sm transition-colors duration-200">
-                        Terms of Service
-                    </a>
-                    <a href="{{ url('/security') }}" class="text-neutral-400 hover:text-white text-sm transition-colors duration-200">
-                        Security
-                    </a>
-                </div>
-                
-            </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4 class="column-title">Useful Links</h4>
+            <ul class="footer-menu">
+              <li><a href="{{url('/')}}" class="footer-link">Home</a></li>
+              <li><a href="{{url('/about')}}" class="footer-link">About Us</a></li>
+              <li><a href="{{url('/services')}}" class="footer-link">Our Services</a></li>
+              <li><a href="{{url('/demarche')}}" class="footer-link">Our Approach</a></li>
+              <li><a href="{{url('/contact')}}" class="footer-link">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="column-title">AI Solutions</h4>
+            <ul class="footer-menu">
+              <li><a href="{{ url('/solutions/brain-invest') }}" class="footer-link">Brain Invest</a></li>
+              <li><a href="{{ url('/solutions/brain-rh') }}" class="footer-link">Brain RH+</a></li>
+              <li><a href="{{ url('/solutions/brain-assistant') }}" class="footer-link">Brain Assistant</a></li>
+              <li><a href="{{ url('/solutions') }}" class="footer-link">All Solutions</a></li>
+              <li><a href="#" class="footer-link">Blockchain & AI</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="column-title">Services</h4>
+            <ul class="footer-menu">
+              <li><a href="{{ url('/services#service-communication') }}" class="footer-link">Communication & Digital Marketing</a></li>
+              <li><a href="{{ url('/services#service-immo') }}" class="footer-link">Real Estate Promotion</a></li>
+              <li><a href="{{ url('/services#service-agro') }}" class="footer-link">Agri-food & Traceability</a></li>
+              <li><a href="{{ url('/services#service-conciergerie') }}" class="footer-link">Concierge Services</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="column-title">Support</h4>
+            <ul class="footer-menu">
+              <li><a href="{{ url('/faq') }}" class="footer-link">FAQ</a></li>
+              <li><a href="{{ url('/demo') }}" class="footer-link">Request Demo</a></li>
+              <li><a href="{{ url('/support') }}" class="footer-link">Documentation</a></li>
+              <li><a href="#" class="footer-link" onclick="toggleChatWidget()">Talk to Brain Assistant</a></li>
+            </ul>
+          </div>
         </div>
-        
+      </div>
+      
+      <!-- Newsletter Section -->
+      <div class="footer-newsletter">
+        <div class="newsletter-content">
+          <div class="newsletter-info">
+            <h4 class="newsletter-title">Stay Connected</h4>
+            <p class="newsletter-description">
+              Get the latest news about AI and our technological innovations
+            </p>
+          </div>
+          <div class="newsletter-form">
+            <div class="input-group">
+              <input type="email" placeholder="Your email address" class="newsletter-input" />
+              <button type="submit" class="newsletter-btn">
+                <span>Subscribe</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+            <p class="newsletter-privacy">
+              By subscribing, you accept our 
+              <a href="#" class="privacy-link">privacy policy</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <div class="copyright">
+          <p>&copy; {{ date('Y') }} BRAIN TECHNOLOGY. All rights reserved.</p>
+        </div>
+        <div class="footer-legal">
+          <a href="{{ url('/privacy') }}" class="legal-link">Privacy Policy</a>
+          <a href="{{ url('/terms') }}" class="legal-link">Terms of Service</a>
+          <a href="{{ url('/security') }}" class="legal-link">Security</a>
+          <a href="#" class="legal-link">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>

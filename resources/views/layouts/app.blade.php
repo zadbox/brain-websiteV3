@@ -32,7 +32,7 @@
     @stack('styles')
 </head>
 
-<body class="bg-neutral-900 text-neutral-100 antialiased">
+<body class="bg-gradient-to-b from-transparent to-black/20 text-neutral-100 antialiased min-h-screen">
     <!-- Neural Network Background -->
     <canvas id="neural-network-canvas" class="neural-network-canvas"></canvas>
     

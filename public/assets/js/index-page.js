@@ -42,19 +42,57 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.animationDelay = `${index * 0.2}s`;
     });
     
-    // Interactive cursor effect for hero background
+    // Interactive cursor effect for hero background - Optimized
     const heroBackground = document.querySelector('.hero-background');
     if (heroBackground) {
-        document.addEventListener('mousemove', (e) => {
+        let isHovering = false;
+        let animationFrameId = null;
+        
+        // Throttle function for better performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+        
+        heroBackground.addEventListener('mouseenter', () => {
+            isHovering = true;
+        });
+        
+        heroBackground.addEventListener('mouseleave', () => {
+            isHovering = false;
+            // Smoothly reset to base background
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            heroBackground.style.background = '';
+        });
+        
+        const handleMouseMove = throttle((e) => {
+            if (!isHovering) return;
+            
             const { clientX, clientY } = e;
             const x = (clientX / window.innerWidth) * 100;
             const y = (clientY / window.innerHeight) * 100;
             
-            heroBackground.style.background = `
-                radial-gradient(circle at ${x}% ${y}%, rgba(88, 101, 242, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at ${100-x}% ${100-y}%, rgba(255, 178, 107, 0.05) 0%, transparent 50%)
-            `;
-        });
+            // Use requestAnimationFrame for smooth animation
+            animationFrameId = requestAnimationFrame(() => {
+                heroBackground.style.background = `
+                    radial-gradient(circle at ${x}% ${y}%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at ${100-x}% ${100-y}%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at ${50+x/2}% ${50+y/2}%, rgba(139, 92, 246, 0.05) 0%, transparent 50%)
+                `;
+            });
+        }, 16); // ~60fps
+        
+        document.addEventListener('mousemove', handleMouseMove);
     }
     
     // Smooth scroll for CTA button
@@ -108,144 +146,91 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // =============================================================================
-    // NEURAL NETWORK BACKGROUND - SOBRE ET TECHNIQUE
+    // CANVAS PARTICLE NETWORK ANIMATION
     // =============================================================================
     
-    const canvas = document.getElementById('neural-network-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        
-        // Configuration du réseau de neurones
-        const config = {
-            nodeCount: window.innerWidth < 768 ? 25 : 40,
-            connectionDistance: 120,
-            nodeSpeed: 0.3,
-            nodeSize: 2,
-            connectionOpacity: 0.15,
-            nodeColor: 'rgba(88, 101, 242, 0.8)',
-            connectionColor: 'rgba(88, 101, 242, 0.3)',
-            pulseSpeed: 0.002
-        };
-        
-        // Redimensionnement du canvas
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Classe Node pour les nœuds du réseau
-        class NeuralNode {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * config.nodeSpeed;
-                this.vy = (Math.random() - 0.5) * config.nodeSpeed;
-                this.size = config.nodeSize + Math.random() * 2;
-                this.pulse = Math.random() * Math.PI * 2;
-                this.connections = [];
+    (function() {
+        function ParticleNetwork(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            let width = canvas.offsetWidth;
+            let height = canvas.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            const nodeCount = Math.floor((width * height) / 9000) + 18;
+            const nodes = [];
+            for (let i = 0; i < nodeCount; i++) {
+                nodes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    r: Math.random() * 2.5 + 1.5
+                });
             }
-            
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                
-                // Rebond sur les bords
-                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-                
-                // Mise à jour du pulse
-                this.pulse += config.pulseSpeed;
-            }
-            
-            draw() {
-                // Dessiner le nœud principal
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = config.nodeColor;
-                ctx.fill();
-                
-                // Effet de pulse subtil
-                const pulseIntensity = Math.sin(this.pulse) * 0.5 + 0.5;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size + pulseIntensity, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(88, 101, 242, ${0.1 * pulseIntensity})`;
-                ctx.fill();
-            }
-        }
-        
-        // Initialisation des nœuds
-        const nodes = [];
-        for (let i = 0; i < config.nodeCount; i++) {
-            nodes.push(new NeuralNode());
-        }
-        
-        // Animation du réseau
-        function animateNetwork() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Mise à jour et dessin des nœuds
-            nodes.forEach(node => {
-                node.update();
-                node.draw();
-            });
-            
-            // Dessin des connexions
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x;
-                    const dy = nodes[i].y - nodes[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < config.connectionDistance) {
-                        const opacity = config.connectionOpacity * (1 - distance / config.connectionDistance);
-                        
-                        // Ligne de connexion
-                        ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.strokeStyle = `rgba(88, 101, 242, ${opacity})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                        
-                        // Animation de pulse le long de la ligne
-                        const pulsePosition = (Date.now() * 0.001) % 1;
-                        const pulseX = nodes[i].x + (nodes[j].x - nodes[i].x) * pulsePosition;
-                        const pulseY = nodes[i].y + (nodes[j].y - nodes[i].y) * pulsePosition;
-                        
-                        ctx.beginPath();
-                        ctx.arc(pulseX, pulseY, 1, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(88, 101, 242, ${opacity * 2})`;
-                        ctx.fill();
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                // Draw connections
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const dx = nodes[i].x - nodes[j].x;
+                        const dy = nodes[i].y - nodes[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.save();
+                            ctx.globalAlpha = 0.18 * (1 - dist / 120);
+                            ctx.strokeStyle = 'rgba(59,130,246,0.7)';
+                            ctx.lineWidth = 1.2;
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.stroke();
+                            ctx.restore();
+                        }
                     }
                 }
+                // Draw nodes
+                nodes.forEach(node => {
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(59,130,246,0.7)';
+                    ctx.shadowColor = '#3b82f6';
+                    ctx.shadowBlur = 8;
+                    ctx.fill();
+                    ctx.restore();
+                });
+                // Move nodes
+                nodes.forEach(node => {
+                    node.x += node.vx;
+                    node.y += node.vy;
+                    if (node.x < 0 || node.x > width) node.vx *= -1;
+                    if (node.y < 0 || node.y > height) node.vy *= -1;
+                });
+                requestAnimationFrame(animate);
             }
-            
-            requestAnimationFrame(animateNetwork);
+            animate();
+            // Responsive resize
+            window.addEventListener('resize', () => {
+                width = canvas.offsetWidth;
+                height = canvas.offsetHeight;
+                canvas.width = width;
+                canvas.height = height;
+            });
         }
         
-        // Démarrer l'animation si les animations ne sont pas réduites
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            animateNetwork();
+        // Initialize when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                ParticleNetwork('neural-network-canvas');
+            });
+        } else {
+            ParticleNetwork('neural-network-canvas');
         }
-    }
+    })();
     
-    // Interaction avec l'arrière-plan héros
-    const heroBackground = document.querySelector('.hero-background');
-    if (heroBackground) {
-        document.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const x = (clientX / window.innerWidth) * 100;
-            const y = (clientY / window.innerHeight) * 100;
-            
-            heroBackground.style.background = `
-                radial-gradient(circle at ${x}% ${y}%, rgba(88, 101, 242, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at ${100-x}% ${100-y}%, rgba(255, 178, 107, 0.05) 0%, transparent 50%)
-            `;
-        });
-    }
+    // Interaction avec l'arrière-plan héros (supprimé car déjà défini plus haut)
 
     // =============================================================================
     // THREE.JS ANIMATIONS REMOVED
@@ -656,3 +641,232 @@ function throttle(func, delay) {
         }
     };
 }
+
+// =============================================================================
+// ULTRA MODERN HERO SECTION - BRAIN THEME
+// =============================================================================
+
+// Neural Network Canvas Animation for Ultra Hero
+function initUltraNeuralCanvas() {
+    const canvas = document.getElementById('neural-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width = canvas.offsetWidth;
+    let height = canvas.offsetHeight;
+    
+    canvas.width = width;
+    canvas.height = height;
+
+    // Brain logo colors
+    const colors = {
+        primary: '#3b82f6',
+        secondary: '#6366f1',
+        tertiary: '#8b5cf6'
+    };
+
+    const nodeCount = Math.floor((width * height) / 8000) + 25;
+    const nodes = [];
+
+    // Initialize nodes
+    for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.8,
+            vy: (Math.random() - 0.5) * 0.8,
+            r: Math.random() * 3 + 2,
+            color: [colors.primary, colors.secondary, colors.tertiary][Math.floor(Math.random() * 3)]
+        });
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw connections
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const dx = nodes[i].x - nodes[j].x;
+                const dy = nodes[i].y - nodes[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 150) {
+                    ctx.save();
+                    ctx.globalAlpha = 0.2 * (1 - dist / 150);
+                    ctx.strokeStyle = colors.primary;
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(nodes[i].x, nodes[i].y);
+                    ctx.lineTo(nodes[j].x, nodes[j].y);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        }
+
+        // Draw nodes
+        nodes.forEach(node => {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+            
+            // Create gradient for each node
+            const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.r);
+            gradient.addColorStop(0, node.color + '80');
+            gradient.addColorStop(1, node.color + '20');
+            
+            ctx.fillStyle = gradient;
+            ctx.shadowColor = node.color;
+            ctx.shadowBlur = 15;
+            ctx.fill();
+            ctx.restore();
+
+            // Move nodes
+            node.x += node.vx;
+            node.y += node.vy;
+
+            // Bounce off edges
+            if (node.x < 0 || node.x > width) node.vx *= -1;
+            if (node.y < 0 || node.y > height) node.vy *= -1;
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Responsive resize
+    window.addEventListener('resize', () => {
+        width = canvas.offsetWidth;
+        height = canvas.offsetHeight;
+        canvas.width = width;
+        canvas.height = height;
+    });
+}
+
+// Animated Counter for Stats
+function initUltraCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const targetValue = parseFloat(target.getAttribute('data-target'));
+                animateCounter(target, targetValue);
+                observer.unobserve(target);
+            }
+        });
+    }, observerOptions);
+
+    statNumbers.forEach(stat => observer.observe(stat));
+}
+
+function animateCounter(element, targetValue) {
+    const duration = 2000;
+    const startTime = performance.now();
+    const startValue = 0;
+    const suffix = targetValue % 1 === 0 ? '' : '%';
+
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const currentValue = startValue + (targetValue - startValue) * easeOutQuart;
+        
+        element.textContent = suffix === '%' ? 
+            currentValue.toFixed(1) + suffix : 
+            Math.floor(currentValue) + suffix;
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+}
+
+// Text Reveal Animation
+function initTextReveal() {
+    const textElements = document.querySelectorAll('.text-reveal');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    textElements.forEach(element => {
+        element.style.animationPlayState = 'paused';
+        observer.observe(element);
+    });
+}
+
+// Initialize Ultra Hero when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize existing neural network
+    if (typeof ParticleNetwork === 'function') {
+        ParticleNetwork('neural-network-canvas');
+    }
+    
+    // Initialize ultra neural canvas
+    initUltraNeuralCanvas();
+    
+    // Initialize counters
+    initUltraCounters();
+    
+    // Initialize text reveal
+    initTextReveal();
+    
+    // Add smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
+// Enhanced hover effects for stat cards
+document.addEventListener('DOMContentLoaded', function() {
+    const statCards = document.querySelectorAll('.stat-card');
+    
+    statCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+
+// Parallax effect for hero visual
+document.addEventListener('DOMContentLoaded', function() {
+    const heroVisual = document.querySelector('.hero-visual');
+    const mainImage = document.querySelector('.main-image');
+    
+    if (heroVisual && mainImage) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            mainImage.style.transform = `translateY(${rate}px)`;
+        });
+    }
+});
