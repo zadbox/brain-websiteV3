@@ -30,9 +30,26 @@
     
     <!-- Additional Styles -->
     @stack('styles')
+    
+    <style>
+    /* Global spacing for all pages to account for fixed header */
+    main {
+        padding-top: 120px;
+    }
+    
+    /* Ensure consistent font family across all pages */
+    body {
+        font-family: 'Sora', 'Inter', system-ui, sans-serif;
+    }
+    
+    /* Ensure header is always on top */
+    .header-ultra {
+        z-index: 1000;
+    }
+    </style>
 </head>
 
-<body class="bg-neutral-900 text-neutral-100 antialiased">
+<body class="bg-gradient-to-b from-transparent to-black/20 text-neutral-100 antialiased min-h-screen">
     <!-- Neural Network Background -->
     <canvas id="neural-network-canvas" class="neural-network-canvas"></canvas>
     

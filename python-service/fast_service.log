@@ -1,0 +1,34 @@
+2025-08-01 06:18:28 [info     ] Ollama LLM initialized for general questions (will test on first request)
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-08-01 06:18:35 [info     ] Hugging Face embeddings initialized successfully
+INFO:httpx:HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://localhost:6333/collections/braingen_tech "HTTP/1.1 200 OK"
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+2025-08-01 06:18:36 [info     ] Collection dimension: 384, Embedding dimension: 384
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/main.py:204: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
+  vectorstore = Qdrant(
+2025-08-01 06:18:36 [info     ] Vector store initialized with existing collection
+2025-08-01 06:18:36 [info     ] Starting server with configuration access_log=True host=0.0.0.0 log_level=info port=8001 reload=False workers=1
+INFO:     Started server process [41029]
+INFO:     Waiting for application startup.
+2025-08-01 06:18:36 [info     ] Starting BrainGenTech LangChain API v2.2.0
+2025-08-01 06:18:36 [info     ] Hugging Face LLM initialized: True
+2025-08-01 06:18:36 [info     ] Vector store available: True
+2025-08-01 06:18:36 [info     ] Max conversations: 1000
+2025-08-01 06:18:36 [info     ] Memory retention: 24 hours
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:63478 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63482 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63485 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63487 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63512 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63514 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63519 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63526 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-01 06:23:02 [info     ] Shutting down BrainGenTech LangChain API
+INFO:     Application shutdown complete.
+INFO:     Finished server process [41029]

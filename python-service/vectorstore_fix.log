@@ -1,0 +1,202 @@
+2025-08-01 05:12:58 [info     ] Hugging Face LLM initialized successfully
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-08-01 05:13:04 [info     ] Hugging Face embeddings initialized successfully
+INFO:httpx:HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://localhost:6333/collections/braingen_tech "HTTP/1.1 200 OK"
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+2025-08-01 05:13:05 [info     ] Collection dimension: 1024, Embedding dimension: 384
+2025-08-01 05:13:05 [warning  ] Dimension mismatch: collection=1024, embeddings=384
+2025-08-01 05:13:05 [info     ] Recreating collection with correct dimensions...
+INFO:httpx:HTTP Request: DELETE http://localhost:6333/collections/braingen_tech "HTTP/1.1 200 OK"
+2025-08-01 05:13:05 [info     ] Deleted existing collection: braingen_tech
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/main.py:146: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
+  vectorstore = Qdrant(
+2025-08-01 05:13:05 [info     ] Created new collection with 384 dimensions
+2025-08-01 05:13:05 [info     ] Starting server with configuration access_log=True host=0.0.0.0 log_level=info port=8001 reload=False workers=1
+INFO:     Started server process [15594]
+INFO:     Waiting for application startup.
+2025-08-01 05:13:05 [info     ] Starting BrainGenTech LangChain API v2.2.0
+2025-08-01 05:13:05 [info     ] Hugging Face LLM initialized: True
+2025-08-01 05:13:05 [info     ] Vector store available: True
+2025-08-01 05:13:05 [info     ] Max conversations: 1000
+2025-08-01 05:13:05 [info     ] Memory retention: 24 hours
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58972 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59004 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59007 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59016 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 404 Not Found"
+2025-08-01 05:13:33 [error    ] Knowledge search error: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `braingen_tech` doesn\'t exist!"},"time":0.000050833}'
+INFO:     127.0.0.1:59020 - "GET /search-knowledge?query=test&limit=1 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:59024 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59028 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 404 Not Found"
+2025-08-01 05:13:41 [error    ] Knowledge search error: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `braingen_tech` doesn\'t exist!"},"time":7.458e-6}'
+INFO:     127.0.0.1:59031 - "GET /search-knowledge?query=test&limit=1 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:59028 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:13:41 [info     ] Created new memory for session: test-session-1754021621828
+2025-08-01 05:13:41 [error    ] LLM call failed: (Request ID: Root=1-688c3ef5-7dd71c6f0108f7714781036f;1e686e8d-b00b-4cb6-8322-526e3123ca87)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user boussyf00.
+Cannot access content at: https://api-inference.huggingface.co/models/facebook/opt-125m.
+Make sure your token has the correct permissions.
+2025-08-01 05:13:41 [info     ] Chat processed successfully    confidence=0.781 message_length=54 processing_time=0.142612 session_id=test-session-1754021621828
+INFO:     127.0.0.1:59036 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59041 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59045 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59045 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 404 Not Found"
+2025-08-01 05:14:03 [error    ] Knowledge search error: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `braingen_tech` doesn\'t exist!"},"time":2.25e-6}'
+INFO:     127.0.0.1:59060 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 500 Internal Server Error
+2025-08-01 05:14:03 [info     ] Created new memory for session: test-page-1754021643972
+2025-08-01 05:14:04 [error    ] LLM call failed: (Request ID: Root=1-688c3f0c-6349b229726c24993d42a66a;8da4aae2-ac4f-4910-805c-48780b68d4e0)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user boussyf00.
+Cannot access content at: https://api-inference.huggingface.co/models/facebook/opt-125m.
+Make sure your token has the correct permissions.
+2025-08-01 05:14:04 [info     ] Chat processed successfully    confidence=0.775 message_length=17 processing_time=0.133482 session_id=test-page-1754021643972
+INFO:     127.0.0.1:59064 - "POST /chat HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 404 Not Found"
+2025-08-01 05:14:16 [error    ] Knowledge search error: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `braingen_tech` doesn\'t exist!"},"time":0.000034584}'
+INFO:     127.0.0.1:59076 - "GET /search-knowledge?query=services&limit=3 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:59105 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59138 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59149 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59181 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:59221 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59249 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59294 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59294 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:59303 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 200 OK
+2025-08-01 05:15:32 [info     ] Created new memory for session: test-page-1754021732393
+2025-08-01 05:15:32 [error    ] LLM call failed: (Request ID: Root=1-688c3f64-4042fff84df242cc76a618f9;61636435-65f6-47ef-a65f-28a12c5d275d)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user boussyf00.
+Cannot access content at: https://api-inference.huggingface.co/models/facebook/opt-125m.
+Make sure your token has the correct permissions.
+2025-08-01 05:15:32 [info     ] Chat processed successfully    confidence=0.775 message_length=17 processing_time=0.133703 session_id=test-page-1754021732393
+INFO:     127.0.0.1:59307 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59316 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59316 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:59322 - "GET /search-knowledge?query=test&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59316 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:15:43 [info     ] Created new memory for session: test-session-1754021743941
+2025-08-01 05:15:44 [error    ] LLM call failed: (Request ID: Root=1-688c3f70-1bf5777048f2720f7790eabb;5bed8c4d-8efc-49fb-ae76-e1ea3666fe54)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user boussyf00.
+Cannot access content at: https://api-inference.huggingface.co/models/facebook/opt-125m.
+Make sure your token has the correct permissions.
+2025-08-01 05:15:44 [info     ] Chat processed successfully    confidence=0.781 message_length=54 processing_time=0.132824 session_id=test-session-1754021743941
+INFO:     127.0.0.1:59327 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59330 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59336 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59343 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59349 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59354 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59423 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59430 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59443 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59448 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59503 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59533 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:18:26 [info     ] Created new memory for session: brain_1754021903146_47fh3zygt
+2025-08-01 05:18:26 [error    ] LLM call failed: (Request ID: Root=1-688c4012-5ccf0fe72575997965a497e1;28309cf9-dce1-4565-9456-cc01664dd912)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user boussyf00.
+Cannot access content at: https://api-inference.huggingface.co/models/facebook/opt-125m.
+Make sure your token has the correct permissions.
+2025-08-01 05:18:26 [info     ] Chat processed successfully    confidence=0.7759999999999999 message_length=2 processing_time=0.139553 session_id=brain_1754021903146_47fh3zygt
+INFO:     127.0.0.1:59536 - "POST /chat HTTP/1.1" 200 OK
+2025-08-01 05:18:39 [error    ] LLM call failed: (Request ID: Root=1-688c401f-2c61612e3524d8aa5872d4b7;7149ef9c-2af9-49d3-9948-a05efa6722d5)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user boussyf00.
+Cannot access content at: https://api-inference.huggingface.co/models/facebook/opt-125m.
+Make sure your token has the correct permissions.
+2025-08-01 05:18:39 [info     ] Chat processed successfully    confidence=0.764 message_length=43 processing_time=0.175109 session_id=brain_1754021903146_47fh3zygt
+INFO:     127.0.0.1:59547 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59552 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:18:51 [error    ] LLM call failed: (Request ID: Root=1-688c402b-27a575237c92da3e7adb6125;27e3c182-2c1b-422c-8e15-e9177c83632c)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user boussyf00.
+Cannot access content at: https://api-inference.huggingface.co/models/facebook/opt-125m.
+Make sure your token has the correct permissions.
+2025-08-01 05:18:51 [info     ] Chat processed successfully    confidence=0.793 message_length=35 processing_time=0.149115 session_id=brain_1754021903146_47fh3zygt
+INFO:     127.0.0.1:59556 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59559 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:18:57 [error    ] LLM call failed: (Request ID: Root=1-688c4031-6865dc92060044a60d650438;dd4a04b1-4af3-4118-a1c8-afa6970db605)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user boussyf00.
+Cannot access content at: https://api-inference.huggingface.co/models/facebook/opt-125m.
+Make sure your token has the correct permissions.
+2025-08-01 05:18:57 [info     ] Chat processed successfully    confidence=0.795 message_length=37 processing_time=0.138708 session_id=brain_1754021903146_47fh3zygt
+INFO:     127.0.0.1:59562 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59599 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59611 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59645 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59684 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59726 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59791 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59822 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59828 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59868 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59878 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59883 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59890 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59928 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59933 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59966 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59979 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59984 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60009 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60016 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60022 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60041 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60052 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60058 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60074 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60081 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60086 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60109 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60117 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60122 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60129 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60138 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60143 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60157 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60161 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60168 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60237 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60245 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60282 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-01 05:31:34 [info     ] Shutting down BrainGenTech LangChain API
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15594]

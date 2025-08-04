@@ -1,0 +1,219 @@
+2025-08-01 06:27:18 [info     ] Using ultra-fast vector-based responses only - no slow LLM calls
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-08-01 06:27:24 [info     ] Hugging Face embeddings initialized successfully
+INFO:httpx:HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://localhost:6333/collections/braingen_tech "HTTP/1.1 200 OK"
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+2025-08-01 06:27:24 [info     ] Collection dimension: 384, Embedding dimension: 384
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/main.py:144: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
+  vectorstore = Qdrant(
+2025-08-01 06:27:24 [info     ] Vector store initialized with existing collection
+2025-08-01 06:27:24 [info     ] Starting server with configuration access_log=True host=0.0.0.0 log_level=info port=8001 reload=False workers=1
+INFO:     Started server process [47172]
+INFO:     Waiting for application startup.
+2025-08-01 06:27:24 [info     ] Starting BrainGenTech LangChain API v2.2.0
+2025-08-01 06:27:24 [info     ] Fast vector-based responses initialized: True
+2025-08-01 06:27:24 [info     ] Vector store available: True
+2025-08-01 06:27:24 [info     ] Max conversations: 1000
+2025-08-01 06:27:24 [info     ] Memory retention: 24 hours
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for appINFO:     127.0.0.1:64459 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64466 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64532 - "GET /health HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:64537 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 200 OK
+2025-08-01 06:27:35 [info     ] Created new memory for session: test-page-1754026055151
+2025-08-01 06:27:35 [info     ] Fast response generated: 393 characters
+2025-08-01 06:27:35 [info     ] Chat processed successfully    confidence=0.95 message_length=17 processing_time=0.000637 session_id=test-page-1754026055151
+INFO:     127.0.0.1:64541 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64545 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64545 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:27:44 [info     ] Created new memory for session: test-session-1754026064361
+2025-08-01 06:27:44 [info     ] Fast response generated: 393 characters
+2025-08-01 06:27:44 [info     ] Chat processed successfully    confidence=0.95 message_length=25 processing_time=0.001437 session_id=test-session-1754026064361
+INFO:     127.0.0.1:64560 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64566 - "GET /health HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:64570 - "GET /search-knowledge?query=test&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64574 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64577 - "GET /health HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:64581 - "GET /search-knowledge?query=test&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64577 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:28:09 [info     ] Created new memory for session: test-session-1754026089601
+2025-08-01 06:28:09 [info     ] Fast response generated: 393 characters
+2025-08-01 06:28:09 [info     ] Chat processed successfully    confidence=0.95 message_length=54 processing_time=0.000238 session_id=test-session-1754026089601
+INFO:     127.0.0.1:64586 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64577 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64593 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:28:26 [info     ] Created new memory for session: test-ultra-fast
+2025-08-01 06:28:26 [info     ] Fast response generated: 355 characters
+2025-08-01 06:28:26 [info     ] Chat processed successfully    confidence=0.95 message_length=7 processing_time=0.000622 session_id=test-ultra-fast
+INFO:     127.0.0.1:64598 - "POST /chat HTTP/1.1" 200 OK
+2025-08-01 06:28:35 [info     ] Created new memory for session: brain_1754026052344_kift5kc6u
+2025-08-01 06:28:35 [info     ] Fast response generated: 355 characters
+2025-08-01 06:28:35 [info     ] Chat processed successfully    confidence=0.95 message_length=2 processing_time=0.000524 session_id=brain_1754026052344_kift5kc6u
+INFO:     127.0.0.1:64642 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64652 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:28:49 [info     ] Fast response generated: 393 characters
+2025-08-01 06:28:49 [info     ] Chat processed successfully    confidence=0.95 message_length=35 processing_time=0.000244 session_id=brain_1754026052344_kift5kc6u
+INFO:     127.0.0.1:64661 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64665 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:29:02 [info     ] Fast response generated: 393 characters
+2025-08-01 06:29:02 [info     ] Chat processed successfully    confidence=0.95 message_length=43 processing_time=0.000135 session_id=brain_1754026052344_kift5kc6u
+INFO:     127.0.0.1:64668 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64672 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:29:30 [info     ] Created new memory for session: test-agro
+2025-08-01 06:29:30 [info     ] Fast response generated: 350 characters
+2025-08-01 06:29:30 [info     ] Chat processed successfully    confidence=0.95 message_length=30 processing_time=0.000608 session_id=test-agro
+INFO:     127.0.0.1:64684 - "POST /chat HTTP/1.1" 200 OK
+2025-08-01 06:29:36 [info     ] Fast response generated: 350 characters
+2025-08-01 06:29:36 [info     ] Chat processed successfully    confidence=0.95 message_length=29 processing_time=0.000266 session_id=brain_1754026052344_kift5kc6u
+INFO:     127.0.0.1:64710 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64715 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64719 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:30:02 [info     ] Fast response generated: 300 characters
+2025-08-01 06:30:02 [info     ] Chat processed successfully    confidence=0.9 message_length=20 processing_time=0.000142 session_id=brain_1754026052344_kift5kc6u
+INFO:     127.0.0.1:64722 - "POST /chat HTTP/1.1" 200 OK
+2025-08-01 06:30:08 [info     ] Created new memory for session: test-pricing
+2025-08-01 06:30:08 [info     ] Fast response generated: 300 characters
+2025-08-01 06:30:08 [info     ] Chat processed successfully    confidence=0.9 message_length=20 processing_time=0.000254 session_id=test-pricing
+INFO:     127.0.0.1:64727 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64760 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64776 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64780 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64794 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64797 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:31:45 [info     ] Fast response generated: 393 characters
+2025-08-01 06:31:45 [info     ] Chat processed successfully    confidence=0.95 message_length=3 processing_time=0.000631 session_id=brain_1754026052344_kift5kc6u
+INFO:     127.0.0.1:64805 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64808 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64836 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64846 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64865 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64871 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64875 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64880 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64885 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64893 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64947 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64980 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64995 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65039 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65050 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65056 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65070 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65079 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65085 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65144 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65193 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65201 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65290 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65321 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65342 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65372 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65445 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65451 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65456 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65464 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65469 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65485 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65487 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65491 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65496 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65509 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65511 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65513 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65517 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65521 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49183 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49218 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49225 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49229 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49261 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49265 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49306 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49311 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49314 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49319 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49322 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49354 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49357 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49362 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49366 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49392 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49402 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49403 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49408 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49456 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49491 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49519 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49548 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49555 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49585 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49593 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49629 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49668 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49672 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49682 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49688 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49690 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49692 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49697 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49701 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49731 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49733 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49735 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49745 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49753 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49755 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49756 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49760 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49765 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49789 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49791 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49795 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49799 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49807 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49812 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49814 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49815 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49820 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49824 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49829 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49831 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49832 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49836 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49840 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49843 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49846 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49847 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49852 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49856 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49860 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49862 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49863 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49867 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49871 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49882 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49884 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49888 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49892 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49900 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49905 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49912 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49913 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49916 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49922 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49926 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49945 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49951 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49955 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49961 - "GET /metrics HTTP/1.1" 200 OK
+/opt/anaconda3/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
