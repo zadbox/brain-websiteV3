@@ -33,6 +33,28 @@ class IndexController extends Controller
     public function awa(){
         return view("awa");
     }
+    public function brainInvest(){
+        return view("solutions.brain-invest");
+    }
+    public function brainRh(){
+        return view("solutions.brain-rh");
+    }
+    public function brainAssistant(){
+        return view("solutions.brain-assistant");
+    }
+    public function technology(){
+        return view("technology");
+    }
+    public function industries(){
+        return view("industries");
+    }
+    public function resources(){
+        return view("resources");
+    }
+    
+    public function demo(){
+        return view("demo");
+    }
     public function store(Request $request)
     {
         // Valider les données reçues

@@ -1,0 +1,45 @@
+2025-08-01 02:49:22 [warning  ] Could not import BrainGenTech Agent: cannot import name 'ConversationBufferMemory' from 'langchain_core.memory' (/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/langchain_core/memory.py)
+2025-08-01 02:49:22 [info     ] Knowledge Router import successful
+2025-08-01 02:49:22 [warning  ] Ollama not available: 1 validation error for Ollama
+request_timeout
+  Extra inputs are not permitted [type=extra_forbidden, input_value=15, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/extra_forbidden
+2025-08-01 02:49:22 [error    ] GPT4All also failed: Could not import gpt4all python package. Please install it with `pip install gpt4all`.
+2025-08-01 02:49:22 [info     ] Using fallback responses - please install Ollama or GPT4All for better responses
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/main.py:192: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+  embeddings = HuggingFaceEmbeddings(
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-01 02:49:29 [info     ] Using free embeddings: all-MiniLM-L6-v2
+INFO:httpx:HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://localhost:6333/collections/braingen_tech "HTTP/1.1 200 OK"
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+2025-08-01 02:49:29 [warning  ] Vector store initialization failed: Existing Qdrant collection is configured for dense vectors with 1024 dimensions. Selected embeddings are 384-dimensional. If you want to recreate the collection, set `force_recreate` parameter to `True`.
+2025-08-01 02:49:29 [info     ] Starting server with configuration access_log=True host=0.0.0.0 log_level=info port=8001 reload=False workers=1
+INFO:     Started server process [1357]
+INFO:     Waiting for application startup.
+2025-08-01 02:49:29 [info     ] Starting BrainGenTech LangChain API v2.2.0
+2025-08-01 02:49:29 [info     ] LLM initialized: FakeListLLM
+2025-08-01 02:49:29 [info     ] Vector store available: False
+2025-08-01 02:49:29 [info     ] Max conversations: 1000
+2025-08-01 02:49:29 [info     ] Memory retention: 24 hours
+2025-08-01 02:49:29 [info     ] BrainGenTech Agent disabled for testing - using direct LLM
+2025-08-01 02:49:29 [info     ] Knowledge Router initialized successfully
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54307 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 02:49:49 [info     ] Created new memory for session: test-debug
+2025-08-01 02:49:49 [info     ] Processing message with Knowledge Router: 'What AI solutions do you offer?'
+2025-08-01 02:49:49 [info     ] Using fallback LLM processing
+2025-08-01 02:49:49 [info     ] Invoking LLM with prompt length: 1356
+2025-08-01 02:49:49 [info     ] LLM response type: <class 'str'>, content: Merci pour votre question. BrainGenTech propose des solutions technologiques innovantes....
+2025-08-01 02:49:49 [info     ] Chat processed successfully    confidence=0.588 message_length=31 processing_time=0.001358 session_id=test-debug
+INFO:     127.0.0.1:54337 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54379 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54389 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54419 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-01 02:50:29 [info     ] Shutting down BrainGenTech LangChain API
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1357]

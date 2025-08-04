@@ -1,0 +1,64 @@
+2025-08-01 05:31:54 [info     ] Ollama LLM initialized successfully for general questions
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-08-01 05:32:01 [info     ] Hugging Face embeddings initialized successfully
+INFO:httpx:HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://localhost:6333/collections/braingen_tech "HTTP/1.1 200 OK"
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+2025-08-01 05:32:01 [info     ] Collection dimension: 384, Embedding dimension: 384
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/main.py:207: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
+  vectorstore = Qdrant(
+2025-08-01 05:32:01 [info     ] Vector store initialized with existing collection
+2025-08-01 05:32:01 [info     ] Starting server with configuration access_log=True host=0.0.0.0 log_level=info port=8001 reload=False workers=1
+INFO:     Started server process [21468]
+INFO:     Waiting for application startup.
+2025-08-01 05:32:01 [info     ] Starting BrainGenTech LangChain API v2.2.0
+2025-08-01 05:32:01 [info     ] Hugging Face LLM initialized: True
+2025-08-01 05:32:01 [info     ] Vector store available: True
+2025-08-01 05:32:01 [info     ] Max conversations: 1000
+2025-08-01 05:32:01 [info     ] Memory retention: 24 hours
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60362 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60405 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:32:24 [info     ] Created new memory for session: test-general
+2025-08-01 05:32:24 [info     ] Invoking LLM for general question
+2025-08-01 05:32:58 [info     ] LLM response generated successfully: 1403 characters
+2025-08-01 05:32:58 [info     ] Chat processed successfully    confidence=0.95 message_length=30 processing_time=34.400707 session_id=test-general
+INFO:     127.0.0.1:60420 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60425 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60452 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60462 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60469 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60477 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60524 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60545 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60586 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60606 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60615 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:36:39 [info     ] Created new memory for session: test-general-question
+2025-08-01 05:36:39 [info     ] Invoking LLM for general question
+2025-08-01 05:37:50 [info     ] LLM response generated successfully: 1802 characters
+2025-08-01 05:37:50 [info     ] Chat processed successfully    confidence=0.95 message_length=30 processing_time=70.946319 session_id=test-general-question
+INFO:     127.0.0.1:60624 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60630 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60636 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:38:55 [info     ] Created new memory for session: brain_1754023035658_rlbptqiwv
+2025-08-01 05:38:55 [info     ] Invoking LLM for general question
+2025-08-01 05:40:05 [info     ] LLM response generated successfully: 1422 characters
+2025-08-01 05:40:05 [info     ] Chat processed successfully    confidence=0.95 message_length=30 processing_time=69.622959 session_id=brain_1754023035658_rlbptqiwv
+INFO:     127.0.0.1:60668 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60678 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60731 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:41:28 [info     ] Created new memory for session: test-business-question
+2025-08-01 05:41:28 [info     ] Invoking LLM for business question
+2025-08-01 05:44:23 [info     ] LLM response generated successfully: 2090 characters
+2025-08-01 05:44:23 [info     ] Chat processed successfully    confidence=0.95 message_length=47 processing_time=175.124126 session_id=test-business-question
+INFO:     127.0.0.1:60746 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60757 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60833 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-01 05:47:50 [info     ] Shutting down BrainGenTech LangChain API
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21468]

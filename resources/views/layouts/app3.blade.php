@@ -25,7 +25,7 @@
   </head>
   <body class=" is-dark nk-body" data-menu-collapse="lg">
     <div class="nk-app-root">
-    @include('partials.header3') <!-- Inclusion du header -->
+    @include('partials.header')
 
     <main>
       @yield('content') <!-- Ici le contenu spécifique des pages sera rendu -->

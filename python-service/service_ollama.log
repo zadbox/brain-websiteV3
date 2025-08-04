@@ -1,0 +1,81 @@
+2025-08-01 02:12:08 [warning  ] Could not import BrainGenTech Agent: cannot import name 'ConversationBufferMemory' from 'langchain_core.memory' (/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/langchain_core/memory.py)
+2025-08-01 02:12:08 [info     ] Knowledge Router import successful
+2025-08-01 02:12:08 [info     ] Using Ollama LLM: llama3.2:1b
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/main.py:187: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+  embeddings = HuggingFaceEmbeddings(
+2025-08-01 02:12:08 [error    ] Failed to load embeddings: Could not import sentence_transformers python package. Please install it with `pip install sentence-transformers`.
+2025-08-01 02:12:08 [info     ] Using fake embeddings as fallback
+INFO:httpx:HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://localhost:6333/collections/braingen_tech "HTTP/1.1 200 OK"
+2025-08-01 02:12:08 [warning  ] Vector store initialization failed: Existing Qdrant collection is configured for dense vectors with 1024 dimensions. Selected embeddings are 384-dimensional. If you want to recreate the collection, set `force_recreate` parameter to `True`.
+2025-08-01 02:12:08 [info     ] Starting server with configuration access_log=True host=0.0.0.0 log_level=info port=8001 reload=False workers=1
+INFO:     Started server process [84376]
+INFO:     Waiting for application startup.
+2025-08-01 02:12:08 [info     ] Starting BrainGenTech LangChain API v2.2.0
+2025-08-01 02:12:08 [info     ] Cohere model initialized: llama3.2:1b
+2025-08-01 02:12:08 [info     ] Vector store available: False
+2025-08-01 02:12:08 [info     ] Max conversations: 1000
+2025-08-01 02:12:08 [info     ] Memory retention: 24 hours
+2025-08-01 02:12:08 [info     ] BrainGenTech Agent disabled for testing - using direct LLM
+2025-08-01 02:12:08 [info     ] Knowledge Router initialized successfully
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51735 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 02:12:40 [info     ] Created new memory for session: test-123
+2025-08-01 02:12:40 [info     ] Processing message with Knowledge Router: 'Hello, je voudrais des informations sur vos services'
+2025-08-01 02:12:40 [info     ] Using fallback LLM processing
+2025-08-01 02:15:18 [info     ] Chat processed successfully    confidence=0.9000000000000001 message_length=52 processing_time=158.721259 session_id=test-123
+INFO:     127.0.0.1:51746 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51819 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51900 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51909 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51923 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51934 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51947 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51968 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51974 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52002 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52025 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:52035 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 02:19:29 [info     ] Created new memory for session: test-page-1754011083059
+2025-08-01 02:19:29 [info     ] Processing message with Knowledge Router: 'Test de connexion'
+2025-08-01 02:19:29 [info     ] Using fallback LLM processing
+2025-08-01 02:21:00 [info     ] Chat processed successfully    confidence=0.95 message_length=17 processing_time=90.82553 session_id=test-page-1754011083059
+INFO:     127.0.0.1:52042 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52077 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52117 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 02:21:07 [info     ] Created new memory for session: brain_1754011145344_1muoppvmy
+2025-08-01 02:21:07 [info     ] Processing message with Knowledge Router: 'Tell me about pricing'
+2025-08-01 02:21:07 [info     ] Using fallback LLM processing
+2025-08-01 02:22:36 [info     ] Chat processed successfully    confidence=0.95 message_length=21 processing_time=88.573644 session_id=brain_1754011145344_1muoppvmy
+INFO:     127.0.0.1:52175 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52183 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 02:23:02 [info     ] Created new memory for session: test-page-1754011313703
+2025-08-01 02:23:02 [info     ] Processing message with Knowledge Router: 'Test de connexion'
+2025-08-01 02:23:02 [info     ] Using fallback LLM processing
+2025-08-01 02:24:38 [info     ] Chat processed successfully    confidence=0.95 message_length=17 processing_time=95.755556 session_id=test-page-1754011313703
+INFO:     127.0.0.1:52212 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52224 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52283 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52297 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52302 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52348 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:52353 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 02:25:40 [info     ] Created new memory for session: test-page-1754011504050
+2025-08-01 02:25:40 [info     ] Processing message with Knowledge Router: 'Test de connexion'
+2025-08-01 02:25:40 [info     ] Using fallback LLM processing
+2025-08-01 02:26:04 [info     ] Chat processed successfully    confidence=0.95 message_length=17 processing_time=24.132143 session_id=test-page-1754011504050
+INFO:     127.0.0.1:52357 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52397 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52473 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52482 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52518 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52579 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52594 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52634 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-01 02:29:04 [info     ] Shutting down BrainGenTech LangChain API
+INFO:     Application shutdown complete.
+INFO:     Finished server process [84376]

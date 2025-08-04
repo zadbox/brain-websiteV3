@@ -8,14 +8,21 @@ use Illuminate\Http\Request;
 
 // Route vers un contrôleur
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index']);
-Route::get('/a-propos', [App\Http\Controllers\IndexController::class, 'about']);
+
+Route::get('/about', [App\Http\Controllers\IndexController::class, 'about']);
 Route::get('/service/communication-et-marketing-digital', [App\Http\Controllers\IndexController::class, 'service01']);
-Route::get('/a-propos', [App\Http\Controllers\IndexController::class, 'about']);
 Route::get('/service/promotion-immobiliere-conciergerie', [App\Http\Controllers\IndexController::class, 'service02']);
 Route::get('/service/agroalimentaire-tracabilite', [App\Http\Controllers\IndexController::class, 'service03']);
 Route::get('/notre-demarche', [App\Http\Controllers\IndexController::class, 'demarche']);
 Route::get('/contact', [App\Http\Controllers\IndexController::class, 'contact']);
 Route::get('/faqs', [App\Http\Controllers\IndexController::class, 'awa']);
+Route::get('/solutions/brain-invest', [App\Http\Controllers\IndexController::class, 'brainInvest']);
+Route::get('/solutions/brain-rh', [App\Http\Controllers\IndexController::class, 'brainRh']);
+Route::get('/solutions/brain-assistant', [App\Http\Controllers\IndexController::class, 'brainAssistant']);
+Route::get('/technology', [App\Http\Controllers\IndexController::class, 'technology']);
+Route::get('/industries', [App\Http\Controllers\IndexController::class, 'industries']);
+Route::get('/resources', [App\Http\Controllers\IndexController::class, 'resources']);
+Route::get('/demo', [App\Http\Controllers\IndexController::class, 'demo']);
 // Route pour la soumission du formulaire de réservation
 Route::post('/message', function (Request $request) {
     // Valider les données du formulaire

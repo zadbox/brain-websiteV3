@@ -1,0 +1,136 @@
+2025-08-01 05:51:53 [info     ] Ollama LLM initialized for general questions (will test on first request)
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-08-01 05:52:01 [info     ] Hugging Face embeddings initialized successfully
+INFO:httpx:HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://localhost:6333/collections/braingen_tech "HTTP/1.1 200 OK"
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+2025-08-01 05:52:01 [info     ] Collection dimension: 384, Embedding dimension: 384
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/main.py:204: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
+  vectorstore = Qdrant(
+2025-08-01 05:52:01 [info     ] Vector store initialized with existing collection
+2025-08-01 05:52:01 [info     ] Starting server with configuration access_log=True host=0.0.0.0 log_level=info port=8001 reload=False workers=1
+INFO:     Started server process [31904]
+INFO:     Waiting for application startup.
+2025-08-01 05:52:01 [info     ] Starting BrainGenTech LangChain API v2.2.0
+2025-08-01 05:52:01 [info     ] Hugging Face LLM initialized: True
+2025-08-01 05:52:01 [info     ] Vector store available: True
+2025-08-01 05:52:01 [info     ] Max conversations: 1000
+2025-08-01 05:52:01 [info     ] Memory retention: 24 hours
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:61666 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61693 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61719 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61745 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61751 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:61757 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 200 OK
+2025-08-01 05:53:17 [info     ] Created new memory for session: test-page-1754023997944
+2025-08-01 05:53:17 [info     ] LLM will be tested during actual use
+2025-08-01 05:53:17 [info     ] Invoking LLM for general question
+2025-08-01 05:53:30 [info     ] LLM response generated successfully: 193 characters
+2025-08-01 05:53:30 [info     ] Chat processed successfully    confidence=0.793 message_length=17 processing_time=12.326895 session_id=test-page-1754023997944
+INFO:     127.0.0.1:61763 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61768 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:53:33 [info     ] Created new memory for session: brain_1754023955241_ph9fge1gt
+2025-08-01 05:53:33 [info     ] Invoking LLM for business question
+2025-08-01 05:54:34 [info     ] LLM response generated successfully: 2086 characters
+2025-08-01 05:54:34 [info     ] Chat processed successfully    confidence=0.95 message_length=31 processing_time=61.31184 session_id=brain_1754023955241_ph9fge1gt
+INFO:     127.0.0.1:61773 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61778 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61785 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:61787 - "GET /search-knowledge?query=test&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61792 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61799 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61802 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61807 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:61904 - "GET /search-knowledge?query=test&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61914 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61917 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61970 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62020 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62056 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62124 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 05:58:58 [info     ] Created new memory for session: test-session-1754024284789
+2025-08-01 05:58:58 [info     ] Invoking LLM for business question
+2025-08-01 05:59:50 [info     ] LLM response generated successfully: 2093 characters
+2025-08-01 05:59:50 [info     ] Chat processed successfully    confidence=0.95 message_length=54 processing_time=51.622349 session_id=test-session-1754024284789
+INFO:     127.0.0.1:62154 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62207 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62258 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62272 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62277 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62314 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62321 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62325 - "GET /docs HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:62328 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 200 OK
+2025-08-01 06:00:30 [info     ] Created new memory for session: brain_1754024345239_sdgozj08w
+2025-08-01 06:00:30 [info     ] Invoking LLM for general question
+2025-08-01 06:00:39 [info     ] LLM response generated successfully: 191 characters
+2025-08-01 06:00:39 [info     ] Chat processed successfully    confidence=0.791 message_length=2 processing_time=8.893082 session_id=brain_1754024345239_sdgozj08w
+INFO:     127.0.0.1:62336 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62325 - "GET /openapi.json HTTP/1.1" 200 OK
+2025-08-01 06:00:39 [info     ] Created new memory for session: test-page-1754024419746
+2025-08-01 06:00:39 [info     ] Invoking LLM for general question
+2025-08-01 06:00:55 [info     ] LLM response generated successfully: 465 characters
+2025-08-01 06:00:55 [info     ] Chat processed successfully    confidence=0.9 message_length=17 processing_time=15.90137 session_id=test-page-1754024419746
+INFO:     127.0.0.1:62359 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62365 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:01:24 [info     ] Created new memory for session: test-ui-integration
+2025-08-01 06:01:24 [info     ] Invoking LLM for general question
+2025-08-01 06:01:49 [info     ] LLM response generated successfully: 586 characters
+2025-08-01 06:01:49 [info     ] Chat processed successfully    confidence=0.95 message_length=17 processing_time=24.445093 session_id=test-ui-integration
+INFO:     127.0.0.1:62370 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62490 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62540 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62569 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62577 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62582 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62601 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62582 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62607 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62647 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62696 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62767 - "GET /health HTTP/1.1" 200 OK
+2025-08-01 06:07:25 [info     ] Created new memory for session: brain_1754024585533_d99323clk
+2025-08-01 06:07:25 [info     ] Invoking LLM for business question
+2025-08-01 06:07:57 [info     ] LLM response generated successfully: 1737 characters
+2025-08-01 06:07:57 [info     ] Chat processed successfully    confidence=0.95 message_length=31 processing_time=32.305815 session_id=brain_1754024585533_d99323clk
+INFO:     127.0.0.1:62774 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62781 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62838 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62867 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62908 - "GET /health HTTP/1.1" 200 OK
+/Users/abderrahim_boussyf/BrainGenTech/BRAIN-TECHNOLOGY-V2/python-service/venv/lib/python3.11/site-packages/torch/nn/modules/module.py:1762: FutureWarning: `encoder_attention_mask` is deprecated and will be removed in version 4.55.0 for `BertSdpaSelfAttention.forward`.
+  return forward_call(*args, **kwargs)
+INFO:httpx:HTTP Request: POST http://localhost:6333/collections/braingen_tech/points/search "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:62940 - "GET /search-knowledge?query=services&limit=1 HTTP/1.1" 200 OK
+2025-08-01 06:08:19 [info     ] Created new memory for session: test-page-1754024899450
+2025-08-01 06:08:19 [info     ] Invoking LLM for general question
+2025-08-01 06:08:32 [info     ] LLM response generated successfully: 306 characters
+2025-08-01 06:08:32 [info     ] Chat processed successfully    confidence=0.906 message_length=17 processing_time=12.720997 session_id=test-page-1754024899450
+INFO:     127.0.0.1:62944 - "POST /chat HTTP/1.1" 200 OK
+2025-08-01 06:08:32 [info     ] Created new memory for session: brain_1754024894247_lev7syzme
+2025-08-01 06:08:32 [info     ] Invoking LLM for general question
+2025-08-01 06:09:11 [info     ] LLM response generated successfully: 1912 characters
+2025-08-01 06:09:11 [info     ] Chat processed successfully    confidence=0.95 message_length=4 processing_time=39.658833 session_id=brain_1754024894247_lev7syzme
+INFO:     127.0.0.1:62952 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62959 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63195 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-01 06:16:22 [info     ] Shutting down BrainGenTech LangChain API
+INFO:     Application shutdown complete.
+INFO:     Finished server process [31904]
