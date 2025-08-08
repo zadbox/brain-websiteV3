@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Mail\ContactMessage as MailContactMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Mail\ContactMessage;
 
 class IndexController extends Controller
 {
@@ -32,6 +31,30 @@ class IndexController extends Controller
     }
     public function awa(){
         return view("awa");
+    }
+    public function demo(){
+        return view("demo");
+    }
+    public function industries(){
+        return view("industries");
+    }
+    public function technology(){
+        return view("technology");
+    }
+    public function resources(){
+        return view("resources");
+    }
+    public function commercialDashboard(){
+        return view("commercial-dashboard");
+    }
+    public function brainAssistant(){
+        return view("solutions.brain-assistant");
+    }
+    public function brainRh(){
+        return view("solutions.brain-rh");
+    }
+    public function brainInvest(){
+        return view("solutions.brain-invest");
     }
     public function store(Request $request)
     {

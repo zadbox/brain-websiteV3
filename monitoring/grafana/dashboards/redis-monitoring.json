@@ -1,0 +1,235 @@
+{
+    "id": null,
+    "title": "BrainGenTechnology - Redis Monitoring",
+    "tags": ["braintech", "redis", "cache", "performance"],
+    "timezone": "browser",
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "10s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Redis Status",
+        "type": "stat",
+        "gridPos": {"h": 4, "w": 4, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "redis_up",
+            "legendFormat": "Redis Status"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "mappings": [
+              {"type": "value", "value": "0", "text": "DOWN"},
+              {"type": "value", "value": "1", "text": "UP"}
+            ],
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "green", "value": 1}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Connected Clients",
+        "type": "stat",
+        "gridPos": {"h": 4, "w": 4, "x": 4, "y": 0},
+        "targets": [
+          {
+            "expr": "redis_connected_clients",
+            "legendFormat": "Clients"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "unit": "short"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Commands/sec",
+        "type": "stat",
+        "gridPos": {"h": 4, "w": 4, "x": 8, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(redis_commands_processed_total[1m])",
+            "legendFormat": "Commands/sec"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "unit": "reqps"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Memory Usage",
+        "type": "stat",
+        "gridPos": {"h": 4, "w": 4, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "redis_memory_used_bytes / (1024*1024)",
+            "legendFormat": "Memory (MB)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "unit": "decbytes",
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": 0},
+                {"color": "yellow", "value": 100},
+                {"color": "red", "value": 500}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Commands Per Second",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
+        "targets": [
+          {
+            "expr": "rate(redis_commands_processed_total[1m])",
+            "legendFormat": "Total Commands/sec"
+          },
+          {
+            "expr": "rate(redis_commands_processed_total{cmd=\"get\"}[1m])",
+            "legendFormat": "GET Commands/sec"
+          },
+          {
+            "expr": "rate(redis_commands_processed_total{cmd=\"set\"}[1m])",
+            "legendFormat": "SET Commands/sec"
+          }
+        ],
+        "yAxes": [
+          {
+            "unit": "reqps",
+            "min": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Memory Usage Over Time",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 4},
+        "targets": [
+          {
+            "expr": "redis_memory_used_bytes",
+            "legendFormat": "Used Memory"
+          },
+          {
+            "expr": "redis_memory_max_bytes",
+            "legendFormat": "Max Memory"
+          }
+        ],
+        "yAxes": [
+          {
+            "unit": "decbytes",
+            "min": 0
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Cache Hit Rate",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+        "targets": [
+          {
+            "expr": "rate(redis_keyspace_hits_total[1m]) / (rate(redis_keyspace_hits_total[1m]) + rate(redis_keyspace_misses_total[1m])) * 100",
+            "legendFormat": "Hit Rate %"
+          }
+        ],
+        "yAxes": [
+          {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Key Expiration",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+        "targets": [
+          {
+            "expr": "rate(redis_expired_keys_total[1m])",
+            "legendFormat": "Expired Keys/sec"
+          },
+          {
+            "expr": "rate(redis_evicted_keys_total[1m])",
+            "legendFormat": "Evicted Keys/sec"
+          }
+        ],
+        "yAxes": [
+          {
+            "unit": "reqps",
+            "min": 0
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Database Keys Count",
+        "type": "table",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 20},
+        "targets": [
+          {
+            "expr": "redis_db_keys",
+            "legendFormat": "DB{{db}}"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "renameByName": {
+                "db": "Database",
+                "Value": "Keys Count"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Network I/O",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 20},
+        "targets": [
+          {
+            "expr": "rate(redis_net_input_bytes_total[1m])",
+            "legendFormat": "Input bytes/sec"
+          },
+          {
+            "expr": "rate(redis_net_output_bytes_total[1m])",
+            "legendFormat": "Output bytes/sec"
+          }
+        ],
+        "yAxes": [
+          {
+            "unit": "Bps",
+            "min": 0
+          }
+        ]
+      }
+    ]
+}

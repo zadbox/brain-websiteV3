@@ -1,0 +1,108 @@
+{
+    "id": null,
+    "title": "RAG System - AI Metrics",
+    "tags": ["braintech", "rag", "ai"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "RAG Query Performance",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(rag_query_duration_seconds_bucket[5m]))",
+            "legendFormat": "95th percentile"
+          },
+          {
+            "expr": "histogram_quantile(0.50, rate(rag_query_duration_seconds_bucket[5m]))",
+            "legendFormat": "Median"
+          }
+        ],
+        "yAxes": [{"unit": "s"}],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Lead Qualification Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(lead_qualifications_total[5m])",
+            "legendFormat": "Qualifications/sec"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "LLM API Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "rate(llm_api_requests_total{status=\"success\"}[5m]) / rate(llm_api_requests_total[5m]) * 100",
+            "legendFormat": "Success Rate %"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "yellow", "value": 90},
+                {"color": "green", "value": 95}
+              ]
+            },
+            "unit": "percent"
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 8}
+      },
+      {
+        "id": 4,
+        "title": "Token Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(llm_tokens_processed_total[5m])",
+            "legendFormat": "Tokens/sec"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 18, "x": 6, "y": 8}
+      },
+      {
+        "id": 5,
+        "title": "Conversation Metrics",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(chat_conversations_total[5m])",
+            "legendFormat": "New Conversations/sec"
+          },
+          {
+            "expr": "rate(chat_messages_total[5m])",
+            "legendFormat": "Messages/sec"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
+      },
+      {
+        "id": 6,
+        "title": "Vector Store Performance",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(vector_search_duration_seconds_bucket[5m]))",
+            "legendFormat": "Search Latency 95th"
+          },
+          {
+            "expr": "rate(vector_searches_total[5m])",
+            "legendFormat": "Searches/sec"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}
+      }
+    ],
+    "time": {"from": "now-1h", "to": "now"},
+    "refresh": "15s"
+}

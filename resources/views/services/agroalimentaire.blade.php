@@ -1,4 +1,4 @@
-@extends('layouts.app4')
+@extends('layouts.app')
 
 @section('title', 'Agroalimentaire tracabilite')
 

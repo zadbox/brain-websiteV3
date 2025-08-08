@@ -1,0 +1,30 @@
+/opt/anaconda3/envs/Elect_24/lib/python3.11/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_name" in HuggingFaceInferenceAPIEmbeddings has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:236: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Started server process [20827]
+INFO:     Waiting for application startup.
+/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:85: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+  embeddings = HuggingFaceEmbeddings(
+/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:89: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-chroma package and should be used instead. To use it run `pip install -U :class:`~langchain-chroma` and import as `from :class:`~langchain_chroma import Chroma``.
+  vectorstore = Chroma(
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
+🧠 BrainGenTechnology Working RAG Server
+==================================================
+🚀 Initializing BrainGenTechnology Working RAG Server...
+✅ Groq initialized: Groq ready
+✅ Vectorstore loaded with 56 documents
+📊 System Status:
+   Groq API: ✅
+   Vectorstore: ✅
+INFO:     127.0.0.1:56617 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56903 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56968 - "GET /health HTTP/1.1" 200 OK

@@ -1,70 +1,89 @@
 @extends('layouts.app')
 
-@section('title', 'BrainGen Technology - AI & Blockchain Solutions')
+@section('title', 'BRAIN - Advanced AI & Automation Solutions | Transform Your Business')
+@section('meta_description', 'Transform your business with BRAIN\'s cutting-edge AI, automation, and blockchain solutions. Trusted by industry leaders for intelligent automation and digital transformation.')
 
 @section('content')
 
-<!-- Modern Dark Theme Landing Page -->
-<main class="modern-landing">
+<!-- Modern Professional Homepage -->
+<main class="homepage-main">
     
-    <!-- Neural Network Background -->
-    <canvas id="neural-network-canvas" class="neural-network-canvas"></canvas>
-    
-    <!-- Gradient Background Overlay -->
-    <div class="gradient-overlay"></div>
+    <!-- Neural Network Canvas Background -->
+    <canvas id="neural-canvas"></canvas>
     
     <!-- Hero Section -->
-    <section class="hero-huly">
-        <!-- Huly-style Background Animation -->
-        <div class="hero-background">
-            <!-- Option 1: CSS-only animation (current) -->
-            <div class="spatial-light-beam"></div>
-            <div class="smoke-effect"></div>
-            <div class="particle-field"></div>
-            
-            <!-- Option 2: Video background (uncomment to use) -->
-            <!-- <video class="hero-video" autoplay muted loop playsinline>
-                <source src="{{asset('assets/videos/hero-background.mp4')}}" type="video/mp4">
-                <source src="{{asset('assets/videos/hero-background.webm')}}" type="video/webm">
-            </video> -->
-        </div>
-        
-        <div class="container">
-            <div class="hero-content-huly">
-                <div class="hero-badge animate-item">
-                    <span class="badge-text">🚀 Welcome to the Future</span>
-                </div>
-                
-                <h1 class="hero-title-huly animate-item">
-                    <span class="gradient-text-huly">Accelerate your performance</span>
-                    <br>
-                    <span class="gradient-text-huly">with AI and Automation</span>
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Transform Your Business
+                    <span class="gradient-text">With Advanced AI</span>
+                    & Intelligent Automation
                 </h1>
                 
-                <p class="hero-subtitle-huly animate-item">
-                    Transform your business with cutting-edge artificial intelligence 
-                    and automation solutions designed for the modern enterprise.
+                <p class="hero-description">
+                    Unlock the full potential of artificial intelligence with our cutting-edge solutions. 
+                    From intelligent automation to blockchain integration, we deliver enterprise-grade 
+                    technology that drives real business results.
                 </p>
                 
-                <div class="hero-actions-huly animate-item">
-                    <a href="{{url('/contact')}}" class="btn-huly primary glow-effect">
-                        <span>Try it free</span>
-                        <div class="btn-glow"></div>
-                    </a>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="500">500</div>
+                        <div class="stat-label">+ Projects Delivered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">98</div>
+                        <div class="stat-label">% Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="24">24</div>
+                        <div class="stat-label">h/7 Support</div>
+                    </div>
                 </div>
                 
-                <div class="hero-stats-huly animate-item">
-                    <div class="stat-item-huly">
-                        <div class="stat-number-huly">200+</div>
-                        <div class="stat-label-huly">Projects Delivered</div>
+                <div class="hero-actions">
+                    <a href="{{url('/contact')}}" class="btn-primary">
+                        <span>Start Your Transformation</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#solutions" class="btn-secondary">
+                        <span>Explore Solutions</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="dashboard-preview">
+                    <div class="dashboard-header">
+                        <div class="dashboard-controls">
+                            <div class="control red"></div>
+                            <div class="control yellow"></div>
+                            <div class="control green"></div>
+                        </div>
+                        <div class="dashboard-title">BRAIN AI Dashboard</div>
                     </div>
-                    <div class="stat-item-huly">
-                        <div class="stat-number-huly">50+</div>
-                        <div class="stat-label-huly">Happy Clients</div>
-                    </div>
-                    <div class="stat-item-huly">
-                        <div class="stat-number-huly">99%</div>
-                        <div class="stat-label-huly">Success Rate</div>
+                    <div class="dashboard-content">
+                        <div class="metrics-row">
+                            <div class="metric-card">
+                                <span class="metric-label">AI Efficiency</span>
+                                <span class="metric-value">94.7%</span>
+                                <span class="metric-trend">↗ +12%</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-label">Automation Rate</span>
+                                <span class="metric-value">87.3%</span>
+                                <span class="metric-trend">↗ +8%</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="hero-chart" width="400" height="180"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,245 +91,304 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features-modern">
-        <div class="container">
-            <div class="section-header animate-item">
+    <section class="features-section" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                    <span>Advanced Capabilities</span>
+                </div>
                 <h2 class="section-title">
-                    <span class="gradient-text">Cutting-Edge Solutions</span>
+                    Enterprise-Grade AI Solutions
+                    <span class="gradient-text">Built for Modern Business</span>
                 </h2>
-                <p class="section-subtitle">
-                    We deliver next-generation technology solutions that transform how businesses operate
+                <p class="section-description">
+                    Harness the power of artificial intelligence with our comprehensive suite of 
+                    enterprise solutions designed to accelerate growth and innovation.
                 </p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card animate-item">
+                <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/>
+                            <path d="M14 6.5a2.5 2.5 0 0 1 4.96-.44 2.5 2.5 0 0 1 2.96 3.08 3 3 0 0 1 .34 5.58 2.5 2.5 0 0 1-1.32 4.24 2.5 2.5 0 0 1-4.44 2.04A2.5 2.5 0 0 1 14 17.5Z"/>
+                        </svg>
                     </div>
-                    <h3 class="feature-title">AI Automation</h3>
+                    <h3 class="feature-title">AI & Machine Learning</h3>
                     <p class="feature-description">
-                        Intelligent automation that learns and adapts to your business processes
+                        Advanced neural networks and deep learning models that adapt and evolve 
+                        with your business needs, delivering predictive insights and automation.
                     </p>
-                    <div class="feature-stats">
-                        <div class="stat-circle">
-                            <div class="stat-value counter" data-target="85">0</div>
-                            <div class="stat-text">% Efficiency</div>
-                        </div>
+                    <div class="feature-tags">
+                        <span class="tag">Predictive Analytics</span>
+                        <span class="tag">Neural Networks</span>
+                        <span class="tag">Deep Learning</span>
                     </div>
                 </div>
                 
-                <div class="feature-card animate-item">
+                <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-link"></i>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6"/>
+                            <path d="m21 12-6-3-6 3-6-3"/>
+                            <path d="m3 12 6 3 6-3 6 3"/>
+                            <path d="M5.636 5.636 12 12l6.364-6.364"/>
+                            <path d="M18.364 18.364 12 12 5.636 5.636"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Intelligent Automation</h3>
+                    <p class="feature-description">
+                        Streamline operations with smart process automation that reduces costs, 
+                        eliminates errors, and accelerates business workflows.
+                    </p>
+                    <div class="feature-tags">
+                        <span class="tag">Process Mining</span>
+                        <span class="tag">Smart Workflows</span>
+                        <span class="tag">24/7 Operation</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/>
+                            <path d="M12 12h.01"/>
+                            <path d="M8 12h.01"/>
+                            <path d="M16 12h.01"/>
+                        </svg>
                     </div>
                     <h3 class="feature-title">Blockchain Integration</h3>
                     <p class="feature-description">
-                        Secure, transparent, and decentralized solutions for modern enterprises
+                        Secure, transparent, and immutable solutions that enhance trust, 
+                        traceability, and efficiency across your business ecosystem.
                     </p>
-                    <div class="feature-stats">
-                        <div class="stat-circle">
-                            <div class="stat-value counter" data-target="99">0</div>
-                            <div class="stat-text">% Security</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="feature-card animate-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="feature-title">Business Intelligence</h3>
-                    <p class="feature-description">
-                        Data-driven insights that power strategic decision making
-                    </p>
-                    <div class="feature-stats">
-                        <div class="stat-circle">
-                            <div class="stat-value counter" data-target="92">0</div>
-                            <div class="stat-text">% Growth</div>
-                        </div>
+                    <div class="feature-tags">
+                        <span class="tag">Smart Contracts</span>
+                        <span class="tag">Digital Identity</span>
+                        <span class="tag">Supply Chain</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-modern">
-        <div class="container">
-            <div class="section-header animate-item">
+    <!-- Solutions Section -->
+    <section class="solutions-section" id="solutions">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    <span>Our Solutions</span>
+                </div>
                 <h2 class="section-title">
-                    <span class="gradient-text">Tailored Solutions</span>
+                    Specialized AI Solutions
+                    <span class="gradient-text">For Every Industry</span>
                 </h2>
-                <p class="section-subtitle">
-                    Choose your industry and discover how AI can transform your business
+                <p class="section-description">
+                    Discover our comprehensive suite of AI-powered solutions designed 
+                    to meet the unique challenges of your industry.
                 </p>
             </div>
             
-            <div class="industry-selector animate-item">
-                <label for="industry-dropdown" class="selector-label">Select your industry</label>
-                <div class="dropdown-container">
-                    <select id="industry-dropdown" class="industry-dropdown">
-                        <option value="">Choose your industry...</option>
-                        <option value="technology">Technology</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="finance">Finance</option>
-                        <option value="manufacturing">Manufacturing</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <div class="dropdown-arrow">
-                        <i class="fas fa-chevron-down"></i>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+                            <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+                        </svg>
                     </div>
-                </div>
-            </div>
-            
-            <div class="services-tabs" id="expertise-tabs">
-                <div class="tab-navigation animate-item">
-                    <button class="nav-link active" data-bs-target="#ai-tab">
-                        <i class="fas fa-brain"></i>
-                        <span>AI Solutions</span>
-                    </button>
-                    <button class="nav-link" data-bs-target="#blockchain-tab">
-                        <i class="fas fa-link"></i>
-                        <span>Blockchain</span>
-                    </button>
-                    <button class="nav-link" data-bs-target="#automation-tab">
-                        <i class="fas fa-cogs"></i>
-                        <span>Automation</span>
-                    </button>
+                    <h3 class="solution-title">Brain Invest</h3>
+                    <p class="solution-description">
+                        AI-powered investment platform with predictive analytics, automated trading, 
+                        and intelligent portfolio management for maximum returns.
+                    </p>
+                    <div class="solution-features">
+                        <div class="feature-item">Predictive Market Analysis</div>
+                        <div class="feature-item">Automated Risk Management</div>
+                        <div class="feature-item">Real-time Trading</div>
+                    </div>
+                    <a href="{{url('/solutions/brain-invest')}}" class="solution-link">
+                        <span>Explore Brain Invest</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
                 
-                <div class="tab-content animate-item" id="expertise-section">
-                    <div class="tab-panel active show" id="ai-tab">
-                        <div class="service-content">
-                            <div class="service-visual">
-                                <div class="service-image">
-                                    <img src="{{asset('images/digital.webp')}}" alt="AI Solutions">
-                                </div>
-                            </div>
-                            <div class="service-details">
-                                <h3>Artificial Intelligence Solutions</h3>
-                                <p>Transform your business with intelligent automation, machine learning, and predictive analytics.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Machine Learning Models</li>
-                                    <li><i class="fas fa-check"></i> Natural Language Processing</li>
-                                    <li><i class="fas fa-check"></i> Computer Vision</li>
-                                    <li><i class="fas fa-check"></i> Predictive Analytics</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
                     </div>
-                    
-                    <div class="tab-panel" id="blockchain-tab">
-                        <div class="service-content">
-                            <div class="service-visual">
-                                <div class="service-image">
-                                    <img src="{{asset('images/blockchain.webp')}}" alt="Blockchain Solutions">
-                                </div>
-                            </div>
-                            <div class="service-details">
-                                <h3>Blockchain Technology</h3>
-                                <p>Secure, transparent, and decentralized solutions for modern business challenges.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Smart Contracts</li>
-                                    <li><i class="fas fa-check"></i> Decentralized Applications</li>
-                                    <li><i class="fas fa-check"></i> Digital Identity</li>
-                                    <li><i class="fas fa-check"></i> Supply Chain Tracking</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <h3 class="solution-title">Brain RH</h3>
+                    <p class="solution-description">
+                        Revolutionary HR management system powered by AI for talent acquisition, 
+                        performance optimization, and workforce analytics.
+                    </p>
+                    <div class="solution-features">
+                        <div class="feature-item">AI Talent Matching</div>
+                        <div class="feature-item">Performance Analytics</div>
+                        <div class="feature-item">Workforce Optimization</div>
                     </div>
-                    
-                    <div class="tab-panel" id="automation-tab">
-                        <div class="service-content">
-                            <div class="service-visual">
-                                <div class="service-image">
-                                    <img src="{{asset('images/auto.webp')}}" alt="Automation Solutions">
-                                </div>
-                            </div>
-                            <div class="service-details">
-                                <h3>Business Automation</h3>
-                                <p>Streamline operations with intelligent automation solutions that scale with your business.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Process Automation</li>
-                                    <li><i class="fas fa-check"></i> Workflow Optimization</li>
-                                    <li><i class="fas fa-check"></i> Data Integration</li>
-                                    <li><i class="fas fa-check"></i> Real-time Monitoring</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <a href="{{url('/solutions/brain-rh')}}" class="solution-link">
+                        <span>Explore Brain RH</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            <path d="M8 9h8"/>
+                            <path d="M8 13h6"/>
+                        </svg>
                     </div>
+                    <h3 class="solution-title">Brain Assistant</h3>
+                    <p class="solution-description">
+                        Intelligent virtual assistant powered by advanced NLP and machine learning 
+                        for enhanced customer service and business automation.
+                    </p>
+                    <div class="solution-features">
+                        <div class="feature-item">Natural Language Processing</div>
+                        <div class="feature-item">24/7 Customer Support</div>
+                        <div class="feature-item">Multi-channel Integration</div>
+                    </div>
+                    <a href="{{url('/solutions/brain-assistant')}}" class="solution-link">
+                        <span>Explore Brain Assistant</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-modern">
-        <div class="container">
-            <div class="section-header animate-item">
+    <section class="testimonials-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Client Success</span>
+                </div>
                 <h2 class="section-title">
-                    <span class="gradient-text">Trusted by Industry Leaders</span>
+                    Trusted by Global Leaders
+                    <span class="gradient-text">in Digital Innovation</span>
                 </h2>
-                <p class="section-subtitle">
-                    See what our clients say about working with us
+                <p class="section-description">
+                    Join thousands of organizations worldwide who trust BRAIN to deliver 
+                    transformative AI solutions that drive real business results.
                 </p>
             </div>
             
             <div class="testimonials-grid">
-                <div class="testimonial-card animate-item">
+                <div class="testimonial-card">
                     <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
                     </div>
                     <p class="testimonial-text">
-                        "BrainGen transformed our operations with their AI solutions. We've seen a 300% improvement in efficiency."
+                        "BRAIN's AI solutions have revolutionized our operations. We achieved 400% ROI within the first year and completely transformed our customer experience."
                     </p>
                     <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
                         <div class="author-info">
                             <div class="author-name">Sarah Johnson</div>
-                            <div class="author-role">CTO, TechCorp</div>
+                            <div class="author-role">Chief Technology Officer</div>
+                            <div class="author-company">TechnovationCorp</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card animate-item">
+                <div class="testimonial-card">
                     <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
                     </div>
                     <p class="testimonial-text">
-                        "The blockchain integration was seamless and has revolutionized our supply chain transparency."
+                        "The blockchain integration transformed our supply chain transparency. We now have real-time visibility and enhanced security across all operations."
                     </p>
                     <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
                         <div class="author-info">
                             <div class="author-name">Michael Chen</div>
-                            <div class="author-role">Operations Director, LogiCorp</div>
+                            <div class="author-role">Operations Director</div>
+                            <div class="author-company">GlobalLogistics Inc.</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card animate-item">
+                <div class="testimonial-card">
                     <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
                     </div>
                     <p class="testimonial-text">
-                        "Outstanding service and cutting-edge technology. BrainGen exceeded all our expectations."
+                        "Exceptional service and innovative technology. BRAIN exceeded our expectations and delivered solutions that scale with our growing business."
                     </p>
                     <div class="testimonial-author">
+                        <div class="author-avatar">ER</div>
                         <div class="author-info">
                             <div class="author-name">Emma Rodriguez</div>
-                            <div class="author-role">CEO, InnovateCorp</div>
+                            <div class="author-role">Chief Executive Officer</div>
+                            <div class="author-company">InnovateNext Ltd.</div>
                         </div>
                     </div>
                 </div>
@@ -319,60 +397,67 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-modern">
-        <div class="container">
-            <div class="cta-content animate-item">
-                <div class="cta-badge">
-                    <span class="badge-text">Ready to Transform?</span>
-                </div>
-                
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-content">
                 <h2 class="cta-title">
-                    <span class="gradient-text">Start Your Digital Revolution</span>
+                    Ready to Transform
+                    <span class="gradient-text">Your Business with AI?</span>
                 </h2>
                 
-                <p class="cta-subtitle">
-                    Join hundreds of companies already transforming their business with our AI and blockchain solutions.
+                <p class="cta-description">
+                    Join thousands of forward-thinking companies who have already revolutionized 
+                    their operations with BRAIN's intelligent automation and AI solutions.
                 </p>
                 
                 <div class="cta-actions">
-                    <a href="{{url('/contact')}}" class="btn-glow primary large">
-                        <span>Get Started Today</span>
-                        <i class="fas fa-rocket"></i>
+                    <a href="{{url('/contact')}}" class="btn-primary">
+                        <span>Start Your Transformation</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
                     </a>
-                    <a href="{{url('/a-propos')}}" class="btn-glow secondary large">
+                    
+                    <a href="javascript:void(0)" onclick="toggleChatWidget()" class="btn-secondary">
                         <span>Schedule a Demo</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
                     </a>
                 </div>
                 
                 <div class="cta-features">
                     <div class="feature-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Free Consultation</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>Enterprise Security</span>
                     </div>
                     <div class="feature-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Custom Solutions</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20,6 9,17 4,12"/>
+                        </svg>
+                        <span>Proven Results</span>
                     </div>
                     <div class="feature-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>24/7 Support</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span>24/7 Expert Support</span>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Glowing Orbs - REMOVED -->
-        <!-- Cube and particle animations disabled -->
     </section>
 
 </main>
 
-<!-- Import Font Awesome and Custom Scripts -->
+<!-- Modern Stylesheets and Scripts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('assets/css/index-page.css')}}?v={{time()}}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{{asset('assets/js/index-page.js')}}?v={{time()}}" defer></script>
 
 @endsection

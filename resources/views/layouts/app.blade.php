@@ -28,11 +28,31 @@
     <!-- Vite CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
+    <!-- RAG Chat Widget Styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/rag-chat-widget.css') }}">
+    
     <!-- Additional Styles -->
     @stack('styles')
+    
+    <style>
+    /* Global spacing for all pages to account for fixed header */
+    main {
+        padding-top: 120px;
+    }
+    
+    /* Ensure consistent font family across all pages */
+    body {
+        font-family: 'Sora', 'Inter', system-ui, sans-serif;
+    }
+    
+    /* Ensure header is always on top */
+    .header-ultra {
+        z-index: 1000;
+    }
+    </style>
 </head>
 
-<body class="bg-neutral-900 text-neutral-100 antialiased">
+<body class="bg-gradient-to-b from-transparent to-black/20 text-neutral-100 antialiased min-h-screen">
     <!-- Neural Network Background -->
     <canvas id="neural-network-canvas" class="neural-network-canvas"></canvas>
     
@@ -57,7 +77,39 @@
         
     </div>
     
-    <!-- Chat Widget -->
+    <!-- RAG Chat Widget -->
+    <script src="{{ asset('assets/js/rag-chat-widget.js') }}"></script>
+    <script>
+        // Initialize RAG Chat Widget
+        document.addEventListener('DOMContentLoaded', function() {
+            window.ragChatWidget = new BrainGenRAGChatWidget({
+                apiEndpoint: '/api/chat',
+                qualificationEndpoint: '/api/chat/qualify',
+                autoOpen: false,
+                theme: 'dark',
+                position: 'bottom-right',
+                welcomeMessage: "Hi! I'm your AI assistant from BrainGenTechnology. How can I help you explore our AI, automation, and blockchain solutions today?",
+                brandName: 'BrainGenTechnology',
+                autoQualifyAfter: 4
+            });
+            
+            // Listen for lead qualification events
+            document.addEventListener('ragChatLeadQualified', function(event) {
+                console.log('Lead qualified:', event.detail);
+                
+                // Optional: Send to analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'lead_qualified', {
+                        'lead_score': event.detail.qualification.lead_score,
+                        'sales_ready': event.detail.qualification.sales_ready,
+                        'company_size': event.detail.qualification.company_size
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Chat Widget (Legacy) -->
     @include('partials.chat-widget')
     
     <!-- Additional Scripts -->
