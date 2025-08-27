@@ -77,6 +77,7 @@ class AnalyticsController extends Controller
             'overview' => $this->getOverviewMetrics($dateRange),
             'conversations' => $this->getConversationMetrics($dateRange),
             'leads' => $this->getLeadMetrics($dateRange),
+            'consultations' => $this->getConsultationMetrics($dateRange),
             'performance' => $this->getPerformanceMetrics($dateRange),
             'trends' => $this->getTrendData($dateRange),
             'traffic' => $this->getTrafficMetrics($dateRange),
@@ -337,6 +338,62 @@ class AnalyticsController extends Controller
                 ->distinct('user_ip')
                 ->count(),
             'return_visitors' => $this->getReturnVisitors($dateRange)
+        ];
+    }
+
+    /**
+     * Get consultation metrics
+     */
+    private function getConsultationMetrics($dateRange)
+    {
+        // Total consultation requests
+        $totalRequests = DB::table('consultation_requests')
+            ->whereBetween('requested_at', $dateRange)
+            ->count();
+
+        // Requests by status
+        $requestsByStatus = DB::table('consultation_requests')
+            ->select('status', DB::raw('COUNT(*) as count'))
+            ->whereBetween('requested_at', $dateRange)
+            ->groupBy('status')
+            ->get();
+
+        // Requests by type
+        $requestsByType = DB::table('consultation_requests')
+            ->select('request_type', DB::raw('COUNT(*) as count'))
+            ->whereBetween('requested_at', $dateRange)
+            ->groupBy('request_type')
+            ->orderByDesc('count')
+            ->get();
+
+        // Requests by industry
+        $requestsByIndustry = DB::table('consultation_requests')
+            ->select('industry', DB::raw('COUNT(*) as count'))
+            ->whereBetween('requested_at', $dateRange)
+            ->whereNotNull('industry')
+            ->groupBy('industry')
+            ->orderByDesc('count')
+            ->limit(10)
+            ->get();
+
+        // Conversion rate (consultations from total conversations)
+        $totalConversations = DB::table('chat_conversations')
+            ->whereBetween('started_at', $dateRange)
+            ->count();
+
+        $conversionRate = $totalConversations > 0 
+            ? round(($totalRequests / $totalConversations) * 100, 2)
+            : 0;
+
+        return [
+            'total_requests' => $totalRequests,
+            'requests_by_status' => $requestsByStatus,
+            'requests_by_type' => $requestsByType,
+            'requests_by_industry' => $requestsByIndustry,
+            'conversion_rate' => $conversionRate,
+            'pending_requests' => DB::table('consultation_requests')
+                ->where('status', 'pending')
+                ->count()
         ];
     }
 

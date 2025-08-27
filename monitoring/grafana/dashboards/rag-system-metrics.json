@@ -6,16 +6,16 @@
     "panels": [
       {
         "id": 1,
-        "title": "RAG Query Performance",
+        "title": "Redis Performance Metrics",
         "type": "graph",
         "targets": [
           {
-            "expr": "histogram_quantile(0.95, rate(rag_query_duration_seconds_bucket[5m]))",
-            "legendFormat": "95th percentile"
+            "expr": "redis_memory_used_bytes / redis_memory_max_bytes * 100",
+            "legendFormat": "Memory Usage %"
           },
           {
-            "expr": "histogram_quantile(0.50, rate(rag_query_duration_seconds_bucket[5m]))",
-            "legendFormat": "Median"
+            "expr": "rate(redis_commands_processed_total[5m])",
+            "legendFormat": "Commands/sec"
           }
         ],
         "yAxes": [{"unit": "s"}],
@@ -23,24 +23,24 @@
       },
       {
         "id": 2,
-        "title": "Lead Qualification Rate",
+        "title": "Cache Hit Rate",
         "type": "graph",
         "targets": [
           {
-            "expr": "rate(lead_qualifications_total[5m])",
-            "legendFormat": "Qualifications/sec"
+            "expr": "rate(redis_keyspace_hits_total[5m])",
+            "legendFormat": "Cache Hits/sec"
           }
         ],
         "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
       },
       {
         "id": 3,
-        "title": "LLM API Status",
+        "title": "Cache Success Rate",
         "type": "stat",
         "targets": [
           {
-            "expr": "rate(llm_api_requests_total{status=\"success\"}[5m]) / rate(llm_api_requests_total[5m]) * 100",
-            "legendFormat": "Success Rate %"
+            "expr": "redis_keyspace_hits_total / (redis_keyspace_hits_total + redis_keyspace_misses_total) * 100",
+            "legendFormat": "Cache Hit Rate %"
           }
         ],
         "fieldConfig": {
@@ -60,44 +60,44 @@
       },
       {
         "id": 4,
-        "title": "Token Usage",
+        "title": "Database Keys Count",
         "type": "graph",
         "targets": [
           {
-            "expr": "rate(llm_tokens_processed_total[5m])",
-            "legendFormat": "Tokens/sec"
+            "expr": "redis_db_keys",
+            "legendFormat": "Total Keys"
           }
         ],
         "gridPos": {"h": 8, "w": 18, "x": 6, "y": 8}
       },
       {
         "id": 5,
-        "title": "Conversation Metrics",
+        "title": "Redis Connection Metrics",
         "type": "graph",
         "targets": [
           {
-            "expr": "rate(chat_conversations_total[5m])",
-            "legendFormat": "New Conversations/sec"
+            "expr": "redis_connected_clients",
+            "legendFormat": "Connected Clients"
           },
           {
-            "expr": "rate(chat_messages_total[5m])",
-            "legendFormat": "Messages/sec"
+            "expr": "rate(redis_commands_processed_total[5m])",
+            "legendFormat": "Commands/sec"
           }
         ],
         "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
       },
       {
         "id": 6,
-        "title": "Vector Store Performance",
+        "title": "Cache Miss & Expiry Metrics",
         "type": "graph",
         "targets": [
           {
-            "expr": "histogram_quantile(0.95, rate(vector_search_duration_seconds_bucket[5m]))",
-            "legendFormat": "Search Latency 95th"
+            "expr": "rate(redis_keyspace_misses_total[5m])",
+            "legendFormat": "Cache Misses/sec"
           },
           {
-            "expr": "rate(vector_searches_total[5m])",
-            "legendFormat": "Searches/sec"
+            "expr": "rate(redis_expired_keys_total[5m])",
+            "legendFormat": "Expired Keys/sec"
           }
         ],
         "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}

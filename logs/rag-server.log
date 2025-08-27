@@ -1,20 +1,23 @@
-/opt/anaconda3/envs/Elect_24/lib/python3.11/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_name" in HuggingFaceInferenceAPIEmbeddings has conflict with protected namespace "model_".
+/opt/anaconda3/lib/python3.13/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_name" in HuggingFaceInferenceAPIEmbeddings has conflict with protected namespace "model_".
 
 You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
   warnings.warn(
-/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:236: DeprecationWarning: 
+/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:447: DeprecationWarning: 
         on_event is deprecated, use lifespan event handlers instead.
 
         Read more about it in the
         [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
         
   @app.on_event("startup")
-INFO:     Started server process [20827]
+INFO:     Started server process [49540]
 INFO:     Waiting for application startup.
-/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:85: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:89: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
   embeddings = HuggingFaceEmbeddings(
-/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:89: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-chroma package and should be used instead. To use it run `pip install -U :class:`~langchain-chroma` and import as `from :class:`~langchain_chroma import Chroma``.
+/Users/abderrahim_boussyf/brain-website___V3/rag_system/working_server.py:93: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-chroma package and should be used instead. To use it run `pip install -U :class:`~langchain-chroma` and import as `from :class:`~langchain_chroma import Chroma``.
   vectorstore = Chroma(
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Redis connection failed, using in-memory storage: Error 8 connecting to redis:6379. nodename nor servname provided, or not known.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
 🧠 BrainGenTechnology Working RAG Server
@@ -22,9 +25,92 @@ INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
 🚀 Initializing BrainGenTechnology Working RAG Server...
 ✅ Groq initialized: Groq ready
 ✅ Vectorstore loaded with 56 documents
+✅ Session manager initialized
+✅ Laravel bridge initialized
 📊 System Status:
    Groq API: ✅
    Vectorstore: ✅
-INFO:     127.0.0.1:56617 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56903 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56968 - "GET /health HTTP/1.1" 200 OK
+   Session Manager: ✅
+   Laravel Bridge: ✅
+INFO:     127.0.0.1:50615 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50628 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50651 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50682 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50715 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50863 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51002 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51014 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52191 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52215 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52227 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52242 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52274 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52289 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52304 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52317 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52354 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52370 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52383 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52487 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52529 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52565 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52582 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52609 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52651 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52669 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52859 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52878 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52906 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52943 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52958 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52971 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53289 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53376 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53434 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53449 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53496 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53526 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53558 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53587 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53621 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53636 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54296 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /health HTTP/1.1" 200 OK
+Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+❌ Error storing conversation: HTTPConnectionPool(host='braintech-laravel', port=80): Max retries exceeded with url: /api/conversations (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x31496fcb0>: Failed to resolve 'braintech-laravel' ([Errno 8] nodename nor servname provided, or not known)"))
+❌ Error storing message: HTTPConnectionPool(host='braintech-laravel', port=80): Max retries exceeded with url: /api/messages (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x314a2d590>: Failed to resolve 'braintech-laravel' ([Errno 8] nodename nor servname provided, or not known)"))
+❌ Error storing message: HTTPConnectionPool(host='braintech-laravel', port=80): Max retries exceeded with url: /api/messages (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x314a2e850>: Failed to resolve 'braintech-laravel' ([Errno 8] nodename nor servname provided, or not known)"))
+INFO:     127.0.0.1:54368 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54396 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54437 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54716 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54884 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55250 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55569 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55640 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56064 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56151 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56196 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56221 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56345 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56659 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56673 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56686 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56721 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56757 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56781 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56795 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56808 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56821 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56834 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56847 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56874 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56896 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56909 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56924 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56937 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56950 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56966 - "GET /health HTTP/1.1" 200 OK

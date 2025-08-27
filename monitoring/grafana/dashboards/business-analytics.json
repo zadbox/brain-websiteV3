@@ -19,7 +19,7 @@
         "gridPos": {"h": 4, "w": 4, "x": 0, "y": 0},
         "targets": [
           {
-            "expr": "rag_system_up",
+            "expr": "up{job=\"redis\"}",
             "legendFormat": "System Status"
           }
         ],
@@ -46,7 +46,7 @@
         "gridPos": {"h": 4, "w": 4, "x": 4, "y": 0},
         "targets": [
           {
-            "expr": "rag_active_conversations",
+            "expr": "redis_connected_clients",
             "legendFormat": "Active Chats"
           }
         ],
@@ -64,7 +64,7 @@
         "gridPos": {"h": 4, "w": 4, "x": 8, "y": 0},
         "targets": [
           {
-            "expr": "increase(rag_queries_total[24h])",
+            "expr": "redis_commands_processed_total",
             "legendFormat": "Queries"
           }
         ],
@@ -82,7 +82,7 @@
         "gridPos": {"h": 4, "w": 4, "x": 12, "y": 0},
         "targets": [
           {
-            "expr": "rag_lead_conversion_rate",
+            "expr": "redis_keyspace_hits_total / (redis_keyspace_hits_total + redis_keyspace_misses_total) * 100",
             "legendFormat": "Conversion %"
           }
         ],
@@ -107,11 +107,11 @@
         "gridPos": {"h": 8, "w": 8, "x": 0, "y": 4},
         "targets": [
           {
-            "expr": "histogram_quantile(0.95, rate(rag_query_duration_seconds_bucket[5m]))",
+            "expr": "redis_memory_used_bytes / redis_memory_max_bytes * 100",
             "legendFormat": "95th percentile"
           },
           {
-            "expr": "histogram_quantile(0.50, rate(rag_query_duration_seconds_bucket[5m]))",
+            "expr": "rate(redis_commands_processed_total[5m])",
             "legendFormat": "Median"
           }
         ],
@@ -132,7 +132,7 @@
         "gridPos": {"h": 8, "w": 8, "x": 8, "y": 4},
         "targets": [
           {
-            "expr": "rate(rag_queries_total[5m]) * 60",
+            "expr": "rate(redis_commands_processed_total[5m]) * 60",
             "legendFormat": "Queries/min"
           }
         ],
@@ -150,16 +150,16 @@
         "gridPos": {"h": 8, "w": 8, "x": 0, "y": 12},
         "targets": [
           {
-            "expr": "rag_leads_by_score{score=\"high\"}",
-            "legendFormat": "High Quality (80-100)"
+            "expr": "redis_keyspace_hits_total",
+            "legendFormat": "Cache Hits"
           },
           {
-            "expr": "rag_leads_by_score{score=\"medium\"}",
-            "legendFormat": "Medium Quality (60-79)"
+            "expr": "redis_keyspace_misses_total",
+            "legendFormat": "Cache Misses"
           },
           {
-            "expr": "rag_leads_by_score{score=\"low\"}",
-            "legendFormat": "Low Quality (0-59)"
+            "expr": "redis_expired_keys_total",
+            "legendFormat": "Expired Keys"
           }
         ]
       },
@@ -170,12 +170,12 @@
         "gridPos": {"h": 8, "w": 8, "x": 8, "y": 12},
         "targets": [
           {
-            "expr": "increase(rag_qualified_leads_total[1h])",
-            "legendFormat": "New Leads/hour"
+            "expr": "increase(redis_commands_processed_total[1h])",
+            "legendFormat": "Commands/hour"
           },
           {
-            "expr": "increase(rag_sales_ready_leads_total[1h])",
-            "legendFormat": "Sales Ready/hour"
+            "expr": "increase(redis_keyspace_hits_total[1h])",
+            "legendFormat": "Cache Hits/hour"
           }
         ],
         "yAxes": [
@@ -237,8 +237,8 @@
         "gridPos": {"h": 8, "w": 8, "x": 0, "y": 28},
         "targets": [
           {
-            "expr": "topk(10, rag_leads_by_industry)",
-            "legendFormat": "{{industry}}"
+            "expr": "redis_db_keys",
+            "legendFormat": "DB {{db}}"
           }
         ],
         "transformations": [
@@ -262,8 +262,8 @@
         "gridPos": {"h": 8, "w": 8, "x": 8, "y": 28},
         "targets": [
           {
-            "expr": "rag_user_intent_distribution",
-            "legendFormat": "{{intent}}"
+            "expr": "rate(redis_commands_processed_total{cmd=~\"get|set|del\"}[5m])",
+            "legendFormat": "{{cmd}} commands"
           }
         ],
         "fieldConfig": {
@@ -280,8 +280,8 @@
         "gridPos": {"h": 4, "w": 4, "x": 16, "y": 0},
         "targets": [
           {
-            "expr": "rate(rag_errors_total[5m]) * 100",
-            "legendFormat": "Error Rate %"
+            "expr": "rate(redis_keyspace_misses_total[5m]) / rate(redis_commands_processed_total[5m]) * 100",
+            "legendFormat": "Miss Rate %"
           }
         ],
         "fieldConfig": {
@@ -305,8 +305,8 @@
         "gridPos": {"h": 4, "w": 4, "x": 20, "y": 0},
         "targets": [
           {
-            "expr": "rag_avg_session_duration_seconds",
-            "legendFormat": "Avg Duration"
+            "expr": "redis_memory_used_bytes / redis_connected_clients",
+            "legendFormat": "Avg Memory/Client"
           }
         ],
         "fieldConfig": {

@@ -177,7 +177,7 @@
         </div>
 
         <!-- Data Tables -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" x-show="!loading">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6" x-show="!loading">
             <!-- Top Industries -->
             <div class="chart-container p-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">
@@ -190,6 +190,40 @@
                             <span class="font-semibold text-indigo-600" x-text="industry.count"></span>
                         </div>
                     </template>
+                </div>
+            </div>
+
+            <!-- Consultation Requests -->
+            <div class="chart-container p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                    <i class="fas fa-calendar-check mr-2 text-green-600"></i>Consultation Requests
+                </h3>
+                <div class="space-y-3">
+                    <!-- Total Requests -->
+                    <div class="flex items-center justify-between py-2 px-3 bg-green-50 rounded-lg">
+                        <span class="font-medium">Total Requests</span>
+                        <span class="font-bold text-green-600" x-text="data.consultations?.total_requests || 0"></span>
+                    </div>
+                    <!-- Pending Requests -->
+                    <div class="flex items-center justify-between py-2 px-3 bg-yellow-50 rounded-lg">
+                        <span class="font-medium">Pending</span>
+                        <span class="font-bold text-yellow-600" x-text="data.consultations?.pending_requests || 0"></span>
+                    </div>
+                    <!-- Conversion Rate -->
+                    <div class="flex items-center justify-between py-2 px-3 bg-blue-50 rounded-lg">
+                        <span class="font-medium">Conversion Rate</span>
+                        <span class="font-bold text-blue-600" x-text="(data.consultations?.conversion_rate || 0) + '%'"></span>
+                    </div>
+                    <!-- Requests by Type -->
+                    <div class="mt-4">
+                        <h4 class="text-sm font-medium text-gray-600 mb-2">By Request Type:</h4>
+                        <template x-for="type in data.consultations?.requests_by_type || []">
+                            <div class="flex items-center justify-between py-1 px-2 bg-gray-50 rounded text-sm">
+                                <span x-text="type.request_type || 'Unknown'"></span>
+                                <span class="font-semibold text-gray-600" x-text="type.count"></span>
+                            </div>
+                        </template>
+                    </div>
                 </div>
             </div>
 

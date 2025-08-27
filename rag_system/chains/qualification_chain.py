@@ -87,7 +87,6 @@ class LeadQualificationChain:
             self.qualification_chain = LLMChain(
                 llm=self.llm,
                 prompt=qualification_prompt,
-                output_parser=self.fixing_parser,
                 verbose=settings.api_debug
             )
             logger.info("Qualification chain initialized")
@@ -98,9 +97,7 @@ class LeadQualificationChain:
     def _create_qualification_prompt(self) -> PromptTemplate:
         """Create comprehensive qualification analysis prompt"""
         
-        format_instructions = self.parser.get_format_instructions()
-        
-        template = f"""You are an expert sales analyst specializing in B2B lead qualification for technology companies. Analyze the following business conversation and extract comprehensive qualification data.
+        template = """You are an expert sales analyst specializing in B2B lead qualification for technology companies. Analyze the following business conversation and extract comprehensive qualification data.
 
 CONVERSATION TO ANALYZE:
 {{conversation_history}}
@@ -135,7 +132,19 @@ Use BANT (Budget, Authority, Need, Timeline) methodology enhanced with modern B2
    - rag: Knowledge management, document search, Q&A systems
    - multi_agent: Complex AI systems, orchestration
 
-5. DECISION MAKER LEVEL:
+5. INDUSTRY CLASSIFICATION:
+   - fintech: Financial services, banks, payments, investments, fintech companies
+   - healthcare: Medical, hospitals, clinics, health tech, pharmaceuticals
+   - retail: E-commerce, stores, consumer products, marketplaces
+   - manufacturing: Factories, production, supply chain, industrial automation
+   - real_estate: Property management, real estate, construction, architecture
+   - agri_food: Agriculture, food processing, farming, supply chain
+   - communication: Marketing, advertising, media, telecommunications
+   - education: Schools, universities, training, e-learning platforms
+   - government: Public sector, municipalities, agencies, compliance
+   - other: Industries not clearly fitting above categories
+
+6. DECISION MAKER LEVEL:
    - user: End user, no buying authority
    - manager: Department manager, limited budget authority
    - director: Department director, significant budget authority
@@ -143,7 +152,7 @@ Use BANT (Budget, Authority, Need, Timeline) methodology enhanced with modern B2
    - owner: Business owner, complete decision authority
    - unknown: No clear indication of authority level
 
-6. LEAD SCORING (0-100):
+7. LEAD SCORING (0-100):
    - Need fit (0-25): How well our solutions match their needs
    - Authority (0-25): Decision-making power of the contact
    - Budget (0-25): Budget availability and investment readiness
@@ -165,9 +174,34 @@ IMPORTANT NOTES:
 - Be conservative in scoring - require clear evidence for high scores
 - Focus on business impact and measurable outcomes
 
-{format_instructions}
+RESPONSE FORMAT:
+Respond with a JSON object containing these exact fields:
+- "intent": one of ["information", "quote", "demo", "consultation", "support", "partnership"]
+- "urgency": one of ["low", "medium", "high", "critical"] 
+- "company_size": one of ["startup", "sme", "mid_market", "enterprise"]
+- "industry": one of ["fintech", "healthcare", "retail", "manufacturing", "real_estate", "agri_food", "communication", "education", "government", "other"]
+- "company_name": string or null if not mentioned
+- "budget_indicators": array of strings
+- "investment_timeline": string or null
+- "technology_interest": array from ["ai", "automation", "blockchain", "rag", "multi_agent", "nlp", "computer_vision", "chatbots"]
+- "use_cases_mentioned": array of strings
+- "decision_maker_level": one of ["user", "manager", "director", "c_level", "owner", "unknown"]
+- "decision_process": string or null
+- "pain_points": array of strings
+- "current_solutions": array of strings
+- "geographic_region": string or null
+- "timezone": string or null
+- "preferred_contact_method": string or null
+- "lead_score": integer from 0-100
+- "next_action": one of ["nurture", "qualify_further", "demo", "proposal", "hand_to_sales", "schedule_call"]
+- "sales_ready": boolean
+- "notes": string with key insights
+- "conversation_quality": integer from 1-10
+- "follow_up_priority": one of ["low", "medium", "high", "urgent"]
+- "qualification_timestamp": current ISO timestamp
+- "model_confidence": float from 0.0-1.0
 
-CRITICAL: Respond ONLY with the properly formatted JSON. Do not include any explanatory text before or after the JSON response."""
+CRITICAL: Respond ONLY with valid JSON. No explanatory text before or after."""
 
         return PromptTemplate(
             input_variables=["conversation_history"],
@@ -207,12 +241,33 @@ CRITICAL: Respond ONLY with the properly formatted JSON. Do not include any expl
                 "conversation_history": formatted_conversation
             })
             
-            # Extract qualification object
-            if isinstance(result["text"], LeadQualification):
-                qualification = result["text"]
-            else:
-                # Parse if it's still a string (backup)
-                qualification = self.parser.parse(result["text"])
+            # Parse JSON response with error handling
+            import json
+            try:
+                # Clean the response text
+                response_text = result["text"].strip()
+                
+                # Try to extract JSON if it's wrapped in other text
+                if '{' in response_text and '}' in response_text:
+                    start = response_text.find('{')
+                    end = response_text.rfind('}') + 1
+                    json_text = response_text[start:end]
+                else:
+                    json_text = response_text
+                
+                qualification_data = json.loads(json_text)
+                qualification = LeadQualification(**qualification_data)
+                
+            except json.JSONDecodeError as e:
+                logger.error(f"JSON parsing failed for session {session_id}: {e}")
+                logger.error(f"Raw response: {result['text']}")
+                
+                # Raise exception to trigger working_server.py fallback instead
+                raise Exception(f"JSON parsing failed: {e}")
+                
+            except Exception as e:
+                logger.error(f"Qualification parsing failed: {e}")
+                raise
             
             # Calculate processing time
             processing_time = (datetime.now(timezone.utc) - start_time).total_seconds()

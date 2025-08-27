@@ -19,7 +19,7 @@
             <div class="footer-brand">
                 <div class="brand-logo-section">
                     <div class="logo-container">
-                        <img src="http://127.0.0.1:8000/assets/LogoBrainBlanc.png" alt="BRAIN Technology" class="footer-logo">
+                        <img src="/assets/logo-b-white.png" alt="BRAIN Technology" class="footer-logo">
                         <div class="logo-glow"></div>
                     </div>
                     <div class="brand-info">
@@ -366,14 +366,16 @@
 
 .logo-glow {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0.2) 40%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
     transition: opacity 0.3s ease;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
 }
 
 .logo-container:hover .logo-glow {

@@ -12,72 +12,57 @@ from datetime import datetime
 from typing import Dict, Any, Optional
 
 class LaravelBridge:
-    def __init__(self, laravel_base_url: str = "http://localhost:8080"):
+    def __init__(self, laravel_base_url: str = "http://braintech-laravel:80"):
         self.laravel_base_url = laravel_base_url
         self.db_path = "/Users/abderrahim_boussyf/brain-website___V3/database/database.sqlite"
         
     def store_conversation(self, session_id: str, user_data: Dict[str, Any] = None):
-        """Store conversation in Laravel database"""
+        """Store conversation in Laravel database via API"""
         try:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
+            payload = {
+                'session_id': session_id,
+                'user_ip': user_data.get('user_ip', '127.0.0.1') if user_data else '127.0.0.1',
+                'referrer': user_data.get('referrer', 'direct') if user_data else 'direct',
+                'started_at': datetime.now().isoformat(),
+                'is_active': True
+            }
             
-            # Check if conversation already exists
-            cursor.execute("SELECT id FROM chat_conversations WHERE session_id = ?", (session_id,))
-            if cursor.fetchone():
-                conn.close()
-                return
+            response = requests.post(
+                f"{self.laravel_base_url}/api/conversations", 
+                json=payload,
+                timeout=5
+            )
             
-            # Insert new conversation
-            cursor.execute("""
-                INSERT INTO chat_conversations 
-                (session_id, user_ip, referrer, started_at, last_activity_at, is_active, created_at, updated_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """, (
-                session_id,
-                user_data.get('user_ip', '127.0.0.1') if user_data else '127.0.0.1',
-                user_data.get('referrer', 'direct') if user_data else 'direct',
-                datetime.now().isoformat(),
-                datetime.now().isoformat(),
-                1,  # active
-                datetime.now().isoformat(),
-                datetime.now().isoformat()
-            ))
-            
-            conn.commit()
-            conn.close()
-            print(f"✅ Stored conversation: {session_id}")
-            
+            if response.status_code == 200:
+                print(f"✅ Stored conversation: {session_id}")
+            else:
+                print(f"⚠️ Laravel API error: {response.status_code}")
+                
         except Exception as e:
             print(f"❌ Error storing conversation: {e}")
     
     def store_message(self, session_id: str, role: str, content: str, metadata: Dict[str, Any] = None):
-        """Store chat message in Laravel database"""
+        """Store chat message in Laravel database via API"""
         try:
-            # Ensure conversation exists first
-            self.store_conversation(session_id)
+            payload = {
+                'session_id': session_id,
+                'role': role,
+                'content': content[:2000],  # Limit content length
+                'metadata': metadata,
+                'sent_at': datetime.now().isoformat()
+            }
             
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
+            response = requests.post(
+                f"{self.laravel_base_url}/api/messages", 
+                json=payload,
+                timeout=5
+            )
             
-            cursor.execute("""
-                INSERT INTO chat_messages 
-                (session_id, role, content, metadata, sent_at, created_at, updated_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            """, (
-                session_id,
-                role,
-                content[:2000],  # Limit content length
-                json.dumps(metadata) if metadata else None,
-                datetime.now().isoformat(),
-                datetime.now().isoformat(),
-                datetime.now().isoformat()
-            ))
-            
-            conn.commit()
-            conn.close()
-            print(f"✅ Stored {role} message for {session_id}")
-            
+            if response.status_code == 200:
+                print(f"✅ Stored {role} message for {session_id}")
+            else:
+                print(f"⚠️ Laravel API error: {response.status_code}")
+                
         except Exception as e:
             print(f"❌ Error storing message: {e}")
     
@@ -136,9 +121,9 @@ class LaravelBridge:
         notes = qualification.get('notes', '').lower()
         
         industry_keywords = {
-            'technology': ['tech', 'software', 'ai', 'automation', 'digital', 'cloud'],
-            'healthcare': ['health', 'medical', 'hospital', 'clinic', 'patient'],
-            'finance': ['bank', 'financial', 'fintech', 'payment', 'investment'],
+            'Technology': ['tech', 'software', 'ai', 'automation', 'digital', 'cloud'],
+            'Healthcare': ['health', 'medical', 'hospital', 'clinic', 'patient'],
+            'FinTech': ['bank', 'banking', 'financial', 'fintech', 'payment', 'investment', 'finance'],
             'e-commerce': ['ecommerce', 'retail', 'shop', 'store', 'marketplace'],
             'manufacturing': ['manufacturing', 'factory', 'production', 'supply chain'],
             'education': ['education', 'school', 'university', 'learning', 'training'],

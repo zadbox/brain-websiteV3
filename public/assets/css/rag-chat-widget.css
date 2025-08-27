@@ -79,24 +79,26 @@
    ============================================================================= */
 
 .rag-chat-toggle {
-    position: relative;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--rag-accent-color), var(--rag-accent-hover));
-    color: white;
-    border: none;
     cursor: pointer;
     box-shadow: var(--rag-shadow-heavy);
     z-index: 10001;
     transition: var(--rag-transition-bounce);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
     outline: none;
     -webkit-user-select: none;
     user-select: none;
+    object-fit: cover;
+    /* Force perfect circle */
+    min-width: 64px;
+    min-height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    flex-shrink: 0;
 }
 
 .rag-chat-toggle::before {
@@ -117,10 +119,13 @@
     background: linear-gradient(135deg, var(--rag-accent-hover), var(--rag-accent-light));
     transform: scale(1.1);
     box-shadow: var(--rag-shadow-heavy), var(--rag-shadow-glow);
+    border-radius: 50%; /* Maintain circle on hover */
 }
+
 
 .rag-chat-toggle:active {
     transform: scale(0.95);
+    border-radius: 50%; /* Maintain circle on active */
 }
 
 .rag-chat-toggle:focus-visible {
@@ -128,27 +133,6 @@
     outline-offset: 4px;
 }
 
-.rag-chat-icon {
-    width: 24px;
-    height: 24px;
-    transition: var(--rag-transition);
-}
-
-.rag-chat-icon--close {
-    position: absolute;
-    opacity: 0;
-    transform: rotate(90deg);
-}
-
-.rag-chat-widget--open .rag-chat-icon--chat {
-    opacity: 0;
-    transform: rotate(-90deg);
-}
-
-.rag-chat-widget--open .rag-chat-icon--close {
-    opacity: 1;
-    transform: rotate(0deg);
-}
 
 /* Notification Badge */
 .rag-chat-notification {

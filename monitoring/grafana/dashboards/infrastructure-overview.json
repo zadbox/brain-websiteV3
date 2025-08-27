@@ -58,13 +58,13 @@
       },
       {
         "id": 2,
-        "title": "CPU Usage by Container",
+        "title": "System CPU Usage",
         "type": "graph",
         "gridPos": {"h": 8, "w": 12, "x": 0, "y": 6},
         "targets": [
           {
-            "expr": "rate(container_cpu_usage_seconds_total{name=~\"braintech-.*\"}[5m]) * 100",
-            "legendFormat": "{{name}}"
+            "expr": "100 - (avg(irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "legendFormat": "CPU Usage %"
           }
         ],
         "yAxes": [
@@ -76,13 +76,13 @@
       },
       {
         "id": 3,
-        "title": "Memory Usage by Container",
+        "title": "System Memory Usage",
         "type": "graph",
         "gridPos": {"h": 8, "w": 12, "x": 12, "y": 6},
         "targets": [
           {
-            "expr": "container_memory_usage_bytes{name=~\"braintech-.*\"} / (1024*1024*1024)",
-            "legendFormat": "{{name}}"
+            "expr": "(node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / (1024*1024*1024)",
+            "legendFormat": "Memory Usage (GB)"
           }
         ],
         "yAxes": [
@@ -161,13 +161,13 @@
       },
       {
         "id": 7,
-        "title": "Container Restart Count",
+        "title": "System Uptime",
         "type": "table",
         "gridPos": {"h": 8, "w": 12, "x": 0, "y": 22},
         "targets": [
           {
-            "expr": "container_start_time_seconds{name=~\"braintech-.*\"}",
-            "legendFormat": "{{name}}"
+            "expr": "node_boot_time_seconds",
+            "legendFormat": "System Uptime"
           }
         ],
         "transformations": [
@@ -184,13 +184,13 @@
       },
       {
         "id": 8,
-        "title": "HTTP Request Rate",
+        "title": "Redis Command Rate",
         "type": "graph",
         "gridPos": {"h": 8, "w": 12, "x": 12, "y": 22},
         "targets": [
           {
-            "expr": "rate(traefik_service_requests_total[5m])",
-            "legendFormat": "{{service}}"
+            "expr": "rate(redis_commands_processed_total[5m])",
+            "legendFormat": "Redis Commands/sec"
           }
         ],
         "yAxes": [
@@ -202,13 +202,13 @@
       },
       {
         "id": 9,
-        "title": "Docker Volume Usage",
+        "title": "Disk Usage by Mount",
         "type": "bargauge",
         "gridPos": {"h": 8, "w": 12, "x": 0, "y": 30},
         "targets": [
           {
-            "expr": "container_fs_usage_bytes{name=~\"braintech-.*\"} / (1024*1024)",
-            "legendFormat": "{{name}}"
+            "expr": "(node_filesystem_size_bytes{fstype!=\"tmpfs\"} - node_filesystem_free_bytes{fstype!=\"tmpfs\"}) / (1024*1024*1024)",
+            "legendFormat": "Disk Usage (GB)"
           }
         ],
         "fieldConfig": {

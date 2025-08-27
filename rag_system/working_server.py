@@ -25,6 +25,7 @@ from langchain_community.vectorstores import Chroma
 from config.settings import settings, CHROMA_DIR
 from monitoring import get_metrics
 from utils.session_manager import get_session_manager
+from integrations.laravel_bridge import LaravelBridge
 
 app = FastAPI(
     title="BrainGenTechnology Working RAG API",
@@ -60,10 +61,11 @@ groq_llm = None
 vectorstore = None
 conversations = {}
 session_manager = None
+laravel_bridge = None
 
 def init_system():
     """Initialize the working system"""
-    global groq_llm, vectorstore, session_manager
+    global groq_llm, vectorstore, session_manager, laravel_bridge
     
     print("🚀 Initializing BrainGenTechnology Working RAG Server...")
     
@@ -111,10 +113,19 @@ def init_system():
         print(f"❌ Session manager initialization failed: {e}")
         session_manager = None
     
+    # Initialize Laravel Bridge
+    try:
+        laravel_bridge = LaravelBridge()
+        print("✅ Laravel bridge initialized")
+    except Exception as e:
+        print(f"❌ Laravel bridge initialization failed: {e}")
+        laravel_bridge = None
+    
     print(f"📊 System Status:")
     print(f"   Groq API: {'✅' if groq_llm else '❌'}")
     print(f"   Vectorstore: {'✅' if vectorstore else '❌'}")
     print(f"   Session Manager: {'✅' if session_manager else '❌'}")
+    print(f"   Laravel Bridge: {'✅' if laravel_bridge else '❌'}")
 
 def get_context_for_query(query: str) -> str:
     """Get relevant context from vectorstore"""
@@ -168,6 +179,102 @@ Question: {query}
 Please provide a helpful, professional response about BrainGenTechnology's services. Focus on business value and ask qualifying questions when appropriate."""
     
     return prompt
+
+async def _check_and_create_consultation_request(qualification, session_id: str, conversation: list):
+    """Check if lead is qualified and has contact info, then create consultation request"""
+    try:
+        # Only create consultation request if lead is sales ready
+        if not qualification.sales_ready:
+            print(f"📋 Lead {session_id} not sales ready (score: {qualification.lead_score})")
+            return
+        
+        # Extract email and phone from conversation
+        email, phone = _extract_contact_info(conversation)
+        
+        if not email or not phone:
+            print(f"📋 Lead {session_id} is sales ready but missing contact info (email: {bool(email)}, phone: {bool(phone)})")
+            return
+        
+        # Create consultation request
+        if laravel_bridge:
+            consultation_data = {
+                'session_id': session_id,
+                'email': email,
+                'phone': phone,
+                'preferred_contact': 'email',
+                'preferred_time': 'flexible',
+                'status': 'pending',
+                'notes': f'BANT+ Score: {qualification.lead_score}/100 | Sales Ready: YES | '
+                        f'Company: {getattr(qualification, "company_name", "N/A")} | '
+                        f'Size: {getattr(qualification, "company_size", "N/A")} | '
+                        f'Decision Level: {getattr(qualification, "authority_level", "N/A")} | '
+                        f'Urgency: {getattr(qualification, "urgency", "medium")} | '
+                        f'Tech Interests: {", ".join(getattr(qualification, "technology_interest", []))} | '
+                        f'Pain Points: {getattr(qualification, "pain_points", "N/A")} | '
+                        f'Generated automatically from BANT+ qualification',
+                'industry': getattr(qualification, 'industry', 'unknown'),
+                'request_type': 'consultation'
+            }
+            
+            # Use Laravel bridge to create consultation request
+            await _create_consultation_request_via_api(consultation_data)
+            print(f"✅ Created consultation request for qualified lead: {session_id}")
+        else:
+            print(f"⚠️ Laravel bridge not available for consultation request creation")
+            
+    except Exception as e:
+        print(f"❌ Error creating consultation request for {session_id}: {e}")
+
+def _extract_contact_info(conversation: list) -> tuple:
+    """Extract email and phone from conversation messages"""
+    import re
+    
+    email = None
+    phone = None
+    
+    # Combine all user messages
+    user_messages = [msg.get('content', '') for msg in conversation if msg.get('role') == 'user']
+    full_text = ' '.join(user_messages).lower()
+    
+    # Email regex pattern
+    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    email_matches = re.findall(email_pattern, full_text, re.IGNORECASE)
+    if email_matches:
+        email = email_matches[0]
+    
+    # Phone regex patterns (various formats)
+    phone_patterns = [
+        r'\b\d{10}\b',  # 1234567890
+        r'\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b',  # 123-456-7890, 123.456.7890, 123 456 7890
+        r'\(\d{3}\)\s?\d{3}[-.\s]?\d{4}',  # (123) 456-7890
+        r'\+\d{1,3}[-.\s]?\d{3,4}[-.\s]?\d{3,4}[-.\s]?\d{3,4}',  # International formats
+    ]
+    
+    for pattern in phone_patterns:
+        phone_matches = re.findall(pattern, full_text)
+        if phone_matches:
+            phone = phone_matches[0]
+            break
+    
+    return email, phone
+
+async def _create_consultation_request_via_api(consultation_data: dict):
+    """Create consultation request via Laravel API"""
+    try:
+        import requests
+        response = requests.post(
+            f"{laravel_bridge.laravel_base_url}/api/consultation/request",
+            json=consultation_data,
+            timeout=5
+        )
+        
+        if response.status_code == 200:
+            print(f"✅ Consultation request created successfully")
+        else:
+            print(f"⚠️ Laravel API error creating consultation request: {response.status_code}")
+            
+    except Exception as e:
+        print(f"❌ Error calling Laravel API: {e}")
 
 def create_enhanced_rag_prompt(query: str, context: str, user_context: str, conversation_history: str) -> str:
     """Create enhanced RAG prompt with user context and conversation history"""
@@ -388,6 +495,52 @@ async def metrics_endpoint():
         media_type="text/plain; version=0.0.4; charset=utf-8"
     )
 
+@app.post("/test-consultation")
+async def test_consultation_creation():
+    """Test endpoint to manually create a consultation request"""
+    session_id = f"test_consultation_{int(time.time())}"
+    
+    # Create a test conversation with email and phone
+    test_conversation = [
+        {
+            "role": "user",
+            "content": "Hi, I'm Sarah Johnson, CEO of HealthTech Solutions. We need AI automation for our 150 employees. My email is sarah.johnson@healthtech.com and phone is 555-987-6543. We have budget of $200,000 and need to implement by Q4. Can we schedule a consultation?",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        },
+        {
+            "role": "assistant", 
+            "content": "Hello Sarah! I'd be happy to help HealthTech Solutions with AI automation. Your needs sound like a perfect fit for our enterprise solutions.",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+    ]
+    
+    conversations[session_id] = test_conversation
+    
+    # Create a mock qualification object that will trigger consultation request
+    class MockQualification:
+        def __init__(self):
+            self.sales_ready = True
+            self.lead_score = 95
+            self.company_name = "HealthTech Solutions"
+            self.company_size = "sme"
+            self.authority_level = "C_level"
+            self.urgency = "high"
+            self.technology_interest = ["ai", "automation"]
+            self.pain_points = "Manual processes causing inefficiencies"
+            self.industry = "healthcare"
+    
+    mock_qualification = MockQualification()
+    
+    # Test the consultation request creation
+    await _check_and_create_consultation_request(mock_qualification, session_id, test_conversation)
+    
+    return {
+        "success": True,
+        "message": "Test consultation request created",
+        "session_id": session_id,
+        "qualification_score": mock_qualification.lead_score
+    }
+
 @app.post("/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
     """Working chat endpoint"""
@@ -402,6 +555,18 @@ async def chat_endpoint(request: ChatRequest):
         "timestamp": datetime.now(timezone.utc).isoformat()
     })
     
+    # Store user message in Laravel
+    if laravel_bridge:
+        try:
+            user_data = {
+                'user_ip': request.metadata.get('user_ip', '127.0.0.1') if request.metadata else '127.0.0.1',
+                'referrer': request.metadata.get('referrer', 'direct') if request.metadata else 'direct'
+            }
+            laravel_bridge.store_conversation(request.session_id, user_data)
+            laravel_bridge.store_message(request.session_id, "user", request.message, request.metadata)
+        except Exception as e:
+            print(f"⚠️ Laravel bridge error (user message): {e}")
+    
     # Process chat
     result = await process_chat_request(request.message, request.session_id)
     
@@ -411,6 +576,16 @@ async def chat_endpoint(request: ChatRequest):
             "content": result["answer"],
             "timestamp": datetime.now(timezone.utc).isoformat()
         })
+        
+        # Store assistant message in Laravel
+        if laravel_bridge:
+            try:
+                laravel_bridge.store_message(request.session_id, "assistant", result["answer"], {
+                    "processing_time": result.get("processing_time", 0),
+                    "sources": result.get("sources", [])
+                })
+            except Exception as e:
+                print(f"⚠️ Laravel bridge error (assistant message): {e}")
     
     return ChatResponse(
         answer=result["answer"],
@@ -423,28 +598,104 @@ async def chat_endpoint(request: ChatRequest):
 
 @app.post("/qualify")
 async def qualify_lead(request: dict):
-    """Simple lead qualification"""
+    """Advanced lead qualification using LLM analysis"""
     session_id = request.get("session_id", "unknown")
     conversation = conversations.get(session_id, [])
     
-    # Simple qualification based on conversation length and content
-    score = min(len(conversation) * 15, 100)
+    if not conversation:
+        return {
+            "success": False,
+            "error": "No conversation found for session",
+            "session_id": session_id
+        }
     
-    qualification = {
-        "intent": "information",
-        "urgency": "medium",
-        "company_size": "sme",
-        "lead_score": score,
-        "sales_ready": score >= 60,
-        "notes": f"Engaged in {len(conversation)} message conversation"
-    }
-    
-    return {
-        "success": True,
-        "qualification": qualification,
-        "session_id": session_id,
-        "processing_time": 0.5
-    }
+    try:
+        # Import qualification chain
+        from chains.qualification_chain import get_qualification_chain
+        
+        # Get qualification chain instance
+        qualification_chain = get_qualification_chain()
+        
+        # Run qualification analysis with parser error catching
+        try:
+            result = await qualification_chain.qualify_lead(
+                conversation_history=conversation,
+                session_id=session_id
+            )
+            
+            if result.success:
+                # Convert to dict for JSON response
+                qualification_dict = result.qualification.dict()
+                
+                # Check if lead is sales ready and has contact info
+                await _check_and_create_consultation_request(result.qualification, session_id, conversation)
+                
+                return {
+                    "success": True,
+                    "qualification": qualification_dict,
+                    "session_id": session_id,
+                    "processing_time": result.processing_time
+                }
+            else:
+                print(f"Qualification chain returned error: {result.error_message}")
+                raise Exception(f"Chain error: {result.error_message}")
+                
+        except Exception as chain_error:
+            print(f"Parser failed, using working_server fallback: {chain_error}")
+            # Fall through to working_server fallback below
+            raise chain_error
+            
+    except Exception as e:
+        print(f"❌ Qualification error for session {session_id}: {e}")
+        
+        # Fallback to simple qualification if LLM fails
+        from models.lead_qualification import LeadQualification
+        
+        score = min(len(conversation) * 15, 100)
+        
+        # Basic industry detection from conversation content
+        conversation_text = ' '.join([msg.get('content', '') for msg in conversation]).lower()
+        industry = "other"
+        company_name = None
+        
+        # Simple keyword-based industry detection
+        if any(word in conversation_text for word in ['bank', 'banking', 'financial', 'finance', 'fintech']):
+            industry = "fintech"
+            if 'wafae bank' in conversation_text:
+                company_name = "Wafae Bank"
+        elif any(word in conversation_text for word in ['health', 'medical', 'hospital', 'clinic']):
+            industry = "healthcare"
+        elif any(word in conversation_text for word in ['retail', 'store', 'shopping', 'ecommerce']):
+            industry = "retail"
+        elif any(word in conversation_text for word in ['manufacturing', 'factory', 'production']):
+            industry = "manufacturing"
+        elif any(word in conversation_text for word in ['tech', 'technology', 'software', 'startup']):
+            industry = "other"
+        
+        qualification = LeadQualification(
+            intent="consultation" if any(word in conversation_text for word in ['consultation', 'schedule', 'meeting']) else "information",
+            urgency="high" if score >= 80 else "medium", 
+            company_size="enterprise" if score >= 80 else "sme",
+            industry=industry,
+            company_name=company_name,
+            lead_score=score,
+            sales_ready=score >= 60,
+            decision_maker_level="c_level" if any(word in conversation_text for word in ['ceo', 'cto', 'chief', 'director']) else "manager",
+            next_action="schedule_call" if score >= 80 else "qualify_further",
+            notes=f"Engaged in {len(conversation)} message conversation (fallback qualification with basic industry detection: {industry})",
+            follow_up_priority="high" if score >= 80 else "medium",
+            conversation_quality=min(10, max(1, len(conversation)))
+        )
+        
+        # Check if lead is sales ready and has contact info
+        await _check_and_create_consultation_request(qualification, session_id, conversation)
+        
+        return {
+            "success": True,
+            "qualification": qualification.dict(),
+            "session_id": session_id,
+            "processing_time": 0.5
+        }
 
 if __name__ == "__main__":
     import uvicorn

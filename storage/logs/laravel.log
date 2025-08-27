@@ -4883,3 +4883,409 @@ Did you mean one of these?
 [2025-08-07 02:46:27] production.INFO: Chat interaction completed {"session_id":"rag_1754534653285_z7sxmo1lk","processing_time":1.9711182117462158,"conversation_length":6} 
 [2025-08-07 02:47:00] production.INFO: Chat interaction completed {"session_id":"rag_1754534653285_z7sxmo1lk","processing_time":1.811375379562378,"conversation_length":8} 
 [2025-08-07 02:47:33] production.INFO: Chat interaction completed {"session_id":"rag_1754534653285_z7sxmo1lk","processing_time":1.8215794563293457,"conversation_length":10} 
+[2025-08-08 02:27:59] local.INFO: Chat interaction completed {"session_id":"rag_1754616444005_vy8338m1d","processing_time":4.695710182189941,"conversation_length":2} 
+[2025-08-08 01:30:05] production.INFO: Chat interaction completed {"session_id":"rag_1754616581591_me1ffy438","processing_time":2.5392637252807617,"conversation_length":2} 
+[2025-08-08 01:31:52] production.INFO: Chat interaction completed {"session_id":"rag_1754616581591_me1ffy438","processing_time":4.0822484493255615,"conversation_length":4} 
+[2025-08-08 01:32:34] production.INFO: High-priority lead detected {"session_id":"rag_1754616581591_me1ffy438","lead_score":60,"company_size":"sme","industry":"unknown","intent":"information"} 
+[2025-08-08 01:32:34] production.INFO: High-priority lead stored in analytics database {"session_id":"rag_1754616581591_me1ffy438","lead_score":60,"sales_ready":true,"company_size":"sme","industry":"unknown"} 
+[2025-08-08 01:32:34] production.INFO: Lead qualification completed {"session_id":"rag_1754616581591_me1ffy438","success":true,"lead_score":60} 
+[2025-08-08 01:32:43] production.INFO: Chat interaction completed {"session_id":"rag_1754616581591_me1ffy438","processing_time":1.8884198665618896,"conversation_length":6} 
+[2025-08-08 01:33:51] production.INFO: Chat interaction completed {"session_id":"rag_1754616581591_me1ffy438","processing_time":2.817143440246582,"conversation_length":8} 
+[2025-08-08 06:13:24] production.INFO: Chat interaction completed {"session_id":"rag_1754633496098_6vb2z8zfj","processing_time":2.8110907077789307,"conversation_length":2} 
+[2025-08-08 06:14:10] production.INFO: Chat interaction completed {"session_id":"rag_1754633496098_6vb2z8zfj","processing_time":1.5027904510498047,"conversation_length":4} 
+[2025-08-08 06:14:44] production.INFO: High-priority lead detected {"session_id":"rag_1754633496098_6vb2z8zfj","lead_score":60,"company_size":"sme","industry":"unknown","intent":"information"} 
+[2025-08-08 06:14:44] production.INFO: High-priority lead stored in analytics database {"session_id":"rag_1754633496098_6vb2z8zfj","lead_score":60,"sales_ready":true,"company_size":"sme","industry":"unknown"} 
+[2025-08-08 06:14:44] production.INFO: Lead qualification completed {"session_id":"rag_1754633496098_6vb2z8zfj","success":true,"lead_score":60} 
+[2025-08-08 06:18:39] production.INFO: Chat interaction completed {"session_id":"rag_1754633496098_6vb2z8zfj","processing_time":1.659482479095459,"conversation_length":6} 
+[2025-08-08 06:27:22] production.INFO: Chat interaction completed {"session_id":"rag_1754634425111_0fjw2kk0c","processing_time":1.96136474609375,"conversation_length":2} 
+[2025-08-08 06:28:01] production.INFO: Chat interaction completed {"session_id":"rag_1754634425111_0fjw2kk0c","processing_time":2.0988872051239014,"conversation_length":4} 
+[2025-08-08 06:28:38] production.INFO: High-priority lead detected {"session_id":"rag_1754634425111_0fjw2kk0c","lead_score":60,"company_size":"sme","industry":"unknown","intent":"information"} 
+[2025-08-08 06:28:38] production.INFO: High-priority lead stored in analytics database {"session_id":"rag_1754634425111_0fjw2kk0c","lead_score":60,"sales_ready":true,"company_size":"sme","industry":"unknown"} 
+[2025-08-08 06:28:38] production.INFO: Lead qualification completed {"session_id":"rag_1754634425111_0fjw2kk0c","success":true,"lead_score":60} 
+[2025-08-08 06:28:48] production.INFO: Chat interaction completed {"session_id":"rag_1754634425111_0fjw2kk0c","processing_time":1.9523978233337402,"conversation_length":6} 
+[2025-08-08 06:30:57] local.ERROR: SQLSTATE[HY000]: General error: 1 duplicate column name: authority_level (Connection: sqlite, SQL: alter table "lead_qualifications" add column "authority_level" varchar) {"exception":"[object] (Illuminate\\Database\\QueryException(code: HY000): SQLSTATE[HY000]: General error: 1 duplicate column name: authority_level (Connection: sqlite, SQL: alter table \"lead_qualifications\" add column \"authority_level\" varchar) at /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('alter table \"le...', Array, Object(Closure))
+#1 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate\\Database\\Connection->run('alter table \"le...', Array, Object(Closure))
+#2 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(117): Illuminate\\Database\\Connection->statement('alter table \"le...')
+#3 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Schema\\Grammars\\SQLiteGrammar))
+#4 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(406): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(358): Illuminate\\Database\\Schema\\Builder->table('lead_qualificat...', Object(Closure))
+#6 /Users/abderrahim_boussyf/brain-website___V3/database/migrations/2025_08_06_204352_add_missing_columns_to_lead_qualifications_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('table', Array)
+#7 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(475): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#9 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(409): Illuminate\\Database\\Migrations\\Migrator->{closure:Illuminate\\Database\\Migrations\\Migrator::runMigration():396}()
+#10 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate\\Database\\Migrations\\Migrator->{closure:Illuminate\\Database\\Migrations\\Migrator::runUp():212}()
+#12 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(736): Illuminate\\Console\\View\\Components\\Task->render('2025_08_06_2043...', Object(Closure))
+#13 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2025_08_06_2043...', Object(Closure))
+#14 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(179): Illuminate\\Database\\Migrations\\Migrator->runUp('/Users/abderrah...', 3, false)
+#15 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(122): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(615): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->{closure:Illuminate\\Database\\Console\\Migrations\\MigrateCommand::runMigrations():109}()
+#18 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#20 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#21 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#22 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#24 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#25 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#26 /Users/abderrahim_boussyf/brain-website___V3/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#28 /Users/abderrahim_boussyf/brain-website___V3/vendor/symfony/console/Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 /Users/abderrahim_boussyf/brain-website___V3/vendor/symfony/console/Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 /Users/abderrahim_boussyf/brain-website___V3/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /Users/abderrahim_boussyf/brain-website___V3/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#34 {main}
+
+[previous exception] [object] (PDOException(code: HY000): SQLSTATE[HY000]: General error: 1 duplicate column name: authority_level at /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Connection.php:565)
+[stacktrace]
+#0 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Connection.php(565): PDO->prepare('alter table \"le...')
+#1 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate\\Database\\Connection->{closure:Illuminate\\Database\\Connection::statement():560}('alter table \"le...', Array)
+#2 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('alter table \"le...', Array, Object(Closure))
+#3 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate\\Database\\Connection->run('alter table \"le...', Array, Object(Closure))
+#4 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(117): Illuminate\\Database\\Connection->statement('alter table \"le...')
+#5 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Schema\\Grammars\\SQLiteGrammar))
+#6 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(406): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(358): Illuminate\\Database\\Schema\\Builder->table('lead_qualificat...', Object(Closure))
+#8 /Users/abderrahim_boussyf/brain-website___V3/database/migrations/2025_08_06_204352_add_missing_columns_to_lead_qualifications_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('table', Array)
+#9 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(475): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(409): Illuminate\\Database\\Migrations\\Migrator->{closure:Illuminate\\Database\\Migrations\\Migrator::runMigration():396}()
+#12 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#13 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate\\Database\\Migrations\\Migrator->{closure:Illuminate\\Database\\Migrations\\Migrator::runUp():212}()
+#14 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(736): Illuminate\\Console\\View\\Components\\Task->render('2025_08_06_2043...', Object(Closure))
+#15 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2025_08_06_2043...', Object(Closure))
+#16 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(179): Illuminate\\Database\\Migrations\\Migrator->runUp('/Users/abderrah...', 3, false)
+#17 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(122): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#18 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#19 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(615): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->{closure:Illuminate\\Database\\Console\\Migrations\\MigrateCommand::runMigrations():109}()
+#20 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#21 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#22 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#23 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#24 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#25 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#26 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Container/Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#27 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#28 /Users/abderrahim_boussyf/brain-website___V3/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#29 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#30 /Users/abderrahim_boussyf/brain-website___V3/vendor/symfony/console/Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 /Users/abderrahim_boussyf/brain-website___V3/vendor/symfony/console/Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 /Users/abderrahim_boussyf/brain-website___V3/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 /Users/abderrahim_boussyf/brain-website___V3/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 /Users/abderrahim_boussyf/brain-website___V3/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#36 {main}
+"} 
+[2025-08-08 06:36:45] production.INFO: Chat interaction completed {"session_id":"rag_1754634996464_7fzhiko6f","processing_time":1.1133778095245361,"conversation_length":2} 
+[2025-08-08 06:37:32] production.INFO: Chat interaction completed {"session_id":"rag_1754634996464_7fzhiko6f","processing_time":2.4274604320526123,"conversation_length":4} 
+[2025-08-08 06:38:10] production.INFO: High-priority lead detected {"session_id":"rag_1754634996464_7fzhiko6f","lead_score":60,"company_size":"sme","industry":"unknown","intent":"information"} 
+[2025-08-08 06:38:10] production.INFO: High-priority lead stored in analytics database {"session_id":"rag_1754634996464_7fzhiko6f","lead_score":60,"sales_ready":true,"company_size":"sme","industry":"unknown"} 
+[2025-08-08 06:38:10] production.INFO: Lead qualification completed {"session_id":"rag_1754634996464_7fzhiko6f","success":true,"lead_score":60} 
+[2025-08-08 06:43:50] local.INFO: Chat interaction completed {"session_id":"rag_1754635419177_gw4rg7pe6","processing_time":1.4154250621795654,"conversation_length":2} 
+[2025-08-08 06:45:16] local.INFO: Chat interaction completed {"session_id":"rag_1754635419177_gw4rg7pe6","processing_time":1.6699681282043457,"conversation_length":4} 
+[2025-08-08 06:45:58] local.INFO: High-priority lead detected {"session_id":"rag_1754635419177_gw4rg7pe6","lead_score":60,"company_size":"sme","industry":"unknown","intent":"information"} 
+[2025-08-08 06:45:58] local.INFO: High-priority lead stored in analytics database {"session_id":"rag_1754635419177_gw4rg7pe6","lead_score":60,"sales_ready":true,"company_size":"sme","industry":"unknown"} 
+[2025-08-08 06:45:58] local.INFO: Lead qualification completed {"session_id":"rag_1754635419177_gw4rg7pe6","success":true,"lead_score":60} 
+[2025-08-08 06:46:12] local.INFO: Chat interaction completed {"session_id":"rag_1754635419177_gw4rg7pe6","processing_time":1.4102530479431152,"conversation_length":6} 
+[2025-08-08 06:50:49] local.INFO: Chat interaction completed {"session_id":"test_session_123","processing_time":1.7252380847930908,"conversation_length":2} 
+[2025-08-08 06:50:59] local.INFO: Lead qualification completed {"session_id":"test_session_123","success":true,"lead_score":30} 
+[2025-08-08 06:51:12] local.INFO: Chat interaction completed {"session_id":"test_session_123","processing_time":1.3022887706756592,"conversation_length":4} 
+[2025-08-08 06:51:14] local.INFO: Chat interaction completed {"session_id":"test_session_123","processing_time":1.5721499919891357,"conversation_length":6} 
+[2025-08-08 06:51:15] local.INFO: Chat interaction completed {"session_id":"test_session_123","processing_time":1.1538748741149902,"conversation_length":8} 
+[2025-08-08 06:51:26] local.INFO: High-priority lead detected {"session_id":"test_session_123","lead_score":100,"company_size":"sme","industry":"unknown","intent":"information"} 
+[2025-08-08 06:51:26] local.INFO: High-priority lead stored in analytics database {"session_id":"test_session_123","lead_score":100,"sales_ready":true,"company_size":"sme","industry":"unknown"} 
+[2025-08-08 06:51:26] local.INFO: Lead qualification completed {"session_id":"test_session_123","success":true,"lead_score":100} 
+[2025-08-08 06:53:10] local.INFO: Chat interaction completed {"session_id":"rag_1754635985679_e3atniz0z","processing_time":1.0213048458099365,"conversation_length":2} 
+[2025-08-08 06:53:56] local.INFO: Chat interaction completed {"session_id":"rag_1754635985679_e3atniz0z","processing_time":1.265160322189331,"conversation_length":4} 
+[2025-08-08 06:54:22] local.INFO: Lead qualification completed {"session_id":"rag_1754635985679_e3atniz0z","success":false,"lead_score":0} 
+[2025-08-08 06:54:40] local.INFO: Chat interaction completed {"session_id":"rag_1754635985679_e3atniz0z","processing_time":1.5280468463897705,"conversation_length":6} 
+[2025-08-08 06:55:13] local.INFO: Lead qualification completed {"session_id":"rag_1754635985679_e3atniz0z","success":false,"lead_score":0} 
+[2025-08-08 06:55:57] local.INFO: Chat interaction completed {"session_id":"rag_1754635985679_e3atniz0z","processing_time":1.3487071990966797,"conversation_length":8} 
+[2025-08-08 06:56:34] local.INFO: Lead qualification completed {"session_id":"rag_1754635985679_e3atniz0z","success":false,"lead_score":0} 
+[2025-08-08 06:57:14] local.INFO: Chat interaction completed {"session_id":"rag_1754635985679_e3atniz0z","processing_time":2.0500028133392334,"conversation_length":10} 
+[2025-08-08 06:57:59] local.INFO: Lead qualification completed {"session_id":"rag_1754635985679_e3atniz0z","success":false,"lead_score":0} 
+[2025-08-08 06:58:30] local.INFO: Chat interaction completed {"session_id":"rag_1754635985679_e3atniz0z","processing_time":1.5128669738769531,"conversation_length":12} 
+[2025-08-08 06:59:11] local.INFO: Lead qualification completed {"session_id":"rag_1754635985679_e3atniz0z","success":false,"lead_score":0} 
+[2025-08-08 06:59:17] local.INFO: Chat interaction completed {"session_id":"rag_1754635985679_e3atniz0z","processing_time":1.4318108558654785,"conversation_length":14} 
+[2025-08-08 07:00:01] local.INFO: Lead qualification completed {"session_id":"rag_1754635985679_e3atniz0z","success":false,"lead_score":0} 
+[2025-08-08 07:09:16] local.INFO: Chat interaction completed {"session_id":"new_banking_test","processing_time":1.5876519680023193,"conversation_length":2} 
+[2025-08-08 07:09:29] local.INFO: Chat interaction completed {"session_id":"new_banking_test","processing_time":1.6275238990783691,"conversation_length":4} 
+[2025-08-08 07:09:31] local.INFO: Chat interaction completed {"session_id":"new_banking_test","processing_time":1.2272849082946777,"conversation_length":6} 
+[2025-08-08 07:09:33] local.INFO: Chat interaction completed {"session_id":"new_banking_test","processing_time":1.2088301181793213,"conversation_length":8} 
+[2025-08-08 07:09:40] local.INFO: Chat interaction completed {"session_id":"new_banking_test","processing_time":5.262698173522949,"conversation_length":10} 
+[2025-08-08 07:09:59] local.INFO: Chat interaction completed {"session_id":"new_banking_test","processing_time":18.6052348613739,"conversation_length":12} 
+[2025-08-08 07:10:20] local.INFO: Chat interaction completed {"session_id":"new_banking_test","processing_time":19.481650829315186,"conversation_length":14} 
+[2025-08-08 07:10:40] local.INFO: Chat interaction completed {"session_id":"new_banking_test","processing_time":19.390708923339844,"conversation_length":16} 
+[2025-08-08 07:11:23] local.INFO: Lead qualification completed {"session_id":"new_banking_test","success":false,"lead_score":0} 
+[2025-08-08 07:13:13] local.INFO: Chat interaction completed {"session_id":"rag_1754637149349_h3rndodk3","processing_time":1.6362531185150146,"conversation_length":2} 
+[2025-08-08 07:13:57] local.INFO: Chat interaction completed {"session_id":"rag_1754637149349_h3rndodk3","processing_time":1.3942840099334717,"conversation_length":4} 
+[2025-08-08 07:14:38] local.INFO: Lead qualification completed {"session_id":"rag_1754637149349_h3rndodk3","success":false,"lead_score":0} 
+[2025-08-08 07:14:56] local.INFO: Chat interaction completed {"session_id":"rag_1754637149349_h3rndodk3","processing_time":1.5732760429382324,"conversation_length":6} 
+[2025-08-08 07:15:44] local.INFO: Lead qualification completed {"session_id":"rag_1754637149349_h3rndodk3","success":false,"lead_score":0} 
+[2025-08-08 07:15:51] local.INFO: Chat interaction completed {"session_id":"rag_1754637149349_h3rndodk3","processing_time":1.8636870384216309,"conversation_length":8} 
+[2025-08-08 07:16:49] local.INFO: Lead qualification completed {"session_id":"rag_1754637149349_h3rndodk3","success":false,"lead_score":0} 
+[2025-08-08 07:17:00] local.INFO: Chat interaction completed {"session_id":"rag_1754637149349_h3rndodk3","processing_time":1.6294479370117188,"conversation_length":10} 
+[2025-08-08 07:17:40] local.INFO: Chat interaction completed {"session_id":"rag_1754637149349_h3rndodk3","processing_time":1.470980167388916,"conversation_length":12} 
+[2025-08-08 07:17:43] local.INFO: Lead qualification completed {"session_id":"rag_1754637149349_h3rndodk3","success":false,"lead_score":0} 
+[2025-08-08 07:18:19] local.INFO: Lead qualification completed {"session_id":"rag_1754637149349_h3rndodk3","success":false,"lead_score":0} 
+[2025-08-08 07:19:43] local.INFO: Chat interaction completed {"session_id":"rag_1754637149349_h3rndodk3","processing_time":1.5556390285491943,"conversation_length":14} 
+[2025-08-08 07:20:57] local.INFO: Lead qualification completed {"session_id":"rag_1754637149349_h3rndodk3","success":false,"lead_score":0} 
+[2025-08-08 07:37:31] local.INFO: Chat interaction completed {"session_id":"rag_1754638602864_nvc3o0brd","processing_time":1.6068849563598633,"conversation_length":2} 
+[2025-08-08 07:38:30] local.INFO: Chat interaction completed {"session_id":"rag_1754638602864_nvc3o0brd","processing_time":1.8757221698760986,"conversation_length":4} 
+[2025-08-08 07:45:58] production.INFO: Chat interaction completed {"session_id":"rag_1754639141708_z1dnqnsmv","processing_time":1.3259353637695312,"conversation_length":2} 
+[2025-08-08 07:48:52] production.INFO: Chat interaction completed {"session_id":"rag_1754639141708_z1dnqnsmv","processing_time":2.511723518371582,"conversation_length":4} 
+[2025-08-08 07:49:52] production.INFO: Lead qualification completed {"session_id":"rag_1754639141708_z1dnqnsmv","success":false,"lead_score":0} 
+[2025-08-08 07:50:05] production.INFO: Chat interaction completed {"session_id":"rag_1754639141708_z1dnqnsmv","processing_time":2.710876941680908,"conversation_length":6} 
+[2025-08-08 07:50:55] production.INFO: Chat interaction completed {"session_id":"rag_1754639141708_z1dnqnsmv","processing_time":2.1938416957855225,"conversation_length":8} 
+[2025-08-08 07:50:55] production.INFO: Lead qualification completed {"session_id":"rag_1754639141708_z1dnqnsmv","success":false,"lead_score":0} 
+[2025-08-08 07:51:21] production.INFO: Lead qualification completed {"session_id":"rag_1754639141708_z1dnqnsmv","success":false,"lead_score":0} 
+[2025-08-08 07:51:34] production.INFO: Chat interaction completed {"session_id":"rag_1754639141708_z1dnqnsmv","processing_time":1.8569011688232422,"conversation_length":10} 
+[2025-08-08 07:52:59] production.INFO: Lead qualification completed {"session_id":"rag_1754639141708_z1dnqnsmv","success":false,"lead_score":0} 
+[2025-08-08 07:54:11] production.INFO: Chat interaction completed {"session_id":"rag_1754639141708_z1dnqnsmv","processing_time":1.932084321975708,"conversation_length":12} 
+[2025-08-08 07:54:44] production.INFO: Lead qualification completed {"session_id":"rag_1754639141708_z1dnqnsmv","success":false,"lead_score":0} 
+[2025-08-08 07:55:19] production.INFO: Chat interaction completed {"session_id":"rag_1754639141708_z1dnqnsmv","processing_time":1.8990399837493896,"conversation_length":14} 
+[2025-08-08 07:56:09] production.INFO: Lead qualification completed {"session_id":"rag_1754639141708_z1dnqnsmv","success":false,"lead_score":0} 
+[2025-08-11 05:37:44] production.INFO: Chat interaction completed {"session_id":"rag_1754890631201_m8oo9c16z","processing_time":2.04207444190979,"conversation_length":2} 
+[2025-08-11 05:38:45] production.INFO: Chat interaction completed {"session_id":"rag_1754890631201_m8oo9c16z","processing_time":2.374260902404785,"conversation_length":4} 
+[2025-08-11 05:39:28] production.INFO: Lead qualification completed {"session_id":"rag_1754890631201_m8oo9c16z","success":false,"lead_score":0} 
+[2025-08-11 05:40:01] production.INFO: Chat interaction completed {"session_id":"rag_1754890631201_m8oo9c16z","processing_time":2.072282075881958,"conversation_length":6} 
+[2025-08-11 05:40:45] production.INFO: Lead qualification completed {"session_id":"rag_1754890631201_m8oo9c16z","success":false,"lead_score":0} 
+[2025-08-11 05:41:48] production.INFO: Chat interaction completed {"session_id":"rag_1754890631201_m8oo9c16z","processing_time":2.0752112865448,"conversation_length":8} 
+[2025-08-11 05:42:23] production.INFO: Lead qualification completed {"session_id":"rag_1754890631201_m8oo9c16z","success":false,"lead_score":0} 
+[2025-08-11 05:50:14] production.INFO: Chat interaction completed {"session_id":"test_session_abde_01","processing_time":2.2550840377807617,"conversation_length":2} 
+[2025-08-11 05:50:37] production.INFO: Triggering automatic lead qualification {"session_id":"test_session_abde_01","conversation_length":4} 
+[2025-08-11 05:50:37] production.INFO: Chat interaction completed {"session_id":"test_session_abde_01","processing_time":2.720216989517212,"conversation_length":4} 
+[2025-08-11 05:51:04] production.INFO: Triggering automatic lead qualification {"session_id":"test_session_abde_01","conversation_length":6} 
+[2025-08-11 05:51:04] production.INFO: Chat interaction completed {"session_id":"test_session_abde_01","processing_time":1.7111515998840332,"conversation_length":6} 
+[2025-08-11 05:56:32] production.INFO: Chat interaction completed {"session_id":"rag_1754891778326_5auuxrdza","processing_time":1.277966022491455,"conversation_length":2} 
+[2025-08-11 05:58:17] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1754891778326_5auuxrdza","conversation_length":4} 
+[2025-08-11 05:58:19] production.INFO: Chat interaction completed {"session_id":"rag_1754891778326_5auuxrdza","processing_time":2.3373162746429443,"conversation_length":4} 
+[2025-08-11 05:59:21] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1754891778326_5auuxrdza","conversation_length":6} 
+[2025-08-11 05:59:22] production.INFO: Lead qualification completed {"session_id":"rag_1754891778326_5auuxrdza","success":false,"lead_score":0} 
+[2025-08-11 05:59:23] production.INFO: Chat interaction completed {"session_id":"rag_1754891778326_5auuxrdza","processing_time":2.1271960735321045,"conversation_length":6} 
+[2025-08-11 05:59:57] production.INFO: Lead qualification completed {"session_id":"rag_1754891778326_5auuxrdza","success":false,"lead_score":0} 
+[2025-08-11 06:00:23] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1754891778326_5auuxrdza","conversation_length":8} 
+[2025-08-11 06:00:24] production.INFO: Chat interaction completed {"session_id":"rag_1754891778326_5auuxrdza","processing_time":2.257737159729004,"conversation_length":8} 
+[2025-08-11 06:00:54] production.INFO: Lead qualification completed {"session_id":"rag_1754891778326_5auuxrdza","success":false,"lead_score":0} 
+[2025-08-11 06:09:39] production.INFO: Chat interaction completed {"session_id":"demo_1754892576_sales_ready","processing_time":2.613842725753784,"conversation_length":2} 
+[2025-08-11 06:09:57] production.INFO: Triggering automatic lead qualification {"session_id":"demo_1754892576_sales_ready","conversation_length":4} 
+[2025-08-11 06:09:57] production.INFO: Chat interaction completed {"session_id":"demo_1754892576_sales_ready","processing_time":2.9322261810302734,"conversation_length":4} 
+[2025-08-11 06:12:43] local.INFO: Chat interaction completed {"session_id":"rag_1754892754063_58bg1rvma","processing_time":1.5402204990386963,"conversation_length":2} 
+[2025-08-11 06:13:53] local.INFO: Triggering automatic lead qualification {"session_id":"rag_1754892754063_58bg1rvma","conversation_length":4} 
+[2025-08-11 06:13:53] local.INFO: Chat interaction completed {"session_id":"rag_1754892754063_58bg1rvma","processing_time":1.2001583576202393,"conversation_length":3} 
+[2025-08-11 06:13:59] local.INFO: Lead qualification completed {"session_id":"rag_1754892754063_58bg1rvma","success":false,"lead_score":0} 
+[2025-08-11 06:14:16] local.INFO: Triggering automatic lead qualification {"session_id":"rag_1754892754063_58bg1rvma","conversation_length":6} 
+[2025-08-11 06:14:17] local.INFO: Chat interaction completed {"session_id":"rag_1754892754063_58bg1rvma","processing_time":1.6284129619598389,"conversation_length":5} 
+[2025-08-11 06:14:38] production.INFO: Chat interaction completed {"session_id":"demo_enterprise_sarah_1754892876","processing_time":2.3260626792907715,"conversation_length":2} 
+[2025-08-11 06:14:59] production.INFO: Triggering automatic lead qualification {"session_id":"demo_enterprise_sarah_1754892876","conversation_length":4} 
+[2025-08-11 06:15:00] production.INFO: Chat interaction completed {"session_id":"demo_enterprise_sarah_1754892876","processing_time":2.3476619720458984,"conversation_length":4} 
+[2025-08-11 06:15:32] local.INFO: Lead qualification completed {"session_id":"rag_1754892754063_58bg1rvma","success":false,"lead_score":0} 
+[2025-08-11 06:15:36] local.INFO: Triggering automatic lead qualification {"session_id":"rag_1754892754063_58bg1rvma","conversation_length":8} 
+[2025-08-11 06:15:37] local.INFO: Chat interaction completed {"session_id":"rag_1754892754063_58bg1rvma","processing_time":1.497239589691162,"conversation_length":7} 
+[2025-08-11 06:16:06] local.INFO: Lead qualification completed {"session_id":"rag_1754892754063_58bg1rvma","success":false,"lead_score":0} 
+[2025-08-11 06:16:24] production.INFO: Triggering automatic lead qualification {"session_id":"demo_enterprise_sarah_1754892876","conversation_length":6} 
+[2025-08-11 06:16:24] production.INFO: Chat interaction completed {"session_id":"demo_enterprise_sarah_1754892876","processing_time":2.769059896469116,"conversation_length":6} 
+[2025-08-11 06:24:59] production.INFO: Chat interaction completed {"session_id":"enterprise_test_1754893496","processing_time":2.7577335834503174,"conversation_length":2} 
+[2025-08-11 06:25:14] production.INFO: Triggering automatic lead qualification {"session_id":"enterprise_test_1754893496","conversation_length":4} 
+[2025-08-11 06:25:16] production.INFO: Chat interaction completed {"session_id":"enterprise_test_1754893496","processing_time":2.6355466842651367,"conversation_length":4} 
+[2025-08-11 06:25:34] production.INFO: Triggering automatic lead qualification {"session_id":"enterprise_test_1754893496","conversation_length":6} 
+[2025-08-11 06:25:35] production.INFO: Chat interaction completed {"session_id":"enterprise_test_1754893496","processing_time":2.297337293624878,"conversation_length":6} 
+[2025-08-11 06:26:16] production.INFO: Triggering automatic lead qualification {"session_id":"enterprise_test_1754893496","conversation_length":8} 
+[2025-08-11 06:26:16] production.INFO: Chat interaction completed {"session_id":"enterprise_test_1754893496","processing_time":2.213548183441162,"conversation_length":8} 
+[2025-08-11 06:26:47] production.INFO: Lead qualification completed {"session_id":"enterprise_test_1754893496","success":false,"lead_score":0} 
+[2025-08-11 06:30:48] production.INFO: Lead qualification completed {"session_id":"enterprise_test_1754893496","success":false,"lead_score":0} 
+[2025-08-11 06:30:58] production.INFO: Lead qualification completed {"session_id":"enterprise_test_1754893496","success":false,"lead_score":0} 
+[2025-08-11 06:34:58] production.INFO: Lead qualification completed {"session_id":"enterprise_test_1754893496","success":false,"lead_score":0} 
+[2025-08-11 06:37:12] production.WARNING: Groq returned unsuccessful qualification, using fallback {"session_id":"enterprise_test_1754893496","groq_response":{"success":false,"error":"Qualification analysis failed: Expecting value: line 1 column 1 (char 0)","session_id":"enterprise_test_1754893496","processing_time":0.615307}} 
+[2025-08-11 06:37:12] production.INFO: High-priority lead detected {"session_id":"enterprise_test_1754893496","lead_score":100,"company_size":"enterprise","industry":"healthcare","intent":"consultation"} 
+[2025-08-11 06:37:12] production.INFO: High-priority lead stored in analytics database {"session_id":"enterprise_test_1754893496","lead_score":100,"sales_ready":true,"company_size":"enterprise","industry":"healthcare"} 
+[2025-08-11 06:37:12] production.INFO: Groq failure fallback successful {"session_id":"enterprise_test_1754893496","lead_score":100,"method":"groq-failure-fallback"} 
+[2025-08-11 06:37:44] production.INFO: Chat interaction completed {"session_id":"hybrid_test_1754894262","processing_time":2.3977136611938477,"conversation_length":2} 
+[2025-08-11 06:37:47] production.INFO: Triggering automatic lead qualification {"session_id":"hybrid_test_1754894262","conversation_length":4} 
+[2025-08-11 06:37:48] production.INFO: Chat interaction completed {"session_id":"hybrid_test_1754894262","processing_time":1.775679349899292,"conversation_length":4} 
+[2025-08-11 06:44:59] production.WARNING: Groq returned unsuccessful qualification, using fallback {"session_id":"enterprise_test_1754893496","groq_response":{"success":false,"error":"Qualification analysis failed: Expecting value: line 1 column 1 (char 0)","session_id":"enterprise_test_1754893496","processing_time":0.908278}} 
+[2025-08-11 06:44:59] production.INFO: High-priority lead detected {"session_id":"enterprise_test_1754893496","lead_score":100,"company_size":"enterprise","industry":"healthcare","intent":"consultation"} 
+[2025-08-11 06:44:59] production.INFO: High-priority lead stored in analytics database {"session_id":"enterprise_test_1754893496","lead_score":100,"sales_ready":true,"company_size":"enterprise","industry":"healthcare"} 
+[2025-08-11 06:44:59] production.INFO: Automatic consultation request created {"session_id":"enterprise_test_1754893496","request_type":"consultation","status":"scheduled","lead_score":100,"industry":"healthcare"} 
+[2025-08-11 06:44:59] production.INFO: Groq failure fallback successful {"session_id":"enterprise_test_1754893496","lead_score":100,"method":"groq-failure-fallback"} 
+[2025-08-11 06:46:03] production.INFO: Chat interaction completed {"session_id":"auto_pipeline_1754894760","processing_time":2.869990348815918,"conversation_length":2} 
+[2025-08-11 06:46:06] production.INFO: Triggering automatic lead qualification {"session_id":"auto_pipeline_1754894760","conversation_length":4} 
+[2025-08-11 06:46:07] production.INFO: Chat interaction completed {"session_id":"auto_pipeline_1754894760","processing_time":2.1534323692321777,"conversation_length":4} 
+[2025-08-11 06:55:03] production.INFO: Chat interaction completed {"session_id":"rag_1754895175297_b1z1f5wwb","processing_time":28.075936555862427,"conversation_length":2} 
+[2025-08-11 06:57:10] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1754895175297_b1z1f5wwb","conversation_length":4} 
+[2025-08-11 06:57:10] production.INFO: Chat interaction completed {"session_id":"rag_1754895175297_b1z1f5wwb","processing_time":2.1896955966949463,"conversation_length":4} 
+[2025-08-11 06:57:57] production.WARNING: Groq returned unsuccessful qualification, using fallback {"session_id":"rag_1754895175297_b1z1f5wwb","groq_response":{"success":false,"error":"Qualification analysis failed: Expecting value: line 1 column 1 (char 0)","session_id":"rag_1754895175297_b1z1f5wwb","processing_time":0.575649}} 
+[2025-08-11 06:57:57] production.INFO: Groq failure fallback successful {"session_id":"rag_1754895175297_b1z1f5wwb","lead_score":30,"method":"groq-failure-fallback"} 
+[2025-08-11 06:58:24] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1754895175297_b1z1f5wwb","conversation_length":6} 
+[2025-08-11 06:58:25] production.INFO: Chat interaction completed {"session_id":"rag_1754895175297_b1z1f5wwb","processing_time":2.2028346061706543,"conversation_length":6} 
+[2025-08-11 06:59:53] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1754895175297_b1z1f5wwb","conversation_length":8} 
+[2025-08-11 06:59:54] production.INFO: Chat interaction completed {"session_id":"rag_1754895175297_b1z1f5wwb","processing_time":2.0496697425842285,"conversation_length":8} 
+[2025-08-11 07:03:07] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1754895175297_b1z1f5wwb","conversation_length":10} 
+[2025-08-11 07:03:08] production.INFO: Chat interaction completed {"session_id":"rag_1754895175297_b1z1f5wwb","processing_time":2.212599277496338,"conversation_length":10} 
+[2025-08-11 07:06:27] production.INFO: Chat interaction completed {"session_id":"sarah_hospital_test","processing_time":1.9807155132293701,"conversation_length":2} 
+[2025-08-11 07:06:31] production.INFO: Triggering automatic lead qualification {"session_id":"sarah_hospital_test","conversation_length":4} 
+[2025-08-11 07:06:31] production.INFO: Chat interaction completed {"session_id":"sarah_hospital_test","processing_time":2.2407424449920654,"conversation_length":4} 
+[2025-08-11 07:06:34] production.INFO: Triggering automatic lead qualification {"session_id":"sarah_hospital_test","conversation_length":6} 
+[2025-08-11 07:06:36] production.INFO: Chat interaction completed {"session_id":"sarah_hospital_test","processing_time":1.8519830703735352,"conversation_length":6} 
+[2025-08-11 07:06:58] production.INFO: Triggering automatic lead qualification {"session_id":"sarah_hospital_test","conversation_length":8} 
+[2025-08-11 07:07:08] production.INFO: Chat interaction completed {"session_id":"sarah_hospital_test","processing_time":21.38965344429016,"conversation_length":8} 
+[2025-08-11 07:07:30] production.INFO: Triggering automatic lead qualification {"session_id":"sarah_hospital_test","conversation_length":10} 
+[2025-08-11 07:07:39] production.INFO: Chat interaction completed {"session_id":"sarah_hospital_test","processing_time":21.169909238815308,"conversation_length":10} 
+[2025-08-11 07:07:53] production.WARNING: Groq returned unsuccessful qualification, using fallback {"session_id":"sarah_hospital_test","groq_response":{"success":false,"error":"Qualification analysis failed: Expecting value: line 1 column 1 (char 0)","session_id":"sarah_hospital_test","processing_time":0.675079}} 
+[2025-08-11 07:07:53] production.INFO: High-priority lead detected {"session_id":"sarah_hospital_test","lead_score":100,"company_size":"mid_market","industry":"healthcare","intent":"consultation"} 
+[2025-08-11 07:07:53] production.INFO: High-priority lead stored in analytics database {"session_id":"sarah_hospital_test","lead_score":100,"sales_ready":true,"company_size":"mid_market","industry":"healthcare"} 
+[2025-08-11 07:07:53] production.INFO: Automatic consultation request created {"session_id":"sarah_hospital_test","request_type":"consultation","status":"pending","lead_score":100,"industry":"healthcare"} 
+[2025-08-11 07:07:53] production.INFO: Groq failure fallback successful {"session_id":"sarah_hospital_test","lead_score":100,"method":"groq-failure-fallback"} 
+[2025-08-20 10:15:29] local.INFO: Chat interaction completed {"session_id":"status_test","processing_time":0.0006878376007080078,"conversation_length":1} 
+[2025-08-20 10:38:57] production.ERROR: SQLSTATE[HY000]: General error: 1 duplicate column name: authority_level (Connection: sqlite, SQL: alter table "lead_qualifications" add column "authority_level" varchar) {"exception":"[object] (Illuminate\\Database\\QueryException(code: HY000): SQLSTATE[HY000]: General error: 1 duplicate column name: authority_level (Connection: sqlite, SQL: alter table \"lead_qualifications\" add column \"authority_level\" varchar) at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('alter table \"le...', Array, Object(Closure))
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate\\Database\\Connection->run('alter table \"le...', Array, Object(Closure))
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(117): Illuminate\\Database\\Connection->statement('alter table \"le...')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Schema\\Grammars\\SQLiteGrammar))
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(406): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(358): Illuminate\\Database\\Schema\\Builder->table('lead_qualificat...', Object(Closure))
+#6 /var/www/html/database/migrations/2025_08_06_204352_add_missing_columns_to_lead_qualifications_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('table', Array)
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(475): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(409): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(736): Illuminate\\Console\\View\\Components\\Task->render('2025_08_06_2043...', Object(Closure))
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2025_08_06_2043...', Object(Closure))
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(179): Illuminate\\Database\\Migrations\\Migrator->runUp('/var/www/html/d...', 4, false)
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(122): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(615): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#26 /var/www/html/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#28 /var/www/html/vendor/symfony/console/Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 /var/www/html/vendor/symfony/console/Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 /var/www/html/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /var/www/html/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#34 {main}
+
+[previous exception] [object] (PDOException(code: HY000): SQLSTATE[HY000]: General error: 1 duplicate column name: authority_level at /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:565)
+[stacktrace]
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(565): PDO->prepare('alter table \"le...')
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('alter table \"le...', Array)
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('alter table \"le...', Array, Object(Closure))
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate\\Database\\Connection->run('alter table \"le...', Array, Object(Closure))
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(117): Illuminate\\Database\\Connection->statement('alter table \"le...')
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Schema\\Grammars\\SQLiteGrammar))
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(406): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(358): Illuminate\\Database\\Schema\\Builder->table('lead_qualificat...', Object(Closure))
+#8 /var/www/html/database/migrations/2025_08_06_204352_add_missing_columns_to_lead_qualifications_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('table', Array)
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(475): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(409): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(736): Illuminate\\Console\\View\\Components\\Task->render('2025_08_06_2043...', Object(Closure))
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2025_08_06_2043...', Object(Closure))
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(179): Illuminate\\Database\\Migrations\\Migrator->runUp('/var/www/html/d...', 4, false)
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(122): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(615): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#28 /var/www/html/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#30 /var/www/html/vendor/symfony/console/Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 /var/www/html/vendor/symfony/console/Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 /var/www/html/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 /var/www/html/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#36 {main}
+"} 
+[2025-08-20 10:45:18] production.INFO: Chat interaction completed {"session_id":"rag_1755686712154_pl0c6aued","processing_time":2.5049898624420166,"conversation_length":2} 
+[2025-08-20 10:46:28] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1755686712154_pl0c6aued","conversation_length":4} 
+[2025-08-20 10:46:29] production.INFO: Chat interaction completed {"session_id":"rag_1755686712154_pl0c6aued","processing_time":1.9851033687591553,"conversation_length":4} 
+[2025-08-20 10:50:49] production.WARNING: Groq returned unsuccessful qualification, using fallback {"session_id":"rag_1755686712154_pl0c6aued","groq_response":{"success":false,"error":"Qualification analysis failed: Expecting value: line 1 column 1 (char 0)","session_id":"rag_1755686712154_pl0c6aued","processing_time":0.560597}} 
+[2025-08-20 10:50:49] production.INFO: Groq failure fallback successful {"session_id":"rag_1755686712154_pl0c6aued","lead_score":65,"method":"groq-failure-fallback"} 
+[2025-08-20 10:51:37] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1755686712154_pl0c6aued","conversation_length":6} 
+[2025-08-20 10:51:37] production.INFO: Chat interaction completed {"session_id":"rag_1755686712154_pl0c6aued","processing_time":2.437283992767334,"conversation_length":6} 
+[2025-08-20 10:54:32] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1755686712154_pl0c6aued","conversation_length":8} 
+[2025-08-20 10:54:32] production.INFO: Chat interaction completed {"session_id":"rag_1755686712154_pl0c6aued","processing_time":2.54490327835083,"conversation_length":8} 
+[2025-08-20 10:57:11] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1755686712154_pl0c6aued","conversation_length":10} 
+[2025-08-20 10:57:12] production.INFO: Chat interaction completed {"session_id":"rag_1755686712154_pl0c6aued","processing_time":2.1000030040740967,"conversation_length":10} 
+[2025-08-20 10:57:55] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1755686712154_pl0c6aued","conversation_length":12} 
+[2025-08-20 10:57:55] production.INFO: Chat interaction completed {"session_id":"rag_1755686712154_pl0c6aued","processing_time":2.0438125133514404,"conversation_length":12} 
+[2025-08-20 11:41:18] local.INFO: Chat interaction completed {"session_id":"rag_1755689656807_e69mj9lmk","processing_time":1.2911019325256348,"conversation_length":2} 
+[2025-08-20 12:28:23] production.INFO: Chat interaction completed {"session_id":"rag_1755692896264_60i1c52l7","processing_time":1.3637845516204834,"conversation_length":2} 
+[2025-08-20 12:29:15] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1755692896264_60i1c52l7","conversation_length":4} 
+[2025-08-20 12:29:15] production.INFO: Chat interaction completed {"session_id":"rag_1755692896264_60i1c52l7","processing_time":2.0812149047851562,"conversation_length":4} 
+[2025-08-20 12:30:24] production.WARNING: Groq returned unsuccessful qualification, using fallback {"session_id":"rag_1755692896264_60i1c52l7","groq_response":{"success":false,"error":"Qualification analysis failed: 6 validation errors for LeadQualification
+company_size
+  Input should be 'startup', 'sme', 'mid_market' or 'enterprise' [type=enum, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.9/v/enum
+industry
+  Input should be 'fintech', 'healthcare', 'retail', 'manufacturing', 'real_estate', 'agri_food', 'communication', 'education', 'government' or 'other' [type=enum, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.9/v/enum
+decision_maker_level
+  Field required [type=missing, input_value={'session_id': 'rag_17556...'model_confidence': 0.3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.9/v/missing
+next_action
+  Field required [type=missing, input_value={'session_id': 'rag_17556...'model_confidence': 0.3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.9/v/missing
+notes
+  Field required [type=missing, input_value={'session_id': 'rag_17556...'model_confidence': 0.3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.9/v/missing
+follow_up_priority
+  Field required [type=missing, input_value={'session_id': 'rag_17556...'model_confidence': 0.3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.9/v/missing","session_id":"rag_1755692896264_60i1c52l7","processing_time":0.578659}} 
+[2025-08-20 12:30:24] production.INFO: High-priority lead detected {"session_id":"rag_1755692896264_60i1c52l7","lead_score":70,"company_size":"mid_market","industry":"technology","intent":"information"} 
+[2025-08-20 12:30:24] production.INFO: High-priority lead stored in analytics database {"session_id":"rag_1755692896264_60i1c52l7","lead_score":70,"sales_ready":true,"company_size":"mid_market","industry":"technology"} 
+[2025-08-20 12:30:24] production.INFO: Automatic consultation request created {"session_id":"rag_1755692896264_60i1c52l7","request_type":"consultation","status":"pending","lead_score":70,"industry":"technology"} 
+[2025-08-20 12:30:24] production.INFO: Groq failure fallback successful {"session_id":"rag_1755692896264_60i1c52l7","lead_score":70,"method":"groq-failure-fallback"} 
+[2025-08-20 12:30:46] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1755692896264_60i1c52l7","conversation_length":6} 
+[2025-08-20 12:30:46] production.INFO: Chat interaction completed {"session_id":"rag_1755692896264_60i1c52l7","processing_time":1.3082818984985352,"conversation_length":6} 
+[2025-08-21 11:08:59] production.INFO: Chat interaction completed {"session_id":"rag_1755774417074_cehrad10r","processing_time":4.306699514389038,"conversation_length":2} 
+[2025-08-21 11:10:10] production.INFO: Triggering automatic lead qualification {"session_id":"rag_1755774417074_cehrad10r","conversation_length":4} 
+[2025-08-21 11:10:10] production.INFO: Chat interaction completed {"session_id":"rag_1755774417074_cehrad10r","processing_time":2.276479482650757,"conversation_length":4} 
+[2025-08-21 11:10:50] production.WARNING: Groq returned unsuccessful qualification, using fallback {"session_id":"rag_1755774417074_cehrad10r","groq_response":{"success":false,"error":"Qualification analysis failed: 6 validation errors for LeadQualification
+company_size
+  Input should be 'startup', 'sme', 'mid_market' or 'enterprise' [type=enum, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.9/v/enum
+industry
+  Input should be 'fintech', 'healthcare', 'retail', 'manufacturing', 'real_estate', 'agri_food', 'communication', 'education', 'government' or 'other' [type=enum, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.9/v/enum
+decision_maker_level
+  Field required [type=missing, input_value={'session_id': 'rag_17557...'model_confidence': 0.3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.9/v/missing
+next_action
+  Field required [type=missing, input_value={'session_id': 'rag_17557...'model_confidence': 0.3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.9/v/missing
+notes
+  Field required [type=missing, input_value={'session_id': 'rag_17557...'model_confidence': 0.3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.9/v/missing
+follow_up_priority
+  Field required [type=missing, input_value={'session_id': 'rag_17557...'model_confidence': 0.3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.9/v/missing","session_id":"rag_1755774417074_cehrad10r","processing_time":0.614198}} 
+[2025-08-21 11:10:50] production.INFO: High-priority lead detected {"session_id":"rag_1755774417074_cehrad10r","lead_score":90,"company_size":"mid_market","industry":"healthcare","intent":"quote"} 
+[2025-08-21 11:10:50] production.INFO: High-priority lead stored in analytics database {"session_id":"rag_1755774417074_cehrad10r","lead_score":90,"sales_ready":true,"company_size":"mid_market","industry":"healthcare"} 
+[2025-08-21 11:10:50] production.INFO: Automatic consultation request created {"session_id":"rag_1755774417074_cehrad10r","request_type":"quote","status":"pending","lead_score":90,"industry":"healthcare"} 
+[2025-08-21 11:10:50] production.INFO: Groq failure fallback successful {"session_id":"rag_1755774417074_cehrad10r","lead_score":90,"method":"groq-failure-fallback"} 
+[2025-08-25 15:42:42] local.INFO: Chat interaction completed {"session_id":"rag_1756136553151_ciritabbk","processing_time":1.846794843673706,"conversation_length":2} 

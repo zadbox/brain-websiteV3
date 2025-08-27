@@ -18,7 +18,7 @@ class BrainGenRAGChatWidget {
             placeholderText: config.placeholderText || "Ask me about our services...",
             maxMessageLength: config.maxMessageLength || 2000,
             typingSpeed: config.typingSpeed || 30,
-            autoQualifyAfter: config.autoQualifyAfter || 5, // messages
+            autoQualifyAfter: config.autoQualifyAfter || 8, // messages
             enableSounds: config.enableSounds || true,
             enableTypingIndicator: config.enableTypingIndicator || true,
             brandName: config.brandName || 'BrainGenTechnology'
@@ -95,15 +95,7 @@ class BrainGenRAGChatWidget {
     getWidgetHTML() {
         return `
             <!-- Chat Toggle Button -->
-            <button class="rag-chat-toggle" aria-label="Open chat">
-                <svg class="rag-chat-icon rag-chat-icon--chat" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 11H6V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>
-                </svg>
-                <svg class="rag-chat-icon rag-chat-icon--close" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-                </svg>
-                <div class="rag-chat-notification" style="display: none;">1</div>
-            </button>
+            <img src="/assets/logo-b-white.png" alt="BrainGenTechnology" class="rag-chat-toggle">
 
             <!-- Chat Window -->
             <div class="rag-chat-window" style="display: none;">
@@ -111,7 +103,7 @@ class BrainGenRAGChatWidget {
                 <div class="rag-chat-header">
                     <div class="rag-chat-header-info">
                         <div class="rag-chat-avatar">
-                            <img src="/assets/LogoBrainBlanc.png" alt="${this.config.brandName}" />
+                            <img src="/assets/logo-b-white.png" alt="${this.config.brandName}" />
                         </div>
                         <div class="rag-chat-title">
                             <h4>${this.config.brandName}</h4>
@@ -138,7 +130,7 @@ class BrainGenRAGChatWidget {
                 <!-- Typing Indicator -->
                 <div class="rag-chat-typing" style="display: none;">
                     <div class="rag-chat-typing-avatar">
-                        <img src="/assets/LogoBrainBlanc.png" alt="AI" />
+                        <img src="/assets/logo-b-white.png" alt="AI" />
                     </div>
                     <div class="rag-chat-typing-content">
                         <div class="rag-chat-typing-dots">
@@ -428,6 +420,9 @@ class BrainGenRAGChatWidget {
                 // Update connection status
                 this.updateConnectionStatus('connected');
                 
+                // Check for consultation requests
+                this.checkConsultationRequest(message);
+                
                 // Check if we should auto-qualify
                 this.checkAutoQualification();
                 
@@ -534,7 +529,7 @@ class BrainGenRAGChatWidget {
         messageDiv.innerHTML = `
             ${message.sender === 'bot' ? `
                 <div class="rag-chat-message-avatar">
-                    <img src="/assets/LogoBrainBlanc.png" alt="AI Assistant" />
+                    <img src="/assets/logo-b-white.png" alt="AI Assistant" />
                 </div>
             ` : ''}
             <div class="rag-chat-message-content">
@@ -674,15 +669,90 @@ class BrainGenRAGChatWidget {
             }
         }));
         
-        // Optional: Show qualification feedback to user
+        // Show personalized qualification response
         if (qualification.sales_ready) {
+            const industry = qualification.industry || 'business';
+            const intent = qualification.intent || 'solutions';
             setTimeout(() => {
                 this.addMessage(
-                    "I see you're interested in our enterprise solutions! Would you like to schedule a consultation with one of our specialists?",
+                    `Based on our conversation, I think our ${intent === 'demo' ? 'demo' : intent === 'quote' ? 'pricing solutions' : 'AI solutions'} would be perfect for ${industry.toLowerCase() === 'technology' ? 'your tech needs' : `the ${industry.toLowerCase()} industry`}. Would you like to schedule a consultation with one of our specialists?`,
                     'bot'
                 );
             }, 3000);
         }
+    }
+
+    /**
+     * Check if user is requesting consultation
+     */
+    checkConsultationRequest(userMessage) {
+        const message = userMessage.toLowerCase();
+        const consultationKeywords = ['yes', 'sure', 'ok', 'okay', 'schedule', 'consultation', 'meeting', 'call'];
+        
+        // Check if this is a response to a consultation offer
+        const lastBotMessage = this.getLastBotMessage();
+        if (lastBotMessage && lastBotMessage.content.includes('consultation') && 
+            consultationKeywords.some(keyword => message.includes(keyword))) {
+            
+            setTimeout(() => {
+                this.startConsultationFlow();
+            }, 1000);
+        }
+    }
+
+    /**
+     * Start consultation scheduling flow
+     */
+    startConsultationFlow() {
+        // Save consultation request to database
+        this.saveConsultationRequest();
+        
+        this.addMessage(
+            "Excellent! I'd be happy to connect you with one of our specialists. To schedule your consultation, please provide:\n\n" +
+            "📧 Your email address\n" +
+            "📱 Your preferred contact method (email/phone)\n" +
+            "📅 Your preferred time (morning/afternoon)\n\n" +
+            "Or you can reach us directly at contact@braingentech.com",
+            'bot'
+        );
+    }
+
+    /**
+     * Save consultation request to database
+     */
+    async saveConsultationRequest() {
+        try {
+            const response = await fetch('/api/consultation/request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': this.getCSRFToken()
+                },
+                body: JSON.stringify({
+                    session_id: this.config.sessionId,
+                    industry: this.state.qualification?.industry || null,
+                    request_type: this.state.qualification?.intent || 'consultation'
+                })
+            });
+            
+            if (response.ok) {
+                console.log('Consultation request saved successfully');
+            }
+        } catch (error) {
+            console.warn('Failed to save consultation request:', error);
+        }
+    }
+
+    /**
+     * Get the last bot message
+     */
+    getLastBotMessage() {
+        for (let i = this.messages.length - 1; i >= 0; i--) {
+            if (this.messages[i].sender === 'bot') {
+                return this.messages[i];
+            }
+        }
+        return null;
     }
 
     /**

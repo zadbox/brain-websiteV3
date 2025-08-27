@@ -12,13 +12,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('lead_qualifications', function (Blueprint $table) {
-            // Add missing columns for analytics
-            $table->string('authority_level')->nullable()->after('budget_range');
-            $table->string('industry')->nullable()->after('company_size');
-            $table->json('needs_analysis')->nullable()->after('industry');
-            $table->boolean('sales_ready')->default(false)->after('lead_score');
-            $table->decimal('conversation_quality', 3, 1)->nullable()->after('sales_ready');
-            $table->decimal('model_confidence', 4, 3)->nullable()->after('conversation_quality');
+            // Add missing columns for analytics (only if they don't exist)
+            if (!Schema::hasColumn('lead_qualifications', 'authority_level')) {
+                $table->string('authority_level')->nullable()->after('budget_range');
+            }
+            if (!Schema::hasColumn('lead_qualifications', 'industry')) {
+                $table->string('industry')->nullable()->after('company_size');
+            }
+            if (!Schema::hasColumn('lead_qualifications', 'needs_analysis')) {
+                $table->json('needs_analysis')->nullable()->after('industry');
+            }
+            if (!Schema::hasColumn('lead_qualifications', 'sales_ready')) {
+                $table->boolean('sales_ready')->default(false)->after('lead_score');
+            }
+            if (!Schema::hasColumn('lead_qualifications', 'conversation_quality')) {
+                $table->decimal('conversation_quality', 3, 1)->nullable()->after('sales_ready');
+            }
+            if (!Schema::hasColumn('lead_qualifications', 'model_confidence')) {
+                $table->decimal('model_confidence', 4, 3)->nullable()->after('conversation_quality');
+            }
         });
     }
 

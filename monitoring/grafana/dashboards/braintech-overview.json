@@ -10,11 +10,11 @@
         "type": "stat",
         "targets": [
           {
-            "expr": "up{job=\"laravel-app\"}",
+            "expr": "up{job=\"node-exporter\"}",
             "legendFormat": "Laravel App"
           },
           {
-            "expr": "up{job=\"rag-system\"}",
+            "expr": "up{job=\"redis\"}",
             "legendFormat": "RAG System"
           }
         ],
@@ -43,7 +43,7 @@
         "type": "graph",
         "targets": [
           {
-            "expr": "rate(http_requests_total[5m])",
+            "expr": "rate(redis_commands_processed_total[5m])",
             "legendFormat": "Requests/sec"
           }
         ],
@@ -55,12 +55,12 @@
         "type": "graph",
         "targets": [
           {
-            "expr": "histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))",
-            "legendFormat": "95th percentile"
+            "expr": "redis_memory_used_bytes / (1024*1024)",
+            "legendFormat": "Memory (MB)"
           },
           {
-            "expr": "histogram_quantile(0.50, rate(http_request_duration_seconds_bucket[5m]))",
-            "legendFormat": "50th percentile"
+            "expr": "redis_connected_clients",
+            "legendFormat": "Connected Clients"
           }
         ],
         "gridPos": {"h": 8, "w": 24, "x": 0, "y": 8}

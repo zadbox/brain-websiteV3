@@ -21,7 +21,6 @@
                         <div class="logo-hologram-effect"></div>
                     </div>
                     <div class="logo-subtitle">
-                        <span class="subtitle-text">AI Technology</span>
                         <div class="subtitle-line"></div>
                     </div>
                 </a>
