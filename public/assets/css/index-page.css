@@ -102,7 +102,7 @@ body {
     font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--neutral-100);
-    background: var(--neutral-900);
+    background: #0a0a0a;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -120,8 +120,8 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.3;
-    filter: brightness(0.7) contrast(1.2);
+    opacity: 0.4;
+    filter: brightness(0.6) contrast(1.2);
 }
 
 /* =============================================================================
@@ -131,7 +131,7 @@ body {
 .homepage-main {
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(12, 20, 37, 0.6) 50%, rgba(30, 41, 59, 0.7) 100%);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(15, 15, 15, 0.8) 50%, rgba(20, 20, 20, 0.9) 100%);
 }
 
 /* =============================================================================

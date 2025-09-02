@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     langsmith_api_key: Optional[str] = None
     
     # Model Configuration
-    llm_model: str = "llama3-70b-8192"
+    llm_model: str = "llama-3.1-70b-versatile"
     llm_temperature: float = 0.3
     llm_max_tokens: int = 2048
     llm_timeout: int = 60

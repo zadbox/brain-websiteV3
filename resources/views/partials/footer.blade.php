@@ -19,78 +19,19 @@
             <div class="footer-brand">
                 <div class="brand-logo-section">
                     <div id="footer-animated-logo" class="logo-container animated-footer-logo logo-large">
-                        <!-- SVG Motion Path Animation -->
-                        <svg class="footer-motion-svg" viewBox="0 0 780 130" style="width: 450px; height: 110px;">
-                            <defs>
-                                <linearGradient id="footerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#666666;stop-opacity:1" />
-                                    <stop offset="30%" style="stop-color:#ffffff;stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#00baff;stop-opacity:1" />
-                                    <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#666666;stop-opacity:1" />
-                                </linearGradient>
-                                <linearGradient id="footerAnimatedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop id="grad-stop-1" offset="0%" style="stop-color:#333333;stop-opacity:1" />
-                                    <stop id="grad-stop-2" offset="20%" style="stop-color:#666666;stop-opacity:1" />
-                                    <stop id="grad-stop-3" offset="40%" style="stop-color:#ffffff;stop-opacity:1" />
-                                    <stop id="grad-stop-4" offset="60%" style="stop-color:#00baff;stop-opacity:1" />
-                                    <stop id="grad-stop-5" offset="80%" style="stop-color:#666666;stop-opacity:1" />
-                                    <stop id="grad-stop-6" offset="100%" style="stop-color:#333333;stop-opacity:1" />
-                                    <animateTransform attributeName="gradientTransform" 
-                                                    type="translate" 
-                                                    values="-150,0; 150,0; -150,0" 
-                                                    dur="8s" 
-                                                    repeatCount="indefinite"/>
-                                </linearGradient>
-                                <filter id="footerGlow">
-                                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                                    <feMerge> 
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                            </defs>
-                            
-                            <!-- BRAIN text path with gradient degradation -->
-                            <path id="footer-brain-path" class="brain-text-path" 
-                                  d="M 50 70 L 50 20 L 90 20 Q 110 20 110 35 Q 110 45 90 45 L 50 45 M 90 45 Q 110 45 110 55 Q 110 70 90 70 L 50 70 
-                                     M 130 70 L 130 20 L 170 20 Q 190 20 190 35 Q 190 45 170 45 L 130 45 M 170 45 L 190 70
-                                     M 210 70 L 235 20 L 260 70 M 222 50 L 248 50
-                                     M 280 20 L 320 20 M 300 20 L 300 70 M 280 70 L 320 70
-                                     M 340 70 L 340 20 L 390 70 L 390 20"
-                                  stroke="url(#footerAnimatedGradient)" 
-                                  stroke-width="6" 
-                                  fill="none" 
-                                  stroke-linecap="round" 
-                                  stroke-linejoin="round"
-                                  filter="url(#footerGlow)"
-                                  opacity="1"/>
-                            
-                            <!-- GEN TECHNOLOGY text path with gradient degradation -->
-                            <path id="footer-tech-path" class="tech-text-path"
-                                  d="M 50 110 Q 50 90 70 90 Q 90 90 90 100 Q 90 110 70 110 L 70 105 L 85 105
-                                     M 110 90 L 110 110 M 110 90 L 140 90 M 110 100 L 130 100 M 110 110 L 140 110
-                                     M 160 110 L 160 90 L 200 110 L 200 90
-                                     M 240 90 L 280 90 M 260 90 L 260 110
-                                     M 300 90 L 300 110 M 300 90 L 330 90 M 300 100 L 325 100 M 300 110 L 330 110
-                                     M 350 100 Q 350 90 370 90 Q 390 90 390 100 Q 390 110 370 110 Q 350 110 350 100
-                                     M 410 100 Q 410 90 430 90 Q 450 90 450 100 Q 450 110 430 110 Q 410 110 410 100
-                                     M 470 110 L 470 90 L 510 110 L 510 90
-                                     M 530 90 L 530 110 M 530 110 L 570 110
-                                     M 590 100 Q 590 90 610 90 Q 630 90 630 100 Q 630 110 610 110 Q 590 110 590 100
-                                     M 650 90 Q 670 90 670 95 Q 670 100 650 100 L 670 110
-                                     M 690 90 L 710 105 L 730 90 M 710 105 L 710 110"
-                                  stroke="url(#footerAnimatedGradient)" 
-                                  stroke-width="5" 
-                                  fill="none" 
-                                  stroke-linecap="round" 
-                                  stroke-linejoin="round"
-                                  filter="url(#footerGlow)"
-                                  opacity="1"/>
-                            
-                            <!-- Single animated element following the paths - only visible during initial animation -->
-                            <circle class="main-follower" r="8" fill="#00baff" opacity="0"/>
-                        </svg>
+                        <!-- BRAIN Text Logo -->
+                        <div class="brain-text-logo footer-brain-logo">
+                            <div class="brain-letters">
+                                <span class="brain-letter b-letter" style="opacity: 0;">B</span>
+                                <span class="brain-letter r-letter" style="opacity: 0;">R</span>
+                                <span class="brain-letter a-letter" style="opacity: 0;">A</span>
+                                <span class="brain-letter i-letter" style="opacity: 0;">I</span>
+                                <span class="brain-letter n-letter" style="opacity: 0;">N</span>
+                            </div>
+                            <div class="brain-subtitle" style="opacity: 0;">
+                                GEN TECHNOLOGY
+                            </div>
+                        </div>
                         <div class="logo-glow"></div>
                     </div>
                 </div>
@@ -292,10 +233,49 @@
 
 <!-- Footer Styles -->
 <style>
+/* Footer BRAIN Text Logo Animation Styles */
+.footer-brain-logo {
+    text-align: center;
+}
+
+.footer-brain-logo .brain-letters {
+    font-size: 4rem;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-brain-logo .brain-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.5rem;
+}
+
+.footer-brain-logo .brain-letter {
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+}
+
+.footer-brain-logo .brain-letter.b-letter,
+.footer-brain-logo .brain-letter.n-letter {
+    color: white;
+}
+
+.footer-brain-logo .brain-letter.r-letter,
+.footer-brain-logo .brain-letter.a-letter,
+.footer-brain-logo .brain-letter.i-letter {
+    color: #6baed6;
+}
+
+.footer-brain-logo .brain-letter.lit {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px currentColor);
+}
+
 /* Modern Professional Footer Styles */
 .footer-premium {
     position: relative;
-    background: linear-gradient(135deg, #0f1729 0%, #1e2a4a 50%, #2d3b5f 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #151515 50%, #1a1a1a 100%);
     color: #e2e8f0;
     overflow: hidden;
     margin-top: auto;
@@ -317,7 +297,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse 800px 400px at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse 800px 400px at 50% 0%, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
 }
 
 .bg-pattern {
@@ -1099,7 +1079,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Footer Animated Logo Initialization
+// Footer BRAIN Logo Animation (based on your example) 
 function initializeFooterAnimatedLogo() {
     const container = document.getElementById('footer-animated-logo');
     if (!container) return;
@@ -1111,29 +1091,14 @@ function initializeFooterAnimatedLogo() {
     
     if (reducedMotion || isLowPowerMode) {
         console.log('Using static footer logo for performance');
-        return; // Keep static fallback
+        return;
     }
-    
-    // Load scripts only if needed and not already loaded
-    if (typeof createAnimatedLogo === 'undefined' && typeof createVideoLogo === 'undefined') {
-        // Check if scripts are already loaded by header
-        setTimeout(() => {
-            initFooterLogo();
-        }, 1500); // Give header time to load scripts
-    } else {
-        initFooterLogo();
-    }
-}
-
-function initFooterLogo() {
-    const container = document.getElementById('footer-animated-logo');
-    if (!container) return;
     
     // Use Intersection Observer to only animate when footer is visible
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                createFooterAnimation();
+                createFooterBrainAnimation();
                 observer.unobserve(container);
             }
         });
@@ -1142,115 +1107,53 @@ function initFooterLogo() {
     observer.observe(container);
 }
 
-function createFooterAnimation() {
+function createFooterBrainAnimation() {
     const container = document.getElementById('footer-animated-logo');
     if (!container) return;
     
-    // Motion Path Animation for footer
-    const svg = container.querySelector('.footer-motion-svg');
-    const brainPath = document.getElementById('footer-brain-path');
-    const techPath = document.getElementById('footer-tech-path');
-    const mainFollower = container.querySelector('.main-follower');
-    
-    if (!brainPath || !techPath) return;
-    
-    // Load motion path animation script
-    if (typeof window.svg === 'undefined') {
+    // Load anime.js if not already loaded
+    if (typeof anime === 'undefined') {
         const script = document.createElement('script');
-        script.src = '/assets/js/motion-path-animation.js';
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js';
         script.onload = () => {
-            setupFooterMotionPath();
+            startFooterAnimation();
         };
         document.head.appendChild(script);
     } else {
-        setupFooterMotionPath();
+        startFooterAnimation();
     }
     
-    function setupFooterMotionPath() {
-        try {
-            // Create drawable paths
-            const [brainDrawable] = window.svg.createDrawable('#footer-brain-path');
-            const [techDrawable] = window.svg.createDrawable('#footer-tech-path');
-            
-            // Create motion paths for followers
-            const brainMotionPath = window.svg.createMotionPath('#footer-brain-path');
-            const techMotionPath = window.svg.createMotionPath('#footer-tech-path');
-            
-            console.log('Footer motion path animation ready');
-            
-            // Animation on page load (when footer becomes visible)
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        startFooterAnimation();
-                        observer.unobserve(container); // Run only once
-                    }
-                });
-            }, { threshold: 0.3 });
-            
-            observer.observe(container);
-            
-            function startFooterAnimation() {
-                // Start with gray/invisible text
-                brainPath.style.stroke = '#333333';
-                brainPath.style.strokeDasharray = 'none';
-                brainPath.style.strokeDashoffset = '0';
-                brainPath.style.opacity = '1';
-                
-                techPath.style.stroke = '#333333';
-                techPath.style.strokeDasharray = 'none';  
-                techPath.style.strokeDashoffset = '0';
-                techPath.style.opacity = '1';
-                
-                // Show particle during animation
-                mainFollower.style.opacity = '1';
-                
-                // Animate gradient effect across BRAIN path
-                setTimeout(() => {
-                    brainPath.style.stroke = 'url(#footerAnimatedGradient)';
-                    
-                    setTimeout(() => {
-                        // After gradient passes, set BRAIN to static white
-                        brainPath.style.stroke = '#ffffff';
-                    }, 4000); // Half of 8s gradient duration
-                }, 500);
-                
-                // Animate gradient effect across TECH path with delay
-                setTimeout(() => {
-                    techPath.style.stroke = 'url(#footerAnimatedGradient)';
-                    
-                    setTimeout(() => {
-                        // After gradient passes, set TECH to static blue
-                        techPath.style.stroke = '#00baff';
-                        
-                        // Hide particle after all animations complete
-                        mainFollower.style.opacity = '0';
-                    }, 4000); // Half of 8s gradient duration
-                }, 3000);
-                
-                // Single particle motion across both paths once
-                window.animate(mainFollower, {
-                    ...brainMotionPath,
-                    duration: 3000,
-                    ease: 'linear',
-                    complete: () => {
-                        // Move to tech path
-                        window.animate(mainFollower, {
-                            ...techMotionPath,
-                            duration: 4000,
-                            ease: 'linear'
-                        });
-                    }
+    function startFooterAnimation() {
+        const letters = container.querySelectorAll('.brain-letter');
+        const subtitle = container.querySelector('.brain-subtitle');
+        
+        // Animate letters appearing one by one with a more dramatic effect
+        anime({
+            targets: letters,
+            opacity: [0, 1],
+            scale: [0.5, 1],
+            translateY: [30, 0],
+            easing: 'easeOutExpo',
+            duration: 800,
+            delay: (el, i) => i * 200,
+            complete: function() {
+                // Add lit class for glow effect
+                letters.forEach(letter => {
+                    letter.classList.add('lit');
                 });
             }
-            
-        } catch (error) {
-            console.warn('Failed to setup footer motion path:', error);
-            // Fallback: just show the paths
-            brainPath.style.opacity = '1';
-            techPath.style.opacity = '1';
-            brainPath.style.strokeDasharray = 'none';
-            techPath.style.strokeDasharray = 'none';
+        });
+
+        // Fade in subtitle with a nice slide up effect
+        if (subtitle) {
+            anime({
+                targets: subtitle,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                easing: 'easeOutExpo',
+                duration: 1000,
+                delay: 1500
+            });
         }
     }
 }
