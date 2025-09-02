@@ -14,13 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const config = {
         animationDuration: 300,
         neuralNetwork: {
-            nodeCount: Math.floor((window.innerWidth * window.innerHeight) / 12000) + 20,
-            connectionDistance: 150,
-            speed: 0.4,
+            nodeCount: Math.floor((window.innerWidth * window.innerHeight) / 8000) + 40,
+            connectionDistance: 200,
+            speed: 0.6,
             colors: [
                 { r: 59, g: 130, b: 246 },   // Blue
                 { r: 99, g: 102, b: 241 },   // Indigo  
-                { r: 139, g: 92, b: 246 }    // Purple
+                { r: 139, g: 92, b: 246 },   // Purple
+                { r: 0, g: 186, b: 255 },    // Bright Blue
+                { r: 124, g: 58, b: 237 }    // Deep Purple
             ]
         }
     };

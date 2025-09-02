@@ -9,14 +9,68 @@
     <div class="container">
         <div class="header-content">
             
-            <!-- Logo with Holographic Effect -->
+            <!-- Logo with Animation Support -->
             <div class="logo-ultra">
                 <a href="{{ url('/') }}" class="logo-link-ultra" aria-label="BRAIN Technology Homepage">
-                    <div class="logo-container">
-                        <img src="{{ asset('assets/LogoBrainBlanc.png') }}" 
-                             alt="BRAIN Technology Logo" 
-                             class="logo-image"
-                             width="180" height="40">
+                    <div id="header-animated-logo" class="logo-container animated-logo-container">
+                        <!-- SVG Motion Path Animation -->
+                        <svg class="header-motion-svg" viewBox="0 0 400 60" style="width: 240px; height: 50px;">
+                            <defs>
+                                <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#666666;stop-opacity:1" />
+                                    <stop offset="30%" style="stop-color:#ffffff;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#00baff;stop-opacity:1" />
+                                    <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#666666;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="headerAnimatedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#333333;stop-opacity:1" />
+                                    <stop offset="20%" style="stop-color:#666666;stop-opacity:1" />
+                                    <stop offset="40%" style="stop-color:#ffffff;stop-opacity:1" />
+                                    <stop offset="60%" style="stop-color:#00baff;stop-opacity:1" />
+                                    <stop offset="80%" style="stop-color:#ffffff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#333333;stop-opacity:1" />
+                                    <animateTransform attributeName="gradientTransform" 
+                                                    type="translate" 
+                                                    values="-120,0; 120,0; -120,0" 
+                                                    dur="6s" 
+                                                    repeatCount="indefinite"/>
+                                </linearGradient>
+                                <filter id="headerGlow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge> 
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            
+                            <!-- Text path for BRAIN with bigger B -->
+                            <path id="header-text-path" class="text-path" 
+                                  d="M 15 45 L 15 10 L 50 10 Q 65 10 65 22 Q 65 32 50 32 L 15 32 M 50 32 Q 65 32 65 42 Q 65 50 50 50 L 15 50 
+                                     M 80 45 L 80 15 L 105 15 Q 115 15 115 25 Q 115 35 105 35 L 80 35 M 105 35 L 115 45
+                                     M 130 45 L 145 15 L 160 45 M 137 32 L 153 32
+                                     M 175 15 L 195 15 M 185 15 L 185 45 M 175 45 L 195 45
+                                     M 210 45 L 210 15 L 245 45 L 245 15"
+                                  stroke="url(#headerAnimatedGradient)" 
+                                  stroke-width="4" 
+                                  fill="none" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round"
+                                  filter="url(#headerGlow)"
+                                  opacity="1"/>
+                            
+                            <!-- Animated particles that follow the path -->
+                            <circle class="path-follower particle-1" r="5" fill="#00baff" opacity="1">
+                                <animate attributeName="fill" values="#00baff;#ffffff;#00baff" dur="5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle class="path-follower particle-2" r="4" fill="#ffffff" opacity="1">
+                                <animate attributeName="fill" values="#ffffff;#00baff;#ffffff" dur="5s" begin="1s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle class="path-follower particle-3" r="4" fill="#00baff" opacity="1">
+                                <animate attributeName="fill" values="#00baff;#6366f1;#00baff" dur="5s" begin="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
                         <div class="logo-glow-effect"></div>
                         <div class="logo-hologram-effect"></div>
                     </div>
@@ -188,9 +242,15 @@
     </div>
 </header>
 
+<!-- Include Animated Logo Assets -->
+<link rel="stylesheet" href="{{ asset('assets/css/animated-logo.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/video-logo.css') }}">
+
 <!-- Header JavaScript -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize motion path animation
+    initHeaderMotionPath();
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -284,11 +344,146 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.remove('particles-active');
         });
     }
+    
+    // Header Motion Path Animation
+    function initHeaderMotionPath() {
+        const svg = document.querySelector('.header-motion-svg');
+        const textPath = document.getElementById('header-text-path');
+        const particles = document.querySelectorAll('.path-follower');
+        
+        if (!textPath) return;
+        
+        // Load motion path animation script
+        if (typeof window.svg === 'undefined') {
+            const script = document.createElement('script');
+            script.src = '/assets/js/motion-path-animation.js';
+            script.onload = () => {
+                startHeaderAnimation();
+            };
+            document.head.appendChild(script);
+        } else {
+            startHeaderAnimation();
+        }
+        
+        function startHeaderAnimation() {
+            try {
+                // Start with gray/invisible text
+                textPath.style.stroke = '#333333';
+                textPath.style.strokeDasharray = 'none';
+                textPath.style.strokeDashoffset = '0';
+                textPath.style.opacity = '1';
+                
+                // Start gradient effect immediately
+                setTimeout(() => {
+                    textPath.style.stroke = 'url(#headerAnimatedGradient)';
+                    
+                    // After gradient passes, set to static white
+                    setTimeout(() => {
+                        textPath.style.stroke = '#ffffff';
+                    }, 3000); // Half of 6s gradient duration
+                }, 500);
+                
+                // Start particle animations
+                startParticleMotion();
+                
+            } catch (error) {
+                console.warn('Header motion path failed:', error);
+                // Show static text fallback
+                textPath.style.opacity = '1';
+                textPath.style.stroke = '#ffffff';
+                textPath.style.strokeDasharray = 'none';
+                textPath.style.strokeDashoffset = '0';
+            }
+        }
+        
+        function startParticleMotion() {
+            try {
+                // Create motion path for particles to follow
+                const motionPath = window.svg.createMotionPath('#header-text-path');
+                
+                // Show particles briefly during initial animation only
+                particles.forEach((particle, index) => {
+                    particle.style.opacity = '0.8';
+                    
+                    window.animate(particle, {
+                        ...motionPath,
+                        duration: 4000,
+                        ease: 'linear',
+                        delay: window.stagger(300)(index),
+                        scale: [0.8, 1.2, 0.8],
+                        complete: () => {
+                            // Hide particles after animation
+                            particle.style.opacity = '0';
+                        }
+                    });
+                });
+                
+            } catch (error) {
+                console.warn('Particle motion failed:', error);
+            }
+        }
+    }
+});
+</script>
+
+<!-- Animated Logo Assets -->
+<script>
+// Preload critical animation assets for better performance
+document.addEventListener('DOMContentLoaded', function() {
+    // Only preload if not on reduced motion
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const preloadLinks = [
+            '{{ asset("assets/videos/brain-logo-1.mp4") }}' // Video
+            // Add Lottie JSON path when available
+        ];
+        
+        preloadLinks.forEach(href => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = href.endsWith('.mp4') ? 'video' : 'fetch';
+            link.href = href;
+            if (!href.endsWith('.mp4')) {
+                link.crossOrigin = 'anonymous';
+            }
+            document.head.appendChild(link);
+        });
+    }
 });
 </script>
 
 <!-- Normalized Header Styles -->
 <style>
+/* Header Brain Animation */
+.header-brain-animation {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.brain-letter:hover {
+    transform: scale(1.1) translateY(-2px);
+    text-shadow: 0 0 15px rgba(90, 200, 250, 0.8) !important;
+}
+
+.brain-letter:nth-child(3), .brain-letter:nth-child(4) {
+    text-shadow: 0 0 12px rgba(90, 200, 250, 0.6);
+}
+
+/* Letter animation on page load */
+@keyframes letterGlow {
+    0% { opacity: 0.7; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.brain-letter {
+    animation: letterGlow 0.6s ease-out forwards;
+}
+
+.brain-letter:nth-child(1) { animation-delay: 0.1s; }
+.brain-letter:nth-child(2) { animation-delay: 0.2s; }
+.brain-letter:nth-child(3) { animation-delay: 0.3s; }
+.brain-letter:nth-child(4) { animation-delay: 0.4s; }
+.brain-letter:nth-child(5) { animation-delay: 0.5s; }
+
 /* Normalized Header Base Styles - Using Index Page Dimensions */
 .header-ultra {
     position: fixed;
