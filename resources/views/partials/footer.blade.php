@@ -19,18 +19,24 @@
             <div class="footer-brand">
                 <div class="brand-logo-section">
                     <div id="footer-animated-logo" class="logo-container animated-footer-logo logo-large">
-                        <!-- BRAIN Text Logo -->
-                        <div class="brain-text-logo footer-brain-logo">
-                            <div class="brain-letters">
-                                <span class="brain-letter b-letter" style="opacity: 0;">B</span>
-                                <span class="brain-letter r-letter" style="opacity: 0;">R</span>
-                                <span class="brain-letter a-letter" style="opacity: 0;">A</span>
-                                <span class="brain-letter i-letter" style="opacity: 0;">I</span>
-                                <span class="brain-letter n-letter" style="opacity: 0;">N</span>
-                            </div>
-                            <div class="brain-subtitle" style="opacity: 0;">
-                                GEN TECHNOLOGY
-                            </div>
+                        <!-- BRAIN Video Logo -->
+                        <div class="brain-video-logo footer-brain-logo">
+                            <video 
+                                autoplay 
+                                muted 
+                                loop 
+                                playsinline 
+                                preload="auto"
+                                class="logo-video footer-logo-video"
+                                poster=""
+                            >
+                                <source src="{{ asset('assets/videos/brain-logo-1.mp4') }}" type="video/mp4">
+                                <!-- Fallback text for browsers that don't support video -->
+                                <div class="video-fallback">
+                                    <span>BRAIN</span>
+                                    <small>GEN TECHNOLOGY</small>
+                                </div>
+                            </video>
                         </div>
                         <div class="logo-glow"></div>
                     </div>
@@ -233,8 +239,29 @@
 
 <!-- Footer Styles -->
 <style>
-/* Footer BRAIN Text Logo Animation Styles */
+/* Footer BRAIN Video Logo Styles */
 .footer-brain-logo {
+    text-align: center;
+}
+
+.footer-logo-video {
+    height: 10rem;
+    width: auto;
+    max-width: 400px;
+    object-fit: contain;
+    border-radius: 16px;
+    filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    mix-blend-mode: screen;
+    transition: all 0.3s ease;
+}
+
+.footer-logo-video:hover {
+    filter: brightness(1.3) drop-shadow(0 0 30px rgba(0, 186, 255, 0.5));
+    transform: scale(1.02);
+}
+
+/* Footer BRAIN Text Logo Animation Styles (kept for compatibility) */
+.footer-brain-logo.text-logo {
     text-align: center;
 }
 
@@ -935,6 +962,11 @@
         gap: 0.5rem;
     }
     
+    .footer-logo-video {
+        height: 8rem;
+        max-width: 250px;
+    }
+    
     .form-group {
         flex-direction: column;
         gap: 1rem;
@@ -957,6 +989,11 @@
     .footer-navigation {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    .footer-logo-video {
+        height: 4rem;
+        max-width: 150px;
     }
     
     .trust-badges {

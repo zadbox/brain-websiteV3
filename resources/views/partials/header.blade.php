@@ -13,18 +13,9 @@
             <div class="logo-ultra">
                 <a href="{{ url('/') }}" class="logo-link-ultra" aria-label="BRAIN Technology Homepage">
                     <div id="header-animated-logo" class="logo-container animated-logo-container">
-                        <!-- BRAIN Text Logo -->
-                        <div class="brain-text-logo">
-                            <div class="brain-letters">
-                                <span class="brain-letter b-letter" style="opacity: 0;">B</span>
-                                <span class="brain-letter r-letter" style="opacity: 0;">R</span>
-                                <span class="brain-letter a-letter" style="opacity: 0;">A</span>
-                                <span class="brain-letter i-letter" style="opacity: 0;">I</span>
-                                <span class="brain-letter n-letter" style="opacity: 0;">N</span>
-                            </div>
-                            <div class="brain-subtitle" style="opacity: 0;">
-                                GEN TECHNOLOGY
-                            </div>
+                        <!-- BRAIN Logo Image -->
+                        <div class="brain-logo-simple">
+                            <img src="{{ asset('assets/logo-b-white.png') }}" alt="BRAIN Technology" class="logo-image-simple">
                         </div>
                         <div class="logo-glow-effect"></div>
                         <div class="logo-hologram-effect"></div>
@@ -382,7 +373,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Normalized Header Styles -->
 <style>
-/* Header BRAIN Text Logo Animation Styles */
+/* BRAIN Simple Logo Styles */
+.brain-logo-simple {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.logo-image-simple {
+    height: 65px;
+    width: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+    transition: all 0.3s ease;
+}
+
+.logo-image-simple:hover {
+    filter: drop-shadow(0 0 15px rgba(0, 186, 255, 0.5));
+    transform: scale(1.05);
+}
+
+.logo-text-simple {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.main-text-simple {
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.1rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    line-height: 1;
+}
+
+.subtitle-simple {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+    color: #6baed6;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+}
+
+/* Header BRAIN Text Logo Animation Styles (kept for compatibility) */
 .brain-text-logo {
     display: flex;
     flex-direction: column;
@@ -434,14 +473,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-    .brain-letters {
-        font-size: 1.5rem;
-        gap: 0.0625rem;
-    }
-    
-    .brain-subtitle {
-        font-size: 0.375rem;
-        letter-spacing: 0.125rem;
+    .logo-image-simple {
+        height: 50px;
+        width: 50px;
     }
 }
 
