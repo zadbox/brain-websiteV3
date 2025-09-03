@@ -8,6 +8,7 @@
 .env
 .env.backup
 .env.production
+.env.example
 .phpactor.json
 .phpunit.result.cache
 Homestead.json
@@ -19,3 +20,34 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
+
+# API Keys and Secrets
+**/GROQ_API_KEY
+**/HF_API_KEY  
+**/REDIS_PASSWORD
+**/*.key
+**/*.secret
+
+# RAG System sensitive files
+rag_system/.env*
+rag_system/config/secrets.py
+
+# Log files
+*.log
+logs/
+storage/logs/
+
+# Cache and temporary files
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+
+# Database files
+*.sqlite
+*.sqlite3
+database/database.sqlite
+
+# Docker volumes
+monitoring/prometheus/data/
+monitoring/grafana/data/

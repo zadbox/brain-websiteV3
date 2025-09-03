@@ -1,0 +1,34 @@
+/opt/anaconda3/lib/python3.11/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_name" in HuggingFaceInferenceAPIEmbeddings has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/abderrahim_boussyf/brain-website___V3/rag_system/simple_server.py:239: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Started server process [68654]
+INFO:     Waiting for application startup.
+/Users/abderrahim_boussyf/brain-website___V3/rag_system/simple_server.py:98: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+  embeddings = HuggingFaceEmbeddings(
+Disabling PyTorch because PyTorch >= 2.1 is required but found 2.0.1
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+🧠 BrainGenTechnology Simple RAG Server
+==================================================
+🚀 Starting BrainGenTechnology Simple RAG Server...
+✅ Groq initialized: Groq connected
+❌ Vectorstore initialization failed: module 'torch' has no attribute 'compiler'
+📊 System Status:
+   Groq API: ✅
+   Vectorstore: ❌
+   Imports: ✅

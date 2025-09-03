@@ -1,4 +1,4 @@
-@extends('layouts.app3')
+@extends('layouts.app')
 
 @section('title', 'Communication et marketing digital')
 

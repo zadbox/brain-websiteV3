@@ -150,7 +150,7 @@ class ChatbotWidget {
 
         const avatar = document.createElement('div');
         avatar.className = 'message-avatar';
-        avatar.innerHTML = `<img src="assets/LogoBrainBlanc.png" alt="Avatar" class="avatar-img">`;
+        avatar.innerHTML = `<img src="assets/logo-b-white.png" alt="Avatar" class="avatar-img">`;
 
         const content = document.createElement('div');
         content.className = 'message-content';

@@ -1,658 +1,650 @@
 /**
  * =============================================================================
- * INDEX PAGE - SCRIPTS JAVASCRIPT
- * BrainGenTechnology - Page d'accueil
+ * BRAIN AI - WORLD-CLASS HOMEPAGE JAVASCRIPT
+ * Professional AI & Technology Solutions Interface
  * =============================================================================
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     
     // =============================================================================
-    // ANIMATIONS D'APPARITION DES ÉLÉMENTS - HULY STYLE
+    // PERFORMANCE & ANIMATION INITIALIZATION
     // =============================================================================
     
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+    const config = {
+        animationDuration: 300,
+        neuralNetwork: {
+            nodeCount: Math.floor((window.innerWidth * window.innerHeight) / 8000) + 40,
+            connectionDistance: 200,
+            speed: 0.6,
+            colors: [
+                { r: 59, g: 130, b: 246 },   // Blue
+                { r: 99, g: 102, b: 241 },   // Indigo  
+                { r: 139, g: 92, b: 246 },   // Purple
+                { r: 0, g: 186, b: 255 },    // Bright Blue
+                { r: 124, g: 58, b: 237 }    // Deep Purple
+            ]
+        }
     };
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Ajouter un délai progressif pour un effet en cascade
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 100);
-            }
-        });
-    }, observerOptions);
+    // Performance optimization based on device capabilities
+    const isLowPowerDevice = () => {
+        return window.navigator.hardwareConcurrency <= 4 || 
+               window.innerWidth < 768 ||
+               window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    };
 
-    // Appliquer l'animation à tous les éléments avec la classe animate-item
-    document.querySelectorAll('.animate-item').forEach(item => {
-        observer.observe(item);
-    });
-    
-    // =============================================================================
-    // ENHANCED HULY-STYLE HERO ANIMATIONS
-    // =============================================================================
-    
-    // Animate hero elements with staggered delays
-    const heroElements = document.querySelectorAll('.hero-content-huly .animate-item');
-    heroElements.forEach((element, index) => {
-        element.style.animationDelay = `${index * 0.2}s`;
-    });
-    
-    // Interactive cursor effect for hero background
-    const heroBackground = document.querySelector('.hero-background');
-    if (heroBackground) {
-        document.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const x = (clientX / window.innerWidth) * 100;
-            const y = (clientY / window.innerHeight) * 100;
-            
-            heroBackground.style.background = `
-                radial-gradient(circle at ${x}% ${y}%, rgba(88, 101, 242, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at ${100-x}% ${100-y}%, rgba(255, 178, 107, 0.05) 0%, transparent 50%)
-            `;
-        });
-    }
-    
-    // Smooth scroll for CTA button
-    const ctaButton = document.querySelector('.btn-huly');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function(e) {
-            // Add click ripple effect
-            const ripple = document.createElement('div');
-            ripple.className = 'ripple-effect';
-            ripple.style.left = e.offsetX + 'px';
-            ripple.style.top = e.offsetY + 'px';
-            this.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
+    if (isLowPowerDevice()) {
+        config.neuralNetwork.nodeCount = Math.min(config.neuralNetwork.nodeCount, 8);
+        config.neuralNetwork.speed = 0.1;
+        config.animationDuration = 150;
     }
 
     // =============================================================================
-    // ANIMATION DES COMPTEURS
+    // NEURAL NETWORK BACKGROUND
     // =============================================================================
     
-    const counters = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-target'));
-                animateCounter(counter, target);
-                counterObserver.unobserve(counter);
-            }
-        });
-    }, observerOptions);
+    function initNeuralNetwork() {
+        const canvas = document.getElementById('neural-canvas');
+        if (!canvas) {
+            console.warn('Neural canvas not found');
+            return;
+        }
 
-    counters.forEach(counter => {
-        counterObserver.observe(counter);
-    });
-
-    function animateCounter(element, target) {
-        let current = 0;
-        const increment = target / 100;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            element.textContent = Math.floor(current);
-        }, 20);
-    }
-
-    // =============================================================================
-    // NEURAL NETWORK BACKGROUND - SOBRE ET TECHNIQUE
-    // =============================================================================
-    
-    const canvas = document.getElementById('neural-network-canvas');
-    if (canvas) {
+        console.log('Initializing neural network...');
         const ctx = canvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
         
-        // Configuration du réseau de neurones
-        const config = {
-            nodeCount: window.innerWidth < 768 ? 25 : 40,
-            connectionDistance: 120,
-            nodeSpeed: 0.3,
-            nodeSize: 2,
-            connectionOpacity: 0.15,
-            nodeColor: 'rgba(88, 101, 242, 0.8)',
-            connectionColor: 'rgba(88, 101, 242, 0.3)',
-            pulseSpeed: 0.002
-        };
-        
-        // Redimensionnement du canvas
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Classe Node pour les nœuds du réseau
-        class NeuralNode {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * config.nodeSpeed;
-                this.vy = (Math.random() - 0.5) * config.nodeSpeed;
-                this.size = config.nodeSize + Math.random() * 2;
-                this.pulse = Math.random() * Math.PI * 2;
-                this.connections = [];
-            }
-            
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                
-                // Rebond sur les bords
-                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-                
-                // Mise à jour du pulse
-                this.pulse += config.pulseSpeed;
-            }
-            
-            draw() {
-                // Dessiner le nœud principal
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = config.nodeColor;
-                ctx.fill();
-                
-                // Effet de pulse subtil
-                const pulseIntensity = Math.sin(this.pulse) * 0.5 + 0.5;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size + pulseIntensity, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(88, 101, 242, ${0.1 * pulseIntensity})`;
-                ctx.fill();
-            }
-        }
-        
-        // Initialisation des nœuds
+        canvas.width = width;
+        canvas.height = height;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+
         const nodes = [];
-        for (let i = 0; i < config.nodeCount; i++) {
-            nodes.push(new NeuralNode());
-        }
         
-        // Animation du réseau
-        function animateNetwork() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Mise à jour et dessin des nœuds
-            nodes.forEach(node => {
-                node.update();
-                node.draw();
+        // Initialize nodes
+        console.log(`Creating ${config.neuralNetwork.nodeCount} neural nodes...`);
+        for (let i = 0; i < config.neuralNetwork.nodeCount; i++) {
+            const colorIndex = Math.floor(Math.random() * config.neuralNetwork.colors.length);
+            nodes.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * config.neuralNetwork.speed,
+                vy: (Math.random() - 0.5) * config.neuralNetwork.speed,
+                r: 1 + Math.random() * 2,
+                color: config.neuralNetwork.colors[colorIndex],
+                pulse: Math.random() * Math.PI * 2
             });
+        }
+
+        let animationId;
+        
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
             
-            // Dessin des connexions
-            for (let i = 0; i < nodes.length; i++) {
+            // Update and draw nodes
+            nodes.forEach((node, i) => {
+                // Move nodes
+                node.x += node.vx;
+                node.y += node.vy;
+                
+                // Bounce off edges
+                if (node.x < 0 || node.x > width) node.vx *= -1;
+                if (node.y < 0 || node.y > height) node.vy *= -1;
+                
+                // Draw connections to nearby nodes
                 for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x;
-                    const dy = nodes[i].y - nodes[j].y;
+                    const other = nodes[j];
+                    const dx = node.x - other.x;
+                    const dy = node.y - other.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     
-                    if (distance < config.connectionDistance) {
-                        const opacity = config.connectionOpacity * (1 - distance / config.connectionDistance);
+                    if (distance < config.neuralNetwork.connectionDistance) {
+                        const alpha = 0.6 * (1 - distance / config.neuralNetwork.connectionDistance);
                         
-                        // Ligne de connexion
+                        ctx.save();
+                        ctx.globalAlpha = alpha;
+                        ctx.strokeStyle = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, 1)`;
+                        ctx.lineWidth = 2;
                         ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.strokeStyle = `rgba(88, 101, 242, ${opacity})`;
-                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(node.x, node.y);
+                        ctx.lineTo(other.x, other.y);
                         ctx.stroke();
-                        
-                        // Animation de pulse le long de la ligne
-                        const pulsePosition = (Date.now() * 0.001) % 1;
-                        const pulseX = nodes[i].x + (nodes[j].x - nodes[i].x) * pulsePosition;
-                        const pulseY = nodes[i].y + (nodes[j].y - nodes[i].y) * pulsePosition;
-                        
-                        ctx.beginPath();
-                        ctx.arc(pulseX, pulseY, 1, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(88, 101, 242, ${opacity * 2})`;
-                        ctx.fill();
+                        ctx.restore();
                     }
                 }
+                
+                // Draw node with enhanced visibility
+                node.pulse += 0.02;
+                const pulseSize = node.r * (1 + Math.sin(node.pulse) * 0.4);
+                const pulseAlpha = 0.9 + Math.sin(node.pulse) * 0.1;
+                
+                ctx.save();
+                ctx.globalAlpha = pulseAlpha;
+                ctx.fillStyle = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, 1)`;
+                ctx.shadowColor = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, 1)`;
+                ctx.shadowBlur = 15;
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, pulseSize, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            });
+            
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Handle resize
+        function handleResize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+        }
+        
+        window.addEventListener('resize', throttle(handleResize, 250));
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        });
+    }
+
+    // =============================================================================
+    // CHART.JS DASHBOARD INITIALIZATION
+    // =============================================================================
+    
+    function initHeroDashboard() {
+        const canvas = document.getElementById('hero-chart');
+        if (!canvas || typeof Chart === 'undefined') return;
+
+        const ctx = canvas.getContext('2d');
+        
+        // Neural data generation
+        const generateNeuralData = () => {
+            const data = [];
+            const baseValue = 75;
+            for (let i = 0; i < 12; i++) {
+                const variance = Math.sin(i * 0.8) * 15 + Math.random() * 8;
+                data.push(Math.max(20, Math.min(100, baseValue + variance)));
+            }
+            return data;
+        };
+
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, 'rgba(59, 130, 246, 0.3)');
+        gradient.addColorStop(0.5, 'rgba(99, 102, 241, 0.2)');
+        gradient.addColorStop(1, 'rgba(139, 92, 246, 0.1)');
+
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 12}, (_, i) => `T${i + 1}`),
+                datasets: [{
+                    label: 'AI Performance',
+                    data: generateNeuralData(),
+                    borderColor: '#3b82f6',
+                    backgroundColor: gradient,
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHoverBackgroundColor: '#ffffff',
+                    pointHoverBorderColor: '#3b82f6',
+                    pointHoverBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                scales: {
+                    x: {
+                        display: false,
+                        grid: { display: false }
+                    },
+                    y: {
+                        display: false,
+                        grid: { display: false },
+                        min: 0,
+                        max: 100
+                    }
+                },
+                elements: {
+                    point: { radius: 0 }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeInOutQuart'
+                }
+            }
+        });
+
+        // Update chart data periodically
+        setInterval(() => {
+            chart.data.datasets[0].data = generateNeuralData();
+            chart.update('none');
+        }, 4000);
+    }
+
+    // =============================================================================
+    // COUNTER ANIMATIONS
+    // =============================================================================
+    
+    function initCounterAnimations() {
+        const counters = document.querySelectorAll('.stat-number[data-target]');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseFloat(counter.getAttribute('data-target'));
+                    animateCounter(counter, target);
+                    observer.unobserve(counter);
+                }
+            });
+        }, { 
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        counters.forEach(counter => observer.observe(counter));
+    }
+
+    function animateCounter(element, targetValue) {
+        const duration = 2000;
+        const startTime = performance.now();
+        const startValue = 0;
+        const isPercentage = element.textContent.includes('%');
+        
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Smooth easing function
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const currentValue = startValue + (targetValue - startValue) * easeOutQuart;
+            
+            if (isPercentage) {
+                element.textContent = currentValue.toFixed(1) + '%';
+            } else {
+                element.textContent = Math.floor(currentValue);
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+    }
+
+    // =============================================================================
+    // SCROLL REVEAL ANIMATIONS
+    // =============================================================================
+    
+    function initScrollReveal() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Apply to cards and sections
+        const revealElements = document.querySelectorAll(
+            '.feature-card, .solution-card, .testimonial-card, .section-header'
+        );
+        
+        revealElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(element);
+        });
+    }
+
+    // =============================================================================
+    // INTERACTIVE ENHANCEMENTS
+    // =============================================================================
+    
+    function initInteractiveElements() {
+        // Enhanced button interactions
+        const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Ripple effect
+                const ripple = document.createElement('div');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Card hover enhancements
+        const cards = document.querySelectorAll('.feature-card, .solution-card, .testimonial-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    }
+
+    // =============================================================================
+    // PERFORMANCE MONITORING
+    // =============================================================================
+    
+    function initPerformanceMonitoring() {
+        // Monitor frame rate
+        let frameCount = 0;
+        let lastTime = performance.now();
+        
+        function measureFPS() {
+            frameCount++;
+            const currentTime = performance.now();
+            
+            if (currentTime - lastTime >= 1000) {
+                const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
+                
+                // Adjust neural network complexity based on performance
+                if (fps < 30 && config.neuralNetwork.nodeCount > 8) {
+                    config.neuralNetwork.nodeCount = Math.max(8, config.neuralNetwork.nodeCount - 2);
+                    config.neuralNetwork.speed *= 0.8;
+                }
+                
+                frameCount = 0;
+                lastTime = currentTime;
             }
             
-            requestAnimationFrame(animateNetwork);
+            requestAnimationFrame(measureFPS);
         }
         
-        // Démarrer l'animation si les animations ne sont pas réduites
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            animateNetwork();
+        if (!isLowPowerDevice()) {
+            requestAnimationFrame(measureFPS);
         }
     }
+
+    // =============================================================================
+    // ACCESSIBILITY ENHANCEMENTS
+    // =============================================================================
     
-    // Interaction avec l'arrière-plan héros
-    const heroBackground = document.querySelector('.hero-background');
-    if (heroBackground) {
-        document.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const x = (clientX / window.innerWidth) * 100;
-            const y = (clientY / window.innerHeight) * 100;
-            
-            heroBackground.style.background = `
-                radial-gradient(circle at ${x}% ${y}%, rgba(88, 101, 242, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at ${100-x}% ${100-y}%, rgba(255, 178, 107, 0.05) 0%, transparent 50%)
-            `;
+    function initAccessibility() {
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
         });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.setProperty('--duration-fast', '0.01ms');
+            document.documentElement.style.setProperty('--duration-normal', '0.01ms');
+            document.documentElement.style.setProperty('--duration-slow', '0.01ms');
+        }
+
+        // High contrast mode
+        if (window.matchMedia('(prefers-contrast: high)').matches) {
+            document.documentElement.style.setProperty('--neutral-300', '#ffffff');
+            document.documentElement.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.5)');
+        }
     }
 
     // =============================================================================
-    // THREE.JS ANIMATIONS REMOVED
+    // UTILITY FUNCTIONS
     // =============================================================================
     
-    // Three.js beam background animations have been removed
-    console.log('Three.js animations disabled - cube animations removed');
-
-    // =============================================================================
-    // INDUSTRY SELECTOR FUNCTIONALITY
-    // =============================================================================
-    
-    const industryDropdown = document.getElementById('industry-dropdown');
-    const dropdownArrow = document.querySelector('.dropdown-arrow');
-    
-    if (industryDropdown) {
-        industryDropdown.addEventListener('change', function(e) {
-            const selectedIndustry = e.target.value;
-            if (selectedIndustry) {
-                updateServicesForIndustry(selectedIndustry);
-                // Add visual feedback
-                this.style.borderColor = 'var(--accent-primary)';
-                setTimeout(() => {
-                    this.style.borderColor = '';
-                }, 1000);
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
             }
-        });
-
-        // Dropdown arrow animation
-        industryDropdown.addEventListener('focus', () => {
-            if (dropdownArrow) {
-                dropdownArrow.style.transform = 'translateY(-50%) rotate(180deg)';
-            }
-        });
-
-        industryDropdown.addEventListener('blur', () => {
-            if (dropdownArrow) {
-                dropdownArrow.style.transform = 'translateY(-50%) rotate(0deg)';
-            }
-        });
+        };
     }
 
-    function updateServicesForIndustry(industry) {
-        const serviceCards = document.querySelectorAll('.service-content, .feature-card');
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // =============================================================================
+    // INITIALIZATION SEQUENCE
+    // =============================================================================
+    
+    // Initialize all components
+    try {
+        initNeuralNetwork();
+        initHeroDashboard();
+        initCounterAnimations();
+        initScrollReveal();
+        initInteractiveElements();
+        initPerformanceMonitoring();
+        initAccessibility();
         
-        // Add subtle animation to indicate change
-        serviceCards.forEach((card, index) => {
-            setTimeout(() => {
-                card.style.transform = 'scale(0.95)';
-                card.style.opacity = '0.7';
-                setTimeout(() => {
-                    card.style.transform = 'scale(1)';
-                    card.style.opacity = '1';
-                }, 150);
-            }, index * 100);
-        });
-
-        // Show notification
-        showNotification(`Services updated for ${industry} industry`, 'info');
-        console.log(`Services updated for industry: ${industry}`);
+        console.log('🧠 BRAIN AI Homepage - Initialized successfully');
+        
+        // Dispatch custom event
+        document.dispatchEvent(new CustomEvent('brainHomepageReady', {
+            detail: {
+                timestamp: new Date().toISOString(),
+                version: '2.0.0',
+                features: [
+                    'neural-network',
+                    'dashboard-charts',
+                    'counter-animations',
+                    'scroll-reveal',
+                    'interactive-elements',
+                    'performance-monitoring',
+                    'accessibility'
+                ]
+            }
+        }));
+        
+    } catch (error) {
+        console.error('Error initializing BRAIN Homepage:', error);
     }
 
     // =============================================================================
-    // ENHANCED METRICS ANIMATION WITH PERFECT CENTERING
+    // CLEANUP AND ERROR HANDLING
     // =============================================================================
     
-    const heroStats = document.querySelectorAll('.hero-stats-huly .stat-item-huly');
-    const featureStats = document.querySelectorAll('.feature-card .stat-circle');
-    
-    // Perfect centering animation for hero stats
-    heroStats.forEach((stat, index) => {
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumber = entry.target.querySelector('.stat-number-huly');
-                    if (statNumber && !statNumber.classList.contains('animated')) {
-                        // Add perfect centering animation
-                        entry.target.style.animation = `perfectCenter 0.8s ease-out ${index * 0.2}s both`;
-                        // Animate the counter
-                        animateCounter(statNumber, parseInt(statNumber.textContent.replace(/[^0-9]/g, '')) || 95);
-                        statNumber.classList.add('animated');
-                    }
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        statObserver.observe(stat);
+    window.addEventListener('beforeunload', function() {
+        // Clean up any running animations or intervals
+        const canvas = document.getElementById('neural-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
     });
 
-    // Enhanced feature stats animation
-    featureStats.forEach((stat, index) => {
-        const featureObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statValue = entry.target.querySelector('.stat-value');
-                    if (statValue && !statValue.classList.contains('animated')) {
-                        // Add circular progress animation
-                        entry.target.style.animation = `circularProgress 1.2s ease-out ${index * 0.3}s both`;
-                        // Animate the counter
-                        const targetValue = parseInt(statValue.getAttribute('data-target')) || 85;
-                        animateCounter(statValue, targetValue);
-                        statValue.classList.add('animated');
-                    }
-                }
-            });
-        }, { threshold: 0.3 });
-        
-        featureObserver.observe(stat);
-    });
-
-    // =============================================================================
-    // GESTION DES ONGLETS EXPERTISE AVEC AUTO-SCROLL
-    // =============================================================================
-    
-    const expertiseTabs = document.querySelectorAll('#expertise-tabs .nav-link');
-    let currentTabIndex = 0;
-    let tabInterval;
-
-    function switchTab(index) {
-        expertiseTabs.forEach((tab, i) => {
-            tab.classList.toggle('active', i === index);
-            const target = document.querySelector(tab.getAttribute('data-bs-target'));
-            if (target) {
-                target.classList.toggle('show', i === index);
-                target.classList.toggle('active', i === index);
-            }
-        });
-    }
-
-    function autoSwitchTabs() {
-        currentTabIndex = (currentTabIndex + 1) % expertiseTabs.length;
-        switchTab(currentTabIndex);
-    }
-
-    function startAutoSwitch() {
-        tabInterval = setInterval(autoSwitchTabs, 3000);
-    }
-
-    function stopAutoSwitch() {
-        clearInterval(tabInterval);
-    }
-
-    // Démarrer l'auto-switch
-    if (expertiseTabs.length > 0) {
-        startAutoSwitch();
-
-        // Gérer les interactions utilisateur
-        const expertiseSection = document.getElementById('expertise-section');
-        if (expertiseSection) {
-            expertiseSection.addEventListener('mouseenter', stopAutoSwitch);
-            expertiseSection.addEventListener('mouseleave', startAutoSwitch);
-        }
-
-        // Gérer les clics manuels
-        expertiseTabs.forEach((tab, index) => {
-            tab.addEventListener('click', function(e) {
-                e.preventDefault();
-                currentTabIndex = index;
-                switchTab(index);
-            });
-        });
-    }
-
-    // =============================================================================
-    // INITIALISATION SWIPER POUR LES PARTENAIRES
-    // =============================================================================
-    
-    if (typeof Swiper !== 'undefined') {
-        new Swiper('.mySwiper', {
-            slidesPerView: 5,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            speed: 1000,
-            breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                },
-                480: {
-                    slidesPerView: 2,
-                    spaceBetween: 15,
-                },
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 35,
-                },
-                1200: {
-                    slidesPerView: 5,
-                    spaceBetween: 40,
-                }
-            },
-        });
-    }
-
-    // =============================================================================
-    // GESTION DES PERFORMANCES
-    // =============================================================================
-    
-    // Lazy loading des images
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-
-    // =============================================================================
-    // GESTION DES ERREURS
-    // =============================================================================
-    
+    // Global error handler
     window.addEventListener('error', function(e) {
-        console.error('Erreur détectée:', e.error);
-        // Ici vous pouvez ajouter un système de reporting d'erreurs
+        console.error('BRAIN Homepage Error:', e.error);
     });
 
-    // =============================================================================
-    // ACCESSIBILITÉ
-    // =============================================================================
-    
-    // Gestion du focus pour les éléments interactifs
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-navigation');
+    // Handle orientation change
+    window.addEventListener('orientationchange', debounce(() => {
+        location.reload();
+    }, 500));
+
+});
+
+// =============================================================================
+// CSS ANIMATION DEFINITIONS (dynamically injected)
+// =============================================================================
+
+// Inject ripple animation
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    @keyframes ripple {
+        from {
+            transform: scale(0);
+            opacity: 1;
         }
-    });
-
-    document.addEventListener('mousedown', function() {
-        document.body.classList.remove('keyboard-navigation');
-    });
-
-    // =============================================================================
-    // OPTIMISATIONS MOBILE
-    // =============================================================================
-    
-    // Désactiver les animations sur mobile pour les performances
-    if (window.innerWidth < 768) {
-        document.querySelectorAll('.animate-item').forEach(item => {
-            item.style.transition = 'none';
-        });
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
     }
-
-    // Gestion de l'orientation
-    window.addEventListener('orientationchange', function() {
-        setTimeout(resizeCanvas, 100);
-    });
-
-    // =============================================================================
-    // MÉTRIQUES DE PERFORMANCE
-    // =============================================================================
     
-    // Mesurer le temps de chargement
-    window.addEventListener('load', function() {
-        const loadTime = performance.now();
-        console.log(`Page chargée en ${loadTime.toFixed(2)}ms`);
-        
-        // Ici vous pouvez envoyer les métriques à votre service d'analytics
-    });
+    .keyboard-navigation *:focus {
+        outline: 2px solid var(--primary-blue) !important;
+        outline-offset: 2px !important;
+    }
+`;
+document.head.appendChild(rippleStyle);
 
-    // =============================================================================
-    // NOTIFICATIONS ET FEEDBACK
-    // =============================================================================
+// =============================================================================
+// GLOBAL UTILITIES
+// =============================================================================
+
+// Make utilities available globally
+window.BrainAI = {
+    version: '2.0.0',
     
-    // Fonction pour afficher des notifications
-    function showNotification(message, type = 'info') {
+    // Scroll to element utility
+    scrollTo: function(selector, offset = 0) {
+        const element = document.querySelector(selector);
+        if (element) {
+            const elementPosition = element.offsetTop - offset;
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+        }
+    },
+    
+    // Show notification utility
+    showNotification: function(message, type = 'info', duration = 3000) {
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: white;
+            font-weight: 500;
+            font-size: 0.875rem;
+            z-index: 9999;
+            max-width: 300px;
+            animation: slideIn 0.3s ease-out;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        `;
+        
+        // Set colors based on type
+        const colors = {
+            info: 'rgba(59, 130, 246, 0.9)',
+            success: 'rgba(16, 185, 129, 0.9)',
+            warning: 'rgba(245, 158, 11, 0.9)',
+            error: 'rgba(239, 68, 68, 0.9)'
+        };
+        
+        notification.style.background = colors[type] || colors.info;
         notification.textContent = message;
         
         document.body.appendChild(notification);
         
-        // Auto-remove after 3 seconds
         setTimeout(() => {
-            notification.style.animation = 'slideInNotification 0.3s ease-out reverse';
+            notification.style.animation = 'slideOut 0.3s ease-out reverse';
             setTimeout(() => {
                 if (notification.parentNode) {
                     notification.remove();
                 }
             }, 300);
-        }, 3000);
+        }, duration);
+    }
+};
+
+// Slide animations for notifications
+const notificationStyle = document.createElement('style');
+notificationStyle.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
     
-    // Make showNotification available globally
-    window.showNotification = showNotification;
-
-    // Feedback sur les interactions
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 100);
-        });
-    });
-
-    // =============================================================================
-    // NETTOYAGE DES RESSOURCES
-    // =============================================================================
-    
-    window.addEventListener('beforeunload', function() {
-        // Nettoyer les intervalles
-        if (tabInterval) {
-            clearInterval(tabInterval);
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
         }
-        
-        // Nettoyer les observateurs
-        if (observer) {
-            observer.disconnect();
+        to {
+            transform: translateX(100%);
+            opacity: 0;
         }
-        
-        if (counterObserver) {
-            counterObserver.disconnect();
-        }
-    });
-
-    // =============================================================================
-    // INITIALISATION TERMINÉE
-    // =============================================================================
-    
-    console.log('BrainGenTechnology - Page d\'accueil initialisée avec succès');
-    
-    // Émettre un événement personnalisé pour signaler que la page est prête
-    document.dispatchEvent(new CustomEvent('brainPageReady', {
-        detail: {
-            timestamp: new Date().toISOString(),
-            page: 'index'
-        }
-    }));
-});
-
-// =============================================================================
-// FONCTIONS UTILITAIRES GLOBALES
-// =============================================================================
-
-/**
- * Fonction pour scroller vers un élément
- * @param {string} selector - Sélecteur CSS de l'élément
- * @param {number} offset - Décalage optionnel
- */
-function scrollToElement(selector, offset = 0) {
-    const element = document.querySelector(selector);
-    if (element) {
-        const elementPosition = element.offsetTop - offset;
-        window.scrollTo({
-            top: elementPosition,
-            behavior: 'smooth'
-        });
     }
-}
-
-/**
- * Fonction pour détecter si un élément est visible
- * @param {Element} element - L'élément à vérifier
- * @returns {boolean}
- */
-function isElementVisible(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-/**
- * Fonction pour throttler les appels de fonction
- * @param {Function} func - Fonction à throttler
- * @param {number} delay - Délai en millisecondes
- * @returns {Function}
- */
-function throttle(func, delay) {
-    let timeoutId;
-    let lastExecTime = 0;
-    return function (...args) {
-        const currentTime = Date.now();
-        
-        if (currentTime - lastExecTime > delay) {
-            func.apply(this, args);
-            lastExecTime = currentTime;
-        } else {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => {
-                func.apply(this, args);
-                lastExecTime = Date.now();
-            }, delay - (currentTime - lastExecTime));
-        }
-    };
-}
+`;
+document.head.appendChild(notificationStyle);
