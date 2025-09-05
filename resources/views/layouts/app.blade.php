@@ -46,15 +46,18 @@
     }
     
     /* Ensure header is always on top */
-    .header-ultra {
-        z-index: 1000;
-    }
+    .header-ultra { z-index: 1000; }
+
+    /* Keep app content above background layers */
+    #app, #main-content { position: relative; z-index: 1; }
     </style>
 </head>
 
 <body class="bg-gradient-to-b from-transparent to-black/20 text-neutral-100 antialiased min-h-screen">
-    <!-- Neural Network Background -->
-    <canvas id="neural-network-canvas" class="neural-network-canvas"></canvas>
+    <!-- Soft energy glow behind neural lines -->
+    <div class="neural-energy-glow" aria-hidden="true"></div>
+    <!-- Three.js 3D network (preferred when available) -->
+    <div id="three-network-bg" class="three-network-bg" aria-hidden="true"></div>
     
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-500 text-white px-4 py-2 rounded-button z-50">
@@ -79,6 +82,32 @@
     
     <!-- RAG Chat Widget -->
     <script src="{{ asset('assets/js/rag-chat-widget.js') }}"></script>
+    
+    <!-- Three.js background (CDN) + initializer -->
+    <script defer src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
+    <script defer src="{{ asset('assets/js/three-network-mesh.js') }}?v={{ time() }}"></script>
+    <script>
+        // When THREE loads, ensure proper initialization
+        window.addEventListener('load', function() {
+            console.log('🔄 Window loaded, checking Three.js...');
+            if (window.THREE && document.getElementById('three-network-bg')) {
+                console.log('✅ Three.js and container ready');
+                document.body.classList.add('has-three-bg');
+                // Force initialization
+                if (window.BrainThreeNetwork && typeof window.BrainThreeNetwork.init === 'function') {
+                    console.log('🚀 Force initializing comet system...');
+                    window.BrainThreeNetwork.init('three-network-bg');
+                } else {
+                    console.error('❌ BrainThreeNetwork not available:', window.BrainThreeNetwork);
+                }
+            } else {
+                console.error('❌ Missing Three.js or container:', {
+                    THREE: !!window.THREE,
+                    container: !!document.getElementById('three-network-bg')
+                });
+            }
+        });
+    </script>
     <script>
         // Initialize RAG Chat Widget
         document.addEventListener('DOMContentLoaded', function() {

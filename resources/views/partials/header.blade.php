@@ -15,7 +15,7 @@
                     <div id="header-animated-logo" class="logo-container animated-logo-container">
                         <!-- BRAIN Logo Image -->
                         <div class="brain-logo-simple">
-                            <img src="{{ asset('assets/logo-b-white.png') }}" alt="BRAIN Technology" class="logo-image-simple">
+                            <img src="{{ asset('assets/logoBrainBlanc.png') }}" alt="BRAIN Technology" class="logo-image-simple">
                         </div>
                         <div class="logo-glow-effect"></div>
                         <div class="logo-hologram-effect"></div>
@@ -382,17 +382,21 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .logo-image-simple {
-    height: 65px;
-    width: 65px;
-    object-fit: cover;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
-    transition: all 0.3s ease;
+    height: 50px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    /* Remove default glow */
+    filter: none;
+    transition: none;
 }
 
+/* */
+
+/* Disable hover animation on simple logo image */
 .logo-image-simple:hover {
-    filter: drop-shadow(0 0 15px rgba(0, 186, 255, 0.5));
-    transform: scale(1.05);
+    filter: none;
+    transform: none;
 }
 
 .logo-text-simple {
@@ -474,8 +478,8 @@ document.addEventListener('DOMContentLoaded', function() {
 /* Mobile responsive */
 @media (max-width: 768px) {
     .logo-image-simple {
-        height: 50px;
-        width: 50px;
+        height: 40px;
+        max-width: 150px;
     }
 }
 
@@ -486,36 +490,30 @@ document.addEventListener('DOMContentLoaded', function() {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Make header transparent at the top so it blends with the hero */
+    background: transparent;
+    backdrop-filter: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: 'Sora', 'Inter', system-ui, sans-serif;
     height: 80px; /* Fixed height from index page */
 }
 
+/* When scrolled, restore the glass background for readability */
 .header-ultra.scrolled {
-    background: rgba(15, 15, 15, 0.95);
-    border-bottom-color: rgba(255, 255, 255, 0.15);
+    background: rgba(15, 15, 15, 0.98);
+    /* Remove glass/blur effect on scroll */
+    backdrop-filter: none;
 }
 
 /* Background Effects */
 .header-bg-effect {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
+    /* Disable decorative header overlays entirely */
+    display: none !important;
 }
 
-.neural-particles {
-    position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(circle at 20% 50%, rgba(0, 186, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-    animation: particleFloat 20s ease-in-out infinite;
-}
+/* Ensure individual overlay layers are also disabled */
+.neural-particles,
+.holographic-overlay { display: none !important; }
 
 .holographic-overlay {
     position: absolute;
@@ -569,8 +567,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .logo-image {
     display: block;
-    filter: drop-shadow(0 0 20px rgba(0, 186, 255, 0.3));
-    transition: all 0.3s ease;
+    /* Remove default glow on alternate logo */
+    filter: none;
+    transition: none;
     height: 32px; /* Fixed height for consistent sizing */
     width: auto;
     max-width: 180px;
@@ -595,18 +594,21 @@ document.addEventListener('DOMContentLoaded', function() {
     pointer-events: none;
 }
 
+/* Disable hover animation on header logo */
 .logo-link-ultra:hover .logo-image {
-    filter: drop-shadow(0 0 30px rgba(0, 186, 255, 0.5));
-    transform: scale(1.05);
+    filter: none;
+    transform: none;
 }
 
+/* Keep glow effect hidden on hover */
 .logo-link-ultra:hover .logo-glow-effect {
-    opacity: 1;
+    opacity: 0;
 }
 
+/* Disable hologram animation on hover */
 .logo-link-ultra:hover .logo-hologram-effect {
-    opacity: 1;
-    animation: holographicScan 2s ease-in-out infinite;
+    opacity: 0;
+    animation: none;
 }
 
 .logo-subtitle {
@@ -1070,8 +1072,10 @@ document.addEventListener('DOMContentLoaded', function() {
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Remove glass/blur effect */
+    backdrop-filter: none;
+    /* Avoid showing a faint top line when menu is hidden */
+    border-top: 0;
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
@@ -1083,6 +1087,7 @@ document.addEventListener('DOMContentLoaded', function() {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu-content {
@@ -1311,7 +1316,6 @@ a:focus-visible {
 @media (prefers-contrast: high) {
     .header-ultra {
         background: rgba(0, 0, 0, 0.95);
-        border-bottom-color: rgba(255, 255, 255, 0.3);
     }
     
     .nav-link {

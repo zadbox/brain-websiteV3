@@ -5,11 +5,17 @@
 
 @section('content')
 
+@push('styles')
+<style>
+  /* Let the hero sit behind the transparent header on homepage */
+  #main-content { padding-top: 0 !important; }
+</style>
+@endpush
+
 <!-- Modern Professional Homepage -->
 <main class="homepage-main">
     
-    <!-- Neural Network Canvas Background -->
-    <canvas id="neural-canvas"></canvas>
+    <!-- Three.js background is global now; legacy canvas removed -->
     
     <!-- Hero Section -->
     <section class="hero-section">

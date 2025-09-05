@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const config = {
         animationDuration: 300,
         neuralNetwork: {
-            nodeCount: Math.floor((window.innerWidth * window.innerHeight) / 8000) + 40,
-            connectionDistance: 200,
-            speed: 0.6,
+            nodeCount: Math.floor((window.innerWidth * window.innerHeight) / 8000) + 50,
+            connectionDistance: 180,
+            speed: 0.8,
             colors: [
-                { r: 59, g: 130, b: 246 },   // Blue
-                { r: 99, g: 102, b: 241 },   // Indigo  
-                { r: 139, g: 92, b: 246 },   // Purple
-                { r: 0, g: 186, b: 255 },    // Bright Blue
-                { r: 124, g: 58, b: 237 }    // Deep Purple
+                { r: 99, g: 160, b: 255 },   // Bright Blue (enhanced for dark background)
+                { r: 139, g: 165, b: 255 },  // Light Indigo
+                { r: 180, g: 140, b: 255 },  // Light Purple  
+                { r: 60, g: 210, b: 255 },   // Cyan Blue
+                { r: 150, g: 100, b: 255 }   // Violet
             ]
         }
     };
@@ -35,9 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     if (isLowPowerDevice()) {
-        config.neuralNetwork.nodeCount = Math.min(config.neuralNetwork.nodeCount, 8);
-        config.neuralNetwork.speed = 0.1;
-        config.animationDuration = 150;
+        config.neuralNetwork.nodeCount = Math.min(config.neuralNetwork.nodeCount, 25);
+        config.neuralNetwork.speed = 0.4;
+        config.neuralNetwork.connectionDistance = 120;
+        config.animationDuration = 200;
     }
 
     // =============================================================================
@@ -101,12 +102,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     
                     if (distance < config.neuralNetwork.connectionDistance) {
-                        const alpha = 0.6 * (1 - distance / config.neuralNetwork.connectionDistance);
+                        const alpha = 0.8 * (1 - distance / config.neuralNetwork.connectionDistance);
                         
                         ctx.save();
                         ctx.globalAlpha = alpha;
                         ctx.strokeStyle = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, 1)`;
-                        ctx.lineWidth = 2;
+                        ctx.lineWidth = 1.5;
                         ctx.beginPath();
                         ctx.moveTo(node.x, node.y);
                         ctx.lineTo(other.x, other.y);
@@ -115,16 +116,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 
-                // Draw node with enhanced visibility
-                node.pulse += 0.02;
-                const pulseSize = node.r * (1 + Math.sin(node.pulse) * 0.4);
-                const pulseAlpha = 0.9 + Math.sin(node.pulse) * 0.1;
+                // Draw node with enhanced visibility for dark background
+                node.pulse += 0.03;
+                const pulseSize = node.r * (1.2 + Math.sin(node.pulse) * 0.5);
+                const pulseAlpha = 0.95 + Math.sin(node.pulse) * 0.05;
                 
                 ctx.save();
                 ctx.globalAlpha = pulseAlpha;
                 ctx.fillStyle = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, 1)`;
-                ctx.shadowColor = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, 1)`;
-                ctx.shadowBlur = 15;
+                ctx.shadowColor = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, 0.8)`;
+                ctx.shadowBlur = 20;
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, pulseSize, 0, Math.PI * 2);
                 ctx.fill();

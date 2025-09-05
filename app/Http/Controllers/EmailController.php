@@ -1,3 +1,5 @@
+<?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -22,7 +24,7 @@ class EmailController extends Controller
             'user-message' => $validated['user-message'],
         ];
 
-        Mail::to("e")->send(new ContactMessage($data));
+        Mail::to("contact@braingentech.com")->send(new ContactMessage($data));
 
         return redirect()->back()->with('success', 'Votre message a été envoyé avec succès!');
     }

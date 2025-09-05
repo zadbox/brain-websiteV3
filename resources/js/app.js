@@ -16,7 +16,22 @@ class NeuralNetwork {
             connectionOpacity: 0.15,
             nodeColor: 'rgba(99, 102, 241, 0.8)',
             connectionColor: 'rgba(99, 102, 241, 0.3)',
-            pulseSpeed: 0.002
+            pulseSpeed: 0.002,
+            // Interactive repulsion ("void") config
+            repulsionRadius: 160,
+            repulsionStrength: 0.9,
+            // Magnetic mode (attraction toward cursor)
+            magneticMode: true,
+            magnetStrength: 0.6,
+            swirlStrength: 0.08,
+            maxSpeed: 1.2,
+            friction: 0.995,
+            // runtime state (updated on hover/move)
+            mouseActive: false,
+            mouseX: 0,
+            mouseY: 0,
+            currentRepulsionRadius: 0,
+            holeEffect: false // do not create visible void for now
         };
         
         this.init();
@@ -53,11 +68,34 @@ class NeuralNetwork {
         document.addEventListener('mousemove', (e) => {
             this.mouse.x = e.clientX;
             this.mouse.y = e.clientY;
+            // expose to nodes via config for simpler access
+            this.config.mouseX = e.clientX;
+            this.config.mouseY = e.clientY;
         });
+
+        // Enable/disable repulsion when hovering canvas
+        if (this.canvas) {
+            this.canvas.addEventListener('mouseenter', () => {
+                this.config.mouseActive = true;
+                this.config.repulsionTarget = this.config.repulsionRadius;
+            });
+            this.canvas.addEventListener('mouseleave', () => {
+                this.config.mouseActive = false;
+                this.config.repulsionTarget = 0;
+            });
+        }
     }
     
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Smoothly animate the repulsion radius toward target
+        const target = this.config.repulsionTarget ?? 0;
+        this.config.currentRepulsionRadius = this.lerp(
+            this.config.currentRepulsionRadius,
+            target,
+            0.1
+        );
         
         // Update and draw nodes
         this.nodes.forEach(node => {
@@ -70,6 +108,9 @@ class NeuralNetwork {
         
         requestAnimationFrame(() => this.animate());
     }
+
+    // simple linear interpolation helper
+    lerp(a, b, t) { return a + (b - a) * t; }
     
     drawConnections() {
         for (let i = 0; i < this.nodes.length; i++) {
@@ -79,6 +120,21 @@ class NeuralNetwork {
                 if (distance < this.config.connectionDistance) {
                     const opacity = this.config.connectionOpacity * (1 - distance / this.config.connectionDistance);
                     
+                    // Optional: skip connections inside the "hole" (disabled by default)
+                    if (this.config.holeEffect && this.config.currentRepulsionRadius > 1) {
+                        const mx = this.config.mouseX;
+                        const my = this.config.mouseY;
+                        // use the midpoint as a heuristic for proximity to the hole
+                        const midX = (this.nodes[i].x + this.nodes[j].x) / 2;
+                        const midY = (this.nodes[i].y + this.nodes[j].y) / 2;
+                        const mdx = midX - mx;
+                        const mdy = midY - my;
+                        const md = Math.sqrt(mdx * mdx + mdy * mdy);
+                        if (md < this.config.currentRepulsionRadius * 0.95) {
+                            continue; // skip drawing this connection inside the hole
+                        }
+                    }
+
                     // Draw connection line
                     this.ctx.beginPath();
                     this.ctx.moveTo(this.nodes[i].x, this.nodes[i].y);
@@ -121,9 +177,49 @@ class Node {
     }
     
     update() {
+        // Apply cursor-driven interaction
+        const r = this.config.currentRepulsionRadius;
+        if (r > 0.5) {
+            const dx = this.x - this.config.mouseX;
+            const dy = this.y - this.config.mouseY;
+            const dist = Math.sqrt(dx * dx + dy * dy) || 0.0001;
+            if (dist < r) {
+                // normalize
+                const nx = dx / dist; // points outward from mouse
+                const ny = dy / dist;
+                if (this.config.magneticMode) {
+                    // Attraction toward cursor (magnetic), with subtle swirl
+                    const attract = (1 - dist / r) * this.config.magnetStrength;
+                    // toward mouse => subtract outward normal
+                    this.vx -= nx * attract;
+                    this.vy -= ny * attract;
+                    // tangential component for a gentle orbiting effect
+                    const tx = -ny;
+                    const ty = nx;
+                    this.vx += tx * this.config.swirlStrength * attract;
+                    this.vy += ty * this.config.swirlStrength * attract;
+                } else {
+                    // Repulsion (previous behavior)
+                    const force = (1 - dist / r) * this.config.repulsionStrength; // stronger near center
+                    this.vx += nx * force;
+                    this.vy += ny * force;
+                }
+            }
+        }
+
         this.x += this.vx;
         this.y += this.vy;
         
+        // Friction and speed cap for stability
+        this.vx *= this.config.friction;
+        this.vy *= this.config.friction;
+        const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+        if (speed > this.config.maxSpeed) {
+            const scale = this.config.maxSpeed / speed;
+            this.vx *= scale;
+            this.vy *= scale;
+        }
+
         // Bounce off edges
         if (this.x < 0 || this.x > this.canvas.width) this.vx = -this.vx;
         if (this.y < 0 || this.y > this.canvas.height) this.vy = -this.vy;

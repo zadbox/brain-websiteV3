@@ -1,4 +1,4 @@
-#!/Users/abderrahim_boussyf/brain-website___V3/rag_system/rag_env/bin/python
+#!/Users/mac/Documents/ClaudeC/brain-website-v3/brain-websiteV3/rag_system/rag_env/bin/python3.13
 # -*- coding: utf-8 -*-
 import re
 import sys

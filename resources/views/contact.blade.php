@@ -8,8 +8,7 @@
 <!-- Contact Page -->
 <main class="contact-main">
     
-    <!-- Neural Network Background Canvas -->
-    <canvas id="contact-canvas"></canvas>
+    
     
     <!-- Hero Section -->
     <section class="hero-section">

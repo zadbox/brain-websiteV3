@@ -51,8 +51,8 @@ class AnalyticsDataSeeder extends Seeder
             'Marketing', 'Legal Services', 'Agriculture', 'Entertainment', 'Food & Beverage'
         ];
         
-        $intents = ['information', 'pricing', 'demo', 'purchase', 'support'];
-        $companySizes = ['startup', 'sme', 'enterprise', 'individual'];
+        $intents = ['information', 'quote', 'demo', 'consultation', 'support'];
+        $companySizes = ['startup', 'sme', 'mid_market', 'enterprise'];
         
         $qualifications = [];
         
@@ -62,16 +62,10 @@ class AnalyticsDataSeeder extends Seeder
                 'lead_score' => rand(0, 100),
                 'intent' => $intents[rand(0, count($intents)-1)],
                 'urgency' => ['low', 'medium', 'high'][rand(0, 2)],
-                'budget_range' => ['<10k', '10k-50k', '50k-100k', '100k+'][rand(0, 3)],
-                'authority_level' => ['individual', 'influencer', 'decision_maker', 'budget_holder'][rand(0, 3)],
                 'company_size' => $companySizes[rand(0, count($companySizes)-1)],
                 'industry' => $industries[rand(0, count($industries)-1)],
-                'needs_analysis' => json_encode([
-                    'primary_need' => ['automation', 'ai_integration', 'process_optimization'][rand(0, 2)],
-                    'timeline' => ['immediate', '1-3_months', '3-6_months', '6+_months'][rand(0, 3)]
-                ]),
                 'sales_ready' => rand(1, 100) <= 30, // 30% sales ready
-                'conversation_quality' => round(rand(50, 100) / 10, 1), // 5.0 to 10.0
+                'conversation_quality' => rand(5, 10), // 5 to 10
                 'model_confidence' => round(rand(70, 95) / 100, 2), // 0.70 to 0.95
                 'qualified_at' => Carbon::now()->subDays(rand(0, 30))->subHours(rand(0, 23)),
                 'created_at' => now(),
@@ -121,6 +115,7 @@ class AnalyticsDataSeeder extends Seeder
                 
                 $messages[] = [
                     'session_id' => $sessionId,
+                    'message_id' => 'msg_' . $sessionId . '_' . $i,
                     'role' => $isUser ? 'user' : 'assistant',
                     'content' => $isUser ? 
                         $userMessages[rand(0, count($userMessages)-1)] : 

@@ -250,15 +250,14 @@
     max-width: 400px;
     object-fit: contain;
     border-radius: 16px;
-    filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-    mix-blend-mode: screen;
-    transition: all 0.3s ease;
+    /* Keep logo clean without hover animation */
+    filter: none;
+    mix-blend-mode: normal;
+    transition: none;
 }
 
-.footer-logo-video:hover {
-    filter: brightness(1.3) drop-shadow(0 0 30px rgba(0, 186, 255, 0.5));
-    transform: scale(1.02);
-}
+/* Disable hover effects entirely */
+.footer-logo-video:hover { filter: none; transform: none; }
 
 /* Footer BRAIN Text Logo Animation Styles (kept for compatibility) */
 .footer-brain-logo.text-logo {

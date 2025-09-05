@@ -1,9 +1,9 @@
+/* Inter Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Inter Font Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 /* CSS Custom Properties for Design Tokens */
 :root {
@@ -205,16 +205,56 @@
 }
 
 /* Neural Network Background Styles */
-.neural-network-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  opacity: 0.4;
-  pointer-events: none;
-}
+  /* Legacy 2D neural canvas disabled */
+  .neural-network-canvas { display: none !important; }
+  /* Disable legacy per-page background canvases */
+  #neural-canvas,
+  #contact-canvas,
+  #about-canvas,
+  #technology-canvas,
+  #industries-canvas,
+  #resources-canvas,
+  #demo-canvas,
+  #brain-rh-canvas,
+  #brain-assistant-canvas { display: none !important; }
+
+  /* Three.js container (sits above the glow, below content) */
+  .three-network-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -5; /* behind content, above energy glow */
+    pointer-events: none; /* keep UI clickable */
+  }
+
+  /* Energy Glow Overlay (behind neural lines) */
+  .neural-energy-glow {
+    position: fixed;
+    inset: 0;
+    z-index: -10; /* far behind everything */
+    pointer-events: none;
+    /* Soft radial glow plus darker blue side vignettes */
+    background:
+      /* top layer: neutral dark edges (replace blue with black) */
+      linear-gradient(90deg,
+        rgba(0, 0, 0, 0.60) 0%,
+        rgba(0, 0, 0, 0.35) 6%,
+        rgba(0, 0, 0, 0.00) 22%,
+        rgba(0, 0, 0, 0.00) 78%,
+        rgba(0, 0, 0, 0.35) 94%,
+        rgba(0, 0, 0, 0.60) 100%
+      ),
+      /* base layer: neutral center glow */
+      radial-gradient(
+        60% 45% at 50% 40%,
+        rgba(20, 20, 20, 0.18) 0%,
+        rgba(20, 20, 20, 0.14) 20%,
+        rgba(12, 15, 23, 0.65) 55%,
+        rgba(10, 12, 18, 0.9) 75%,
+        #0a0a0a 100%
+      );
+    /* Subtle vignette to avoid hard edges on wide screens */
+    box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.5);
+  }
 
 /* Performance optimizations */
 @media (prefers-reduced-motion: reduce) {

@@ -8,8 +8,7 @@
 <!-- Resources Page -->
 <main class="resources-main">
     
-    <!-- Neural Network Background Canvas -->
-    <canvas id="resources-canvas"></canvas>
+    
     
     <!-- Hero Section -->
     <section class="hero-section">
